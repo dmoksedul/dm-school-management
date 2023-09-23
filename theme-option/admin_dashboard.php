@@ -25,22 +25,18 @@ function dm_theme_page() {
 }
 
 function dm_theme_general_page() {
-    echo '<div class="wrap">';
-    echo '<h2>DM School Management</h2>';
-    bloginfo( 'name' );
-    echo '</div>';
+    //General Theme Page
+    require_once(get_template_directory() . '/theme-option/general.php');
 }
 
 function dm_theme_custom_css_page() {
-    echo '<div class="wrap">';
-    echo '<h2>DM Custom CSS</h2>';
-    echo '</div>';
+    //General Custom CSS Page
+    require_once(get_template_directory() . '/theme-option/custom-css.php');
 }
 
 function dm_theme_custom_js_page() {
-    echo '<div class="wrap">';
-    echo '<h2>DM Custom JS</h2>';
-    echo '</div>';
+    //General Custom JS Page
+    require_once(get_template_directory() . '/theme-option/custom-js.php');
 }
 
 

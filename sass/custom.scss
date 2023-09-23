@@ -1,6 +1,3 @@
-$pColor: #056839;
-$sColor: #00381e;
-$whColor: #fff;
 * {
   padding: 0%;
   margin: 0%;
@@ -12,9 +9,18 @@ body {
   font-size: 1rem;
   line-height: normal;
   font-family: "Poppins", sans-serif;
+  color: var(--dm_text_color);
   ul {
     padding: 0px;
     margin: 0px;
+  }
+}
+
+a {
+  color: var(--dm_link_color);
+  transition: all 0.5s;
+  &:hover {
+    color: var(--dm_link_hover_color);
   }
 }
 img {
@@ -28,7 +34,7 @@ img {
 // header area end
 // navbar area
 #dm_header_banner_area {
-  background-color: $sColor;
+  background-color: var(--dm_banner_color);
   padding: 20px 0px;
   .container {
     display: flex;
@@ -41,7 +47,7 @@ img {
 }
 // dm_navbar area
 #dm_navbar_area {
-  background: $pColor;
+  background: var(--dm_primary_color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,17 +62,16 @@ img {
       position: relative;
       padding: 20px 0px;
       a {
-        color: $whColor;
+        color: var(--dm_white_color);
         text-decoration: none;
         padding: 10px 20px;
-        background-color: black;
         &:hover {
-          background-color: red;
+          background-color: var(--dm_secondary_color);
         }
       }
       ul {
         position: absolute;
-        background-color: $pColor;
+        background-color: var(--dm_primary_color);
         left: 0px;
         top: 100%;
         transition: all 0.5s;
@@ -111,6 +116,7 @@ img {
     }
     li.current-menu-item a {
       background-color: red;
+      color: var(--dm_white_color);
     }
   }
 }

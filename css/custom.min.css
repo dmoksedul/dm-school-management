@@ -10,10 +10,19 @@ body {
   font-size: 1rem;
   line-height: normal;
   font-family: "Poppins", sans-serif;
+  color: var(--dm_text_color);
 }
 body ul {
   padding: 0px;
   margin: 0px;
+}
+
+a {
+  color: var(--dm_link_color);
+  transition: all 0.5s;
+}
+a:hover {
+  color: var(--dm_link_hover_color);
 }
 
 img {
@@ -25,7 +34,7 @@ img {
 }
 
 #dm_header_banner_area {
-  background-color: #00381e;
+  background-color: var(--dm_banner_color);
   padding: 20px 0px;
 }
 #dm_header_banner_area .container {
@@ -38,7 +47,7 @@ img {
 }
 
 #dm_navbar_area {
-  background: #056839;
+  background: var(--dm_primary_color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,17 +65,16 @@ img {
   padding: 20px 0px;
 }
 #dm_navbar_area #dm_navbar_menu li a {
-  color: #fff;
+  color: var(--dm_white_color);
   text-decoration: none;
   padding: 10px 20px;
-  background-color: black;
 }
 #dm_navbar_area #dm_navbar_menu li a:hover {
-  background-color: red;
+  background-color: var(--dm_secondary_color);
 }
 #dm_navbar_area #dm_navbar_menu li ul {
   position: absolute;
-  background-color: #056839;
+  background-color: var(--dm_primary_color);
   left: 0px;
   top: 100%;
   transition: all 0.5s;
@@ -108,4 +116,5 @@ img {
 }
 #dm_navbar_area #dm_navbar_menu li.current-menu-item a {
   background-color: red;
+  color: var(--dm_white_color);
 }/*# sourceMappingURL=custom.min.css.map */
