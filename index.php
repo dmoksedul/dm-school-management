@@ -43,6 +43,9 @@
         <!-- navbar area end -->
     </header>
     <!-- header area end -->
+    <section id="main_body">
+        <?php the_content() ?>
+    </section>
 
 
 
