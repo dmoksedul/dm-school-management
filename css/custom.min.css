@@ -1,0 +1,68 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  line-height: normal;
+  font-family: "Poppins", sans-serif;
+}
+body ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.dm_header_area {
+  height: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3098039216);
+}
+
+#dm_header_banner_area {
+  background-color: #00381e;
+  padding: 20px 0px;
+}
+#dm_header_banner_area .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#dm_navbar_area {
+  background: #056839;
+}
+#dm_navbar_area #dm_navbar_menu {
+  min-height: 60px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+#dm_navbar_area #dm_navbar_menu ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0px;
+}
+#dm_navbar_area #dm_navbar_menu ul li {
+  list-style: none;
+  cursor: pointer;
+}
+#dm_navbar_area #dm_navbar_menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}/*# sourceMappingURL=custom.min.css.map */
