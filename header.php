@@ -190,7 +190,8 @@
         <!-- navbar area start -->
         <nav id="dm_navbar_area">
             <div class="container">
-                <?php wp_nav_menu( array('theme_location' => 'header_menu', 'menu_id' => 'dm_navbar_menu') ); ?>
+                <?php wp_nav_menu( array('theme_location' => 'header_menu', 'menu_id' => 'dm_navbar_menu', 'walker' => new Custom_Walker_Nav_Menu(),) ); ?>
+                <button id="dm_menu_toggler"><i class="fas fa-bars-staggered"></i></button>
             </div>
         </nav>
         <!-- navbar area end -->

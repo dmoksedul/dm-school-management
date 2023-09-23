@@ -15,7 +15,9 @@ body {
     margin: 0px;
   }
 }
-
+.container {
+  max-width: 1200px;
+}
 a {
   color: var(--dm_link_color);
   transition: all 0.5s;
@@ -32,6 +34,52 @@ img {
   border-bottom: 1px solid #0000004f;
 }
 // header area end
+// top header area start
+#dm_top_header {
+  background-color: var(--dm_primary_color);
+  padding: 10px 0px;
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .dm_top_contact_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: var(--dm_white_color);
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 5px;
+        i {
+          font-size: 15px;
+        }
+        &:hover {
+          color: var(--dm_link_hover_color);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  #dm_top_header {
+    display: none;
+    .container {
+      flex-direction: column;
+    }
+  }
+}
+// top header area end
 // navbar area
 #dm_header_banner_area {
   background-color: var(--dm_banner_color);
@@ -50,23 +98,38 @@ img {
   background: var(--dm_primary_color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 0px;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
   #dm_navbar_menu {
-    min-height: 60px;
-    height: 100%;
     align-items: center;
     li {
       list-style: none;
       display: inline-block;
       position: relative;
-      padding: 20px 0px;
+      padding: 5px 0px;
       a {
         color: var(--dm_white_color);
         text-decoration: none;
-        padding: 10px 20px;
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        i {
+          margin-left: 5px;
+        }
+        &::after {
+          display: none;
+        }
         &:hover {
-          background-color: var(--dm_secondary_color);
+          background-color: var(--dm_button_bg_hover_color);
         }
       }
       ul {
@@ -85,7 +148,14 @@ img {
           padding: 0px;
           a {
             display: block;
-            border-color: orange;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            i {
+              margin-left: 0px;
+              transform: rotate(-90deg);
+            }
           }
           ul {
             position: absolute;
@@ -97,7 +167,6 @@ img {
             opacity: 0 !important;
           }
           &:hover {
-            background-color: red;
             ul {
               opacity: 1 !important;
               transform: translateX(0px) !important;
@@ -115,8 +184,72 @@ img {
       }
     }
     li.current-menu-item a {
-      background-color: red;
-      color: var(--dm_white_color);
+      color: var(--dm_button_color);
+      background: var(--dm_button_bg_hover_color);
     }
   }
+  #dm_menu_toggler {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: var(--dm_white_color);
+    font-size: 28px;
+    transition: all 0.5s;
+    display: none;
+    &:hover {
+      color: var(--dm_link_hover_color);
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  #dm_navbar_area {
+    .container {
+      align-items: end;
+    }
+    #dm_navbar_menu {
+      position: absolute;
+      top: 0px;
+      left: -400px;
+      background-color: var(--dm_white_color);
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 30px #00000034;
+      min-height: 100vh;
+      padding: 20px;
+      padding-top: 50px;
+      justify-content: start;
+      align-items: start;
+      li {
+        display: block;
+        width: 100%;
+        text-align: left;
+        a {
+          color: #000;
+          width: 100%;
+          align-items: center;
+          justify-content: space-between;
+        }
+        ul {
+          width: 100%;
+          li {
+            a {
+              i {
+                transform: rotate(0deg);
+              }
+            }
+          }
+        }
+      }
+    }
+    #dm_menu_toggler {
+      display: block;
+    }
+  }
+}
+/* Style the main menu items with submenus */
+.has-submenu > a::after {
+  content: "\f078"; /* Use the appropriate Font Awesome arrow-down icon code */
+  font-family: "Font Awesome"; /* Make sure to use the correct Font Awesome font family */
+  padding-left: 5px; /* Adjust the spacing as needed */
 }

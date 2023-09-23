@@ -46,7 +46,7 @@ function dm_customizer_register($wp_customize){
     )));
     // top banner color area
     $wp_customize->add_setting('dm_banner_color', array(
-        'default' => '#056839',
+        'default' => '#003517',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_banner_color', array(
         'label' => 'Banner Color',
@@ -64,7 +64,7 @@ function dm_customizer_register($wp_customize){
     )));
     // secondary color area
     $wp_customize->add_setting('dm_secondary_color', array(
-        'default' => '#056839',
+        'default' => '#012330',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_secondary_color', array(
         'label' => 'Secondary Color',
@@ -73,7 +73,7 @@ function dm_customizer_register($wp_customize){
     )));
     // heading color area
     $wp_customize->add_setting('dm_heading_color', array(
-        'default' => '#056839',
+        'default' => '#000',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_heading_color', array(
         'label' => 'Heading Color (title)',
@@ -82,7 +82,7 @@ function dm_customizer_register($wp_customize){
     )));
     // text color area
     $wp_customize->add_setting('dm_text_color', array(
-        'default' => '#056839',
+        'default' => '#0000',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_text_color', array(
         'label' => 'Text Color',
@@ -91,7 +91,7 @@ function dm_customizer_register($wp_customize){
     )));
     // link color area
     $wp_customize->add_setting('dm_link_color', array(
-        'default' => '#056839',
+        'default' => '#39835D',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_link_color', array(
         'label' => 'Link Color',
@@ -100,7 +100,7 @@ function dm_customizer_register($wp_customize){
     )));
     // link hover color area
     $wp_customize->add_setting('dm_link_hover_color', array(
-        'default' => '#056839',
+        'default' => '#ff0000',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_link_hover_color', array(
         'label' => 'Link Hover Color',
@@ -127,7 +127,7 @@ function dm_customizer_register($wp_customize){
     )));
     // button bg color area
     $wp_customize->add_setting('dm_button_bg_color', array(
-        'default' => '#056839',
+        'default' => '#39835D',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_button_bg_color', array(
         'label' => 'Button BG Color',
