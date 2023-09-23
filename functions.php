@@ -47,4 +47,4 @@ function dm_customizer_register($wp_customize){
 add_action('customize_register', 'dm_customizer_register');
 
 // Menu Register
-register_nav_menu( 'primary_menu',__('Primary Menu', 'dmoksedul'));
+register_nav_menu( 'header_menu',__('Header Menu', 'dmoksedul'));

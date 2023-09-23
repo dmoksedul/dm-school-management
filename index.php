@@ -37,7 +37,7 @@
         <!-- navbar area start -->
         <nav id="dm_navbar_area">
             <div class="container">
-                <?php wp_nav_menu( array('theme_location' => 'primary_menu', 'menu_id' => 'dm_navbar_menu') ); ?>
+                <?php wp_nav_menu( array('theme_location' => 'header_menu', 'menu_id' => 'dm_navbar_menu') ); ?>
             </div>
         </nav>
         <!-- navbar area end -->

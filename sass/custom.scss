@@ -43,29 +43,75 @@ img {
 // dm_navbar area
 #dm_navbar_area {
   background: $pColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   #dm_navbar_menu {
     min-height: 60px;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      padding: 0px;
-      li {
-        list-style: none;
-        cursor: pointer;
-        a {
-          color: $whColor;
-          text-decoration: none;
-          font-size: 16px;
+    align-items: center;
+    li {
+      list-style: none;
+      display: inline-block;
+      position: relative;
+      padding: 20px 0px;
+      a {
+        color: $whColor;
+        text-decoration: none;
+        padding: 10px 20px;
+        background-color: black;
+        &:hover {
+          background-color: red;
         }
       }
+      ul {
+        position: absolute;
+        background-color: $pColor;
+        left: 0px;
+        top: 100%;
+        transition: all 0.5s;
+        transform: translateY(50px);
+        opacity: 0;
+        pointer-events: none;
+        min-width: 200px;
+        li {
+          width: 100%;
+          position: relative;
+          padding: 0px;
+          a {
+            display: block;
+            border-color: orange;
+          }
+          ul {
+            position: absolute;
+            top: 0%;
+            left: 100%;
+            transition: all 0.5s;
+            transform: translateX(50px) !important;
+            pointer-events: none !important;
+            opacity: 0 !important;
+          }
+          &:hover {
+            background-color: red;
+            ul {
+              opacity: 1 !important;
+              transform: translateX(0px) !important;
+              pointer-events: all !important;
+            }
+          }
+        }
+      }
+      &:hover {
+        ul {
+          opacity: 1;
+          transform: translateY(0px);
+          pointer-events: all;
+        }
+      }
+    }
+    li.current-menu-item a {
+      background-color: red;
     }
   }
 }

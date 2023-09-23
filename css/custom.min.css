@@ -40,29 +40,73 @@ img {
 
 #dm_navbar_area {
   background: #056839;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #dm_navbar_area #dm_navbar_menu {
   min-height: 60px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-}
-#dm_navbar_area #dm_navbar_menu ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 0px;
 }
-#dm_navbar_area #dm_navbar_menu ul li {
+#dm_navbar_area #dm_navbar_menu li {
   list-style: none;
-  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  padding: 20px 0px;
 }
-#dm_navbar_area #dm_navbar_menu ul li a {
+#dm_navbar_area #dm_navbar_menu li a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  padding: 10px 20px;
+  background-color: black;
+}
+#dm_navbar_area #dm_navbar_menu li a:hover {
+  background-color: red;
+}
+#dm_navbar_area #dm_navbar_menu li ul {
+  position: absolute;
+  background-color: #056839;
+  left: 0px;
+  top: 100%;
+  transition: all 0.5s;
+  transform: translateY(50px);
+  opacity: 0;
+  pointer-events: none;
+  min-width: 200px;
+}
+#dm_navbar_area #dm_navbar_menu li ul li {
+  width: 100%;
+  position: relative;
+  padding: 0px;
+}
+#dm_navbar_area #dm_navbar_menu li ul li a {
+  display: block;
+  border-color: orange;
+}
+#dm_navbar_area #dm_navbar_menu li ul li ul {
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  transition: all 0.5s;
+  transform: translateX(50px) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+#dm_navbar_area #dm_navbar_menu li ul li:hover {
+  background-color: red;
+}
+#dm_navbar_area #dm_navbar_menu li ul li:hover ul {
+  opacity: 1 !important;
+  transform: translateX(0px) !important;
+  pointer-events: all !important;
+}
+#dm_navbar_area #dm_navbar_menu li:hover ul {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: all;
+}
+#dm_navbar_area #dm_navbar_menu li.current-menu-item a {
+  background-color: red;
 }/*# sourceMappingURL=custom.min.css.map */
