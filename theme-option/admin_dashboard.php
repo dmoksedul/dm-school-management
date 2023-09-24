@@ -4,7 +4,7 @@
 function dm_add_theme_menu() {
     add_menu_page(
         'DM Theme Option', // Page title
-        'DM School',    // Menu title
+        'DM Theme Option',    // Menu title
         'manage_options',     // Capability required to access
         'dm_theme_settings', // Menu slug
         'dm_theme_page', // Callback function to display the page
