@@ -20,15 +20,13 @@ function dm_customizer_register($wp_customize){
     $wp_customize->add_section('dm_footer_area', array(
         'title' =>__('Footer Area', 'dmoksedul'),
     ));
-    // Add a setting for custom HTML code
-    $wp_customize->add_setting('dm_facebook_page_code', array(
-        'default' => '',
-        'sanitize_callback' => 'wp_kses_post', // Use this to sanitize the code
+    // footer description
+    $wp_customize->add_setting('dm_footer_description', array(
+        'default' => 'Alhamdulillah, Our School based on Allah Suhbhanu wa tayala path. We can make student behavior good for our future generation.',
     ));
-
-    // Add a control for custom HTML code
-    $wp_customize->add_control('dm_facebook_page_code', array(
-        'label' => 'Facebook Page HTML Code',
+    $wp_customize->add_control('dm_footer_description', array(
+        'label' => 'Facebook Link',
+        'setting' => 'dm_footer_description',
         'section' => 'dm_footer_area',
         'type' => 'textarea',
     ));
@@ -86,11 +84,21 @@ function dm_customizer_register($wp_customize){
         'setting' => 'dm_youtube',
         'section' => 'dm_footer_area',
     ));
-
+    
+    // Add a setting for custom HTML code
+    $wp_customize->add_setting('dm_facebook_page_username', array(
+        'default' => 'dmoksedul',
+    ));
+    $wp_customize->add_control('dm_facebook_page_username', array(
+        'label' => 'Facebook Page username',
+        'description' => 'Embed facebook on footer',
+        'setting' => 'dm_facebook_page_username',
+        'section' => 'dm_footer_area',
+    ));
     // copyright text
     
     $wp_customize->add_setting('dm_copyright', array(
-        'default' => '© 2023 | Developed by dmoksedul',
+        'default' => 'SM School & College',
     ));
     $wp_customize->add_control('dm_copyright', array(
         'label' => 'Copyright Text',

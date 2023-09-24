@@ -4,9 +4,9 @@
 function register_dm_teacher_post_type() {
     $labels = array(
         'name' => 'DM Teachers',
-        'singular_name' => 'DM Teacher',
+        'singular_name' => 'All Teacher',
         'menu_name' => 'DM Teachers',
-        'add_new_item' => 'Add New DM Teacher',
+        'add_new_item' => 'Add New Teacher',
         'edit_item' => 'Edit DM Teacher',
         'view_item' => 'View DM Teacher',
         'search_items' => 'Search DM Teachers',

@@ -2,8 +2,6 @@
 /*
 * Theme functions here
 */
-// ALl Default theme function here
-include_once('inc/default.php');
 
 // Theme CSS and jQuery File calling
 include_once('inc/enqueue.php');
@@ -44,3 +42,6 @@ include_once('inc/shortcode.php');
 // admin dashboard file
 include_once('theme-option/admin_dashboard.php');
 
+
+// ALl Default theme function here
+include_once('inc/default.php');

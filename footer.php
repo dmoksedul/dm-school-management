@@ -8,7 +8,7 @@
     <!-- footer box start -->
     <div class="dm_footer_box">
         <h3 class="fm_footer_title"><?php bloginfo( 'title' )  ?></h3>
-        <p>Alhamdulillah, Our School based on Allah Suhbhanu wa tayala path. We can make student behavior good for our future generation.</p>
+        <p><?php echo get_theme_mod('dm_footer_description');  ?></p>
         <ul class="footer_social_box">
             <li><a href="<?php echo get_theme_mod('dm_facebook');  ?>"><i class="fab fa-facebook-f"></i></a></li>
             <li><a href="<?php echo get_theme_mod('dm_instagram');  ?>"><i class="fab fa-instagram"></i></a></li>
@@ -34,16 +34,17 @@
     <div class="dm_footer_box">
         <h3 class="fm_footer_title">অফিসিয়াল ফেসবুক পেজ</h3>
         <div class="dm_facebook_page_box">
-        <?php $custom_html = get_theme_mod('dm_facebook_page_code');
-if (!empty($custom_html)) {
-    echo $custom_html;
-}  ?>
+        <div id="fb-root"></div>
+            <script async="1" defer="1" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="nWyKGp8F"></script><div class="fb-page" data-href="https://www.facebook.com/<?php echo get_theme_mod('dm_facebook_page_username');  ?>" data-height="130" data-small-header="" data-adapt-container-width="1" data-hide-cover="" data-show-facepile="true" data-show-posts="true" data-width="600"><blockquote cite="https://www.facebook.com/<?php echo get_theme_mod('dm_facebook_page_username');  ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?php echo get_theme_mod('dm_facebook_page_username');  ?>"></a></blockquote></div>
         </div>
     </div>
     <!-- footer box end -->
     </div>
     <div class="dm_footer_copyright_area">
-        <p><?php echo get_theme_mod('dm_copyright');  ?></p>
+        <p>© <?php
+$fullYearDate = date('Y'); // This will give you the current date and time with the full year.
+echo $fullYearDate;
+?> <?php echo get_theme_mod('dm_copyright');  ?> | Developed by <a href="https://moksedul.dev/" target="_blank"> Dmoksedul</a></p>
     </div>
 </footer>
 
