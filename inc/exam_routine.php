@@ -485,4 +485,4 @@ function dm_exam_routine_title_list_shortcode($atts) {
     return $output;
 }
 
-add_shortcode('dm_exam_routine_title_list', 'dm_exam_routine_title_list_shortcode');
+add_shortcode('dm_exam_routine_list_title', 'dm_exam_routine_title_list_shortcode');

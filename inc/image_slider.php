@@ -303,4 +303,4 @@ function dm_image_slider_shortcode($atts) {
     return $output;
 }
 
-add_shortcode('dm-image-slider', 'dm_image_slider_shortcode');
+add_shortcode('dm_image_slider', 'dm_image_slider_shortcode');

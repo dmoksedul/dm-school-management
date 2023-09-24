@@ -276,6 +276,8 @@ function display_dm_teachers_list($atts) {
     @media screen and (max-width:1024px){
         .dm_teacher-list{
         grid-template-columns:1fr 1fr 1fr;
+    }.dm_teacher-photo img {
+        max-height:300px;
     }
     }
     @media screen and (max-width:768px){
@@ -286,6 +288,9 @@ function display_dm_teachers_list($atts) {
     @media screen and (max-width:640px){
         .dm_teacher-list{
         grid-template-columns:1fr;
+    }
+    .dm_teacher-photo img {
+        max-height:450px !important;
     }
     }
     .dm_teacher-list .dm_teacher{
@@ -319,6 +324,10 @@ function display_dm_teachers_list($atts) {
     }
     .dm_teacher-photo img {
         width:100%;
+        max-height:280px;
+    }
+    a{
+        text-decoration:none;
     }
     .dm_teacher_info_box {
         display: flex;

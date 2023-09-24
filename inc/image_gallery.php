@@ -263,4 +263,4 @@ function dm_image_gallery_shortcode($atts) {
     return $output;
 }
 
-add_shortcode('dm-image-gallery', 'dm_image_gallery_shortcode');
+add_shortcode('dm_image_gallery', 'dm_image_gallery_shortcode');

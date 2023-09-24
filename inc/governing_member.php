@@ -201,6 +201,6 @@ function dm_gbm_list_shortcode() {
     return $output;
 }
 
-add_shortcode('dm-gbm-list', 'dm_gbm_list_shortcode');
+add_shortcode('dm_gbm_list', 'dm_gbm_list_shortcode');
 
 ?>
