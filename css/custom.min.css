@@ -1,3 +1,19 @@
+:root {
+  --dm_bg_color: #fff;
+  --dm_banner_color: #003517;
+  --dm_primary_color: #056839;
+  --dm_secondary_color: #012330;
+  --dm_heading_color: #000;
+  --dm_text_color: #000;
+  --dm_link_color: #39835d;
+  --dm_link_hover_color: #ff0000;
+  --dm_button_color: #fff;
+  --dm_button_hover_color: #ffff;
+  --dm_button_bg_color: #39835d;
+  --dm_button_bg_hover_color: #ff0000;
+  --dm_white_color: #fff;
+}
+
 * {
   padding: 0%;
   margin: 0%;
