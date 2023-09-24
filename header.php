@@ -197,8 +197,11 @@
         <!-- navbar area end -->
     </header>
     <!-- header area end -->
-    he_content() ?>
-    </section>
+    <section id="body_area">
+    <div class="container">
+    <?php the_content();  ?>
+    </div>
+  </section>
 
 
 

@@ -20,12 +20,80 @@ function dm_customizer_register($wp_customize){
     $wp_customize->add_section('dm_footer_area', array(
         'title' =>__('Footer Area', 'dmoksedul'),
     ));
+    // Add a setting for custom HTML code
+    $wp_customize->add_setting('dm_facebook_page_code', array(
+        'default' => '',
+        'sanitize_callback' => 'wp_kses_post', // Use this to sanitize the code
+    ));
+
+    // Add a control for custom HTML code
+    $wp_customize->add_control('dm_facebook_page_code', array(
+        'label' => 'Facebook Page HTML Code',
+        'section' => 'dm_footer_area',
+        'type' => 'textarea',
+    ));
+    // facebook link
+    $wp_customize->add_setting('dm_facebook', array(
+        'default' => 'https://facebook.com/dmoksedul/',
+    ));
+    $wp_customize->add_control('dm_facebook', array(
+        'label' => 'Facebook Link',
+        'setting' => 'dm_facebook',
+        'section' => 'dm_footer_area',
+    ));
+    // Instagram link
+    $wp_customize->add_setting('dm_instagram', array(
+        'default' => 'https://instagram.com/dmoksedul/',
+    ));
+    $wp_customize->add_control('dm_instagram', array(
+        'label' => 'Instagram Link',
+        'setting' => 'dm_instagram',
+        'section' => 'dm_footer_area',
+    ));
+    // twiter link
+    $wp_customize->add_setting('dm_twitter', array(
+        'default' => 'https://twitter.com/dmoksedul/',
+    ));
+    $wp_customize->add_control('dm_twitter', array(
+        'label' => 'Twitter Link',
+        'setting' => 'dm_twitter',
+        'section' => 'dm_footer_area',
+    ));
+    // Linkedin link
+    $wp_customize->add_setting('dm_linkedin', array(
+        'default' => 'https://www.linkedin.com/in/dmoksedul/',
+    ));
+    $wp_customize->add_control('dm_linkedin', array(
+        'label' => 'Linkedin Link',
+        'setting' => 'dm_linkedin',
+        'section' => 'dm_footer_area',
+    ));
+    // Whatsapp link
+    $wp_customize->add_setting('dm_whatsapp', array(
+        'default' => 'https://api.whatsapp.com/send?phone=8801518301895',
+    ));
+    $wp_customize->add_control('dm_whatsapp', array(
+        'label' => 'Whatsapp Link',
+        'setting' => 'dm_whatsapp',
+        'section' => 'dm_footer_area',
+    ));
+    // Youtube link
+    $wp_customize->add_setting('dm_youtube', array(
+        'default' => 'https://youtube.com/',
+    ));
+    $wp_customize->add_control('dm_youtube', array(
+        'label' => 'Youtube Link',
+        'setting' => 'dm_youtube',
+        'section' => 'dm_footer_area',
+    ));
+
+    // copyright text
+    
     $wp_customize->add_setting('dm_copyright', array(
         'default' => '© 2023 | Developed by dmoksedul',
     ));
     $wp_customize->add_control('dm_copyright', array(
         'label' => 'Copyright Text',
-        'description' => 'If you are interested change your log you can do it.',
         'setting' => 'dm_copyright',
         'section' => 'dm_footer_area',
     ));
