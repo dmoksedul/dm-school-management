@@ -14,10 +14,9 @@ include_once('inc/theme_function.php');
 // Menu Register
 include_once('inc/menu_register.php');
 
+// Menu Register
+include_once('inc/message_post.php');
+
 // admin dashboard file
 include_once('theme-option/admin_dashboard.php');
-
-
-// admin dashboard file
-// include_once('theme-option/image_slider.php');
 
