@@ -24,4 +24,6 @@ function dm_fontawesome_icon(){
     wp_enqueue_style( 'dm_googledm_fontawesome_icon_fonts', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', false );
 }
 add_action('wp_enqueue_scripts', 'dm_fontawesome_icon');
+
+
 ?>
