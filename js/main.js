@@ -55,4 +55,3 @@ document.getElementById("navbar_close_button").classList.remove('navbar_close_bu
 })
 
 
-  
