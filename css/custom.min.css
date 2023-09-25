@@ -14,6 +14,26 @@
   --dm_white_color: #fff;
 }
 
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-size: 16px;
+  line-height: normal;
+  font-family: "Poppins", sans-serif;
+  color: var(--dm_text_color);
+  font-family: "Anek Bangla", sans-serif;
+}
+body ul {
+  padding: 0px;
+  margin: 0px;
+}
+
 button#scrollToTopButton {
   display: none;
   position: fixed;
@@ -34,26 +54,6 @@ button#scrollToTopButton {
 }
 button#scrollToTopButton i {
   font-size: 20px;
-}
-
-* {
-  padding: 0%;
-  margin: 0%;
-  box-sizing: border-box;
-}
-
-body {
-  width: 100%;
-  height: auto;
-  font-size: 16px;
-  line-height: normal;
-  font-family: "Poppins", sans-serif;
-  color: var(--dm_text_color);
-  font-family: "Anek Bangla", sans-serif;
-}
-body ul {
-  padding: 0px;
-  margin: 0px;
 }
 
 #body_area {
@@ -486,7 +486,7 @@ img {
 #dm_footer_area {
   background-image: linear-gradient(to bottom, rgba(38, 45, 51, 0.9843137255), #21272e), url("../img/footer_bg.webp");
   background-size: cover;
-  color: white;
+  color: white !important;
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
@@ -497,6 +497,9 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+}
+#dm_footer_area .dm_footer_box a {
+  color: var(--dm_white_color) !important;
 }
 #dm_footer_area .dm_footer_box .fm_footer_title {
   font-size: 20px;
@@ -528,6 +531,7 @@ img {
   text-decoration: none;
   border-radius: 2px;
   transition: all 0.5s;
+  color: var(--dm_white_color) !important;
 }
 #dm_footer_area .dm_footer_box .footer_social_box li a:hover {
   background-color: var(--dm_primary_color);

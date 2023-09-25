@@ -19,6 +19,8 @@ function dm_add_theme_menu() {
 
     add_submenu_page( 'dm_theme_settings', 'Theme Custom JS', 'Custom JS', 'manage_options', 'dm_custom_js', 'dm_theme_custom_js_page' );
 
+    add_submenu_page( 'dm_theme_settings', 'Theme Shortcode', 'Shortcode', 'manage_options', 'dm_shortcode', 'dm_theme_shortcode_page' );
+
 }
 
 add_action('admin_menu', 'dm_add_theme_menu');
@@ -45,6 +47,11 @@ function dm_theme_custom_css_page() {
 function dm_theme_custom_js_page() {
     //General Custom JS Page
     require_once(get_template_directory() . '/theme-option/custom-js.php');
+}
+
+function dm_theme_shortcode_page() {
+    //General Custom JS Page
+    require_once(get_template_directory() . '/theme-option/shortcode.php');
 }
 
 

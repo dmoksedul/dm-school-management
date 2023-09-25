@@ -1,3 +1,4 @@
+// rooot color file here ==================
 :root {
   --dm_bg_color: #fff;
   --dm_banner_color: #003517;
@@ -12,6 +13,30 @@
   --dm_button_bg_color: #39835d;
   --dm_button_bg_hover_color: #ff0000;
   --dm_white_color: #fff;
+}
+// external style file linking==================
+@import "_dashboard.scss";
+
+// external style file linking==================
+
+//website desgn file ==================
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: auto;
+  font-size: 16px;
+  line-height: normal;
+  font-family: "Poppins", sans-serif;
+  color: var(--dm_text_color);
+  font-family: "Anek Bangla", sans-serif;
+  ul {
+    padding: 0px;
+    margin: 0px;
+  }
 }
 button#scrollToTopButton {
   display: none;
@@ -34,24 +59,7 @@ button#scrollToTopButton {
     font-size: 20px;
   }
 }
-* {
-  padding: 0%;
-  margin: 0%;
-  box-sizing: border-box;
-}
-body {
-  width: 100%;
-  height: auto;
-  font-size: 16px;
-  line-height: normal;
-  font-family: "Poppins", sans-serif;
-  color: var(--dm_text_color);
-  font-family: "Anek Bangla", sans-serif;
-  ul {
-    padding: 0px;
-    margin: 0px;
-  }
-}
+
 #body_area {
   width: 100%;
   max-width: 1200px;
@@ -504,7 +512,7 @@ img {
   background-image: linear-gradient(to bottom, #262d33fb, #21272e),
     url("../img/footer_bg.webp");
   background-size: cover;
-  color: white;
+  color: white !important;
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
@@ -516,6 +524,9 @@ img {
     gap: 20px;
   }
   .dm_footer_box {
+    a {
+      color: var(--dm_white_color) !important;
+    }
     .fm_footer_title {
       font-size: 20px;
       font-weight: 500;
@@ -544,6 +555,7 @@ img {
           text-decoration: none;
           border-radius: 2px;
           transition: all 0.5s;
+          color: var(--dm_white_color) !important;
           &:hover {
             background-color: var(--dm_primary_color);
             color: var(--dm_white_color);
