@@ -82,7 +82,8 @@ img {
 }
 
 .dm_header_area {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3098039216);
+  z-index: 999;
+  position: relative;
 }
 
 #dm_top_header {
@@ -150,7 +151,6 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
-  z-index: 99999999;
 }
 #dm_navbar_area .container {
   display: flex;
