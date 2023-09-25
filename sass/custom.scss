@@ -181,73 +181,16 @@ img {
       }
       ul {
         position: absolute;
-        background-color: var(--dm_white_color);
         left: 0px;
         top: 100%;
-        transition: all 0.5s;
-        transform: translateY(50px);
-        opacity: 0;
-        pointer-events: none;
-        min-width: 200px;
-        border-top: 3px solid var(--dm_text_color);
-        li {
-          width: 100%;
-          position: relative;
-          padding: 0px;
-          border-bottom: 1px solid #00000018;
-          a {
-            display: block;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--dm_text_color);
-            i {
-              margin-left: 0px;
-              transform: rotate(-90deg);
-            }
-            &:hover {
-              background-color: var(--dm_primary_color);
-              color: var(--dm_white_color);
-              padding-left: 25px;
-            }
-          }
-          ul {
-            position: absolute;
-            top: 0%;
-            left: 100%;
-            transition: all 0.5s;
-            transform: translateX(50px) !important;
-            pointer-events: none !important;
-            opacity: 0 !important;
-            li {
-              position: relative;
-              ul {
-                transform: translateX(50px) !important;
-                pointer-events: none !important;
-                opacity: 0 !important;
-              }
-              &:hover {
-                transform: translateX(0px) !important;
-                pointer-events: all !important;
-                opacity: 11 !important;
-              }
-            }
-          }
+        background: var(--dm_white_color);
+        transform: translateX();
+        a {
+          color: var(--dm_text_color);
           &:hover {
-            ul {
-              opacity: 1 !important;
-              transform: translateX(0px) !important;
-              pointer-events: all !important;
-            }
+            color: var(--dm_white_color);
+            background: var(--dm_primary_color);
           }
-        }
-      }
-      &:hover {
-        ul {
-          opacity: 1;
-          transform: translateY(0px);
-          pointer-events: all;
         }
       }
     }

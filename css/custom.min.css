@@ -188,70 +188,17 @@ img {
 }
 #dm_navbar_area #dm_navbar_menu li ul {
   position: absolute;
-  background-color: var(--dm_white_color);
   left: 0px;
   top: 100%;
-  transition: all 0.5s;
-  transform: translateY(50px);
-  opacity: 0;
-  pointer-events: none;
-  min-width: 200px;
-  border-top: 3px solid var(--dm_text_color);
+  background: var(--dm_white_color);
+  transform: translateX();
 }
-#dm_navbar_area #dm_navbar_menu li ul li {
-  width: 100%;
-  position: relative;
-  padding: 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0941176471);
-}
-#dm_navbar_area #dm_navbar_menu li ul li a {
-  display: block;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+#dm_navbar_area #dm_navbar_menu li ul a {
   color: var(--dm_text_color);
 }
-#dm_navbar_area #dm_navbar_menu li ul li a i {
-  margin-left: 0px;
-  transform: rotate(-90deg);
-}
-#dm_navbar_area #dm_navbar_menu li ul li a:hover {
-  background-color: var(--dm_primary_color);
+#dm_navbar_area #dm_navbar_menu li ul a:hover {
   color: var(--dm_white_color);
-  padding-left: 25px;
-}
-#dm_navbar_area #dm_navbar_menu li ul li ul {
-  position: absolute;
-  top: 0%;
-  left: 100%;
-  transition: all 0.5s;
-  transform: translateX(50px) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-}
-#dm_navbar_area #dm_navbar_menu li ul li ul li {
-  position: relative;
-}
-#dm_navbar_area #dm_navbar_menu li ul li ul li ul {
-  transform: translateX(50px) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-}
-#dm_navbar_area #dm_navbar_menu li ul li ul li:hover {
-  transform: translateX(0px) !important;
-  pointer-events: all !important;
-  opacity: 11 !important;
-}
-#dm_navbar_area #dm_navbar_menu li ul li:hover ul {
-  opacity: 1 !important;
-  transform: translateX(0px) !important;
-  pointer-events: all !important;
-}
-#dm_navbar_area #dm_navbar_menu li:hover ul {
-  opacity: 1;
-  transform: translateY(0px);
-  pointer-events: all;
+  background: var(--dm_primary_color);
 }
 #dm_navbar_area #dm_navbar_menu li.current-menu-item a {
   color: var(--dm_button_color);
