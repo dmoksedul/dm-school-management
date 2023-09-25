@@ -2,71 +2,7 @@
 // Genereal functions here
 
     ?>
-   <div id="theme_customize_body">
-    <div class="main_area_option">
-      <!-- Header -->
-      <?php echo "<h1>DM School Management Customize:</h1>";
-      echo "<p>Customize your website easily.</p>"; ?>
-    </div>
-    <!-- middle area start -->
-    <section id="customize_main_container">
-    <!-- sidebar area -->
-    <div id="customize_side_bar">
-      <ul>
-        <li><button data-target="general_setting_editor_tab" class="toggle-tab">General Settings</button></li>
-        <li><button data-target="header_area_editor_tab" class="toggle-tab">Header Area</button></li>
-        <li><button data-target="" class="">Footer Area</button></li>
-        <li><button data-target="" class="">General Settings</button></li>
-        <li><button data-target="" class="">General Settings</button></li>
-        <li><button data-target="" class="">General Settings</button></li>
-        <li><button data-target="" class="">General Settings</button></li>
-        <li><button data-target="" class="">General Settings</button></li>
-        <li><button data-target="" class="">General Settings</button></li>
-      </ul>
-    </div>
-    <!-- webiste customize editor body -->
-    <div id="customize_editor_bar">
-      <!-- tab editor list start -->
-      <div class="editor-tab " id="general_setting_editor_tab">
-        <!-- contact information start -->
-        <div class="contact_information_box">
-          <form class="contact_information_box" action="options.php" method="post">
-            <?php wp_nonce_field('update-options') ?>
-            <label for="address-info" name="address-info">Address Info</label>
-            <input type="text" name="address-info" value="<?php echo get_option('address-info'); ?>" placeholder="Enter Your Address">
-
-            <label for="email-info" name="email-info">Email Info</label>
-            <input type="text" name="email-info" value="<?php echo get_option('email-info'); ?>" placeholder="Enter Your Email Address">
-
-            <label for="phone-number" name="phone-number">Phone Number</label>
-            <input type="text" name="phone-number" value="<?php echo get_option('phone-number'); ?>" placeholder="Enter Your Address">
-
-
-
-            <input type="hidden" name="action" value="update">
-            <input type="hidden" name="page_options" value="address-info, email-info, phone-number">
-            <input type="submit" name="submit" value="<?php _e('Save Info', 'dmoksedul') ?>">
-
-          </form>
-        </div>
-      <!-- contact information end -->
-      </div>
-      <!-- tab editor list end -->
-      <!-- tab editor list start -->
-      <div class="editor-tab" id="header_area_editor_tab">
-        <!-- contact information start -->
-        <h1>header area editor</h1>
-      <!-- contact information end -->
-      </div>
-      <!-- tab editor list end -->
-
-    </div>
-    </section>
-    <!-- middle area end -->
-  </div>
-
-
-  <style>
+    <style>
     #theme_customize_body{
         background:#fff;
         padding:20px;
@@ -149,8 +85,93 @@
     }
     .editor-tab {
             display: none; /* Initially hide all editor tabs */
-        }
+    }
+    .active{
+      display:block;
+    }
 </style>
+<!-- =============================================================================
+body
+=================================================================================== -->
+   <div id="theme_customize_body">
+    <div class="main_area_option">
+      <!-- Header -->
+      <?php echo "<h1>DM School Management Customize:</h1>";
+      echo "<p>Customize your website easily.</p>"; ?>
+    </div>
+    <!-- middle area start -->
+    <section id="customize_main_container">
+    <!-- sidebar area -->
+    <div id="customize_side_bar">
+      <ul>
+        <li><button data-target="general_setting_editor_tab" class="toggle-tab active">General Settings</button></li>
+        <li><button data-target="header_area_editor_tab" class="toggle-tab">Header Area</button></li>
+        <li><button data-target="footer_area_editor_tab" class="toggle-tab">Footer Area</button></li>
+        <li><button data-target="color_editor_tab" class="toggle-tab">General Settings</button></li>
+        <li><button data-target="" class="toggle-tab">General Settings</button></li>
+        <li><button data-target="" class="toggle-tab">General Settings</button></li>
+        <li><button data-target="" class="toggle-tab">General Settings</button></li>
+        <li><button data-target="" class="toggle-tab">General Settings</button></li>
+        <li><button data-target="" class="toggle-tab">General Settings</button></li>
+      </ul>
+    </div>
+    <!-- webiste customize editor body -->
+    <div id="customize_editor_bar">
+      <!-- tab editor list start -->
+      <div class="editor-tab active" id="general_setting_editor_tab">
+        <!-- contact information start -->
+        <div class="contact_information_box">
+          <form class="contact_information_box" action="options.php" method="post">
+            <?php wp_nonce_field('update-options') ?>
+            <label for="address-info" name="address-info">Address Info</label>
+            <input type="text" name="address-info" value="<?php echo get_option('address-info'); ?>" placeholder="Enter Your Address">
+
+            <label for="email-info" name="email-info">Email Info</label>
+            <input type="text" name="email-info" value="<?php echo get_option('email-info'); ?>" placeholder="Enter Your Email Address">
+
+            <label for="phone-number" name="phone-number">Phone Number</label>
+            <input type="text" name="phone-number" value="<?php echo get_option('phone-number'); ?>" placeholder="Enter Your Address">
+
+
+
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="page_options" value="address-info, email-info, phone-number">
+            <input type="submit" name="submit" value="<?php _e('Save Info', 'dmoksedul') ?>">
+
+          </form>
+        </div>
+      <!-- contact information end -->
+      </div>
+      <!-- tab editor list end -->
+      <!-- tab editor list start -->
+      <div class="editor-tab" id="header_area_editor_tab">
+        <!-- contact information start -->
+        <h1>header area editor</h1>
+      <!-- contact information end -->
+      </div>
+      <!-- tab editor list end -->
+      <!-- tab editor list start -->
+      <div class="editor-tab" id="footer_area_editor_tab">
+        <!-- contact information start -->
+        <h1>Footer area editor</h1>
+      <!-- contact information end -->
+      </div>
+      <!-- tab editor list end -->
+      <!-- tab editor list start -->
+      <div class="editor-tab" id="color_editor_tab">
+        <!-- contact information start -->
+        <h1>Color editor</h1>
+      <!-- contact information end -->
+      </div>
+      <!-- tab editor list end -->
+
+    </div>
+    </section>
+    <!-- middle area end -->
+  </div>
+
+
+  
 
 <!-- javascript codes -->
 <script>
@@ -177,19 +198,25 @@ const editorTabs = document.querySelectorAll('.editor-tab');
 
 // Add click event listeners to each button
 toggleButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        // Get the target tab ID from the "data-target" attribute
-        const targetTabId = this.getAttribute('data-target');
-
-        // Toggle the visibility of editor tabs
-        editorTabs.forEach(tab => {
-            if (tab.id === targetTabId) {
-                tab.style.display = 'block';
-            } else {
-                tab.style.display = 'none';
-            }
-        });
+  button.addEventListener('click', function () {
+    // Remove the "active" class from all buttons
+    toggleButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add the "active" class to the clicked button
+    this.classList.add('active');
+    
+    // Get the target tab ID from the "data-target" attribute
+    const targetTabId = this.getAttribute('data-target');
+    
+    // Toggle the visibility of editor tabs
+    editorTabs.forEach(tab => {
+      if (tab.id === targetTabId) {
+        tab.style.display = 'block';
+      } else {
+        tab.style.display = 'none';
+      }
     });
+  });
 });
 
 
