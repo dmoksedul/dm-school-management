@@ -42,34 +42,17 @@ function handleScroll() {
 window.addEventListener('scroll', handleScroll);
 
 
-// menu toggler
-// Function to toggle the visibility of the submenu when clicking on the parent menu item
-function toggleSubMenu(event) {
-
-    // Get the parent <li> element
-    const parentLi = event.target.parentElement;
-  
-    // Find the submenu within the parent <li>
-    const submenu = parentLi.querySelector('.sub-menu');
-  
-    // Toggle the 'active' class to show/hide the submenu
-    if (submenu) {
-      submenu.classList.toggle('active');
-    }
-  }
-  
-  // Add click event listeners to each parent menu item
-  const parentMenuItems = document.querySelectorAll('#dm_navbar_menu > li > a');
-  parentMenuItems.forEach(item => {
-    item.addEventListener('click', toggleSubMenu);
-  });
-
+  // menu toggler
   document.getElementById("dm_menu_toggler").addEventListener("click", function(){
     document.querySelector("#dm_navbar_menu").classList.toggle('dm_navbar_menu_active');
     document.getElementById("navbar_close_button").classList.add('navbar_close_button_active')
   })
-
+// close menu toggler
   document.getElementById("navbar_close_button").addEventListener("click", function(){
-    document.querySelector("#dm_navbar_menu").classList.remove('dm_navbar_menu_active');
-    document.getElementById("navbar_close_button").classList.remove('navbar_close_button_active')
-  })
+
+document.querySelector("#dm_navbar_menu").classList.remove      ('dm_navbar_menu_active');
+document.getElementById("navbar_close_button").classList.remove('navbar_close_button_active')
+})
+
+
+  

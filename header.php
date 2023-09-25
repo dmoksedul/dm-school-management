@@ -190,7 +190,13 @@
         <!-- navbar area start -->
         <nav id="dm_navbar_area">
             <div class="container">
-                <?php wp_nav_menu( array('theme_location' => 'header_menu', 'menu_id' => 'dm_navbar_menu', 'walker' => new Custom_Walker_Nav_Menu(),) ); ?>
+                <?php
+        wp_nav_menu(array(
+            'theme_location' => 'header_menu',
+            'menu_id'        => 'dm_navbar_menu',
+            'walker'         => new Custom_Submenu_Walker(),
+        ));
+        ?>
                 <button id="dm_menu_toggler"><i class="fas fa-bars-staggered"></i></button>
                 <!-- navbar clos button -->
                 <div id="navbar_close_button"></div>
