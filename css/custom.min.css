@@ -62,7 +62,7 @@ body ul {
   margin: auto;
   box-shadow: 0 -15px 17px 0px rgba(0, 0, 0, 0.13);
   background-color: var(--dm_bg_color) !important;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
 }
 
 .container {
@@ -270,10 +270,6 @@ img {
   pointer-events: all;
   opacity: 1;
 }
-#dm_navbar_area #dm_navbar_menu li.current-menu-item a {
-  color: var(--dm_white_color);
-  border: 1px solid rgba(248, 248, 248, 0.274);
-}
 #dm_navbar_area #dm_navbar_menu li ul li:hover ul {
   transform: translateX(0px) !important;
   opacity: 1 !important;
@@ -447,10 +443,10 @@ img {
   #dm_navbar_area #dm_navbar_menu li:hover ul {
     height: auto;
   }
-  #dm_navbar_area #dm_navbar_menu li.current-menu-item a {
+  #dm_navbar_area #dm_navbar_menu .current-menu-item {
     color: var(--dm_white_color);
     border: 1px solid rgba(0, 0, 0, 0.274);
-    background-color: var(--dm_primary_color);
+    background-color: red;
   }
   #dm_navbar_area #dm_navbar_menu li ul li ul li ul {
     height: 0px !important;
@@ -477,6 +473,16 @@ img {
     display: block;
   }
 }
+#dm_navbar_menu .current-menu-item {
+  color: var(--dm_white_color) !important;
+  border: 1px solid rgba(255, 255, 255, 0.274) !important;
+}
+#dm_navbar_menu ul .current-menu-item {
+  color: var(--dm_white_color) !important;
+  border: 1px solid rgba(255, 255, 255, 0.274) !important;
+  background-color: var(--dm_primary_color) !important;
+}
+
 #dm_footer_area {
   background-image: linear-gradient(to bottom, rgba(38, 45, 51, 0.9843137255), #21272e), url("../img/footer_bg.webp");
   background-size: cover;
@@ -633,4 +639,38 @@ img {
   100% {
     transform: rotate(360deg);
   }
+}
+.btn {
+  background-color: var(--dm_button_bg_color);
+  color: var(--dm_button_color);
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.btn :hover {
+  background-color: var(--dm_button_bg_hover_color);
+  color: var(--dm_button_hover_color);
+}
+
+#error_page {
+  min-height: 400px;
+}
+#error_page .container {
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+#searchform {
+  padding: 20px 0px;
+}
+#searchform form input [type=submit] {
+  background-color: red !important;
+}
+
+.error_search {
+  padding: 30px;
 }/*# sourceMappingURL=custom.min.css.map */

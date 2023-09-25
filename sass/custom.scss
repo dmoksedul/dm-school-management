@@ -58,7 +58,7 @@ body {
   margin: auto;
   box-shadow: 0 -15px 17px 0px rgba(0, 0, 0, 0.13);
   background-color: var(--dm_bg_color) !important;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
 }
 .container {
   max-width: 1200px;
@@ -268,10 +268,6 @@ img {
         }
       }
     }
-    li.current-menu-item a {
-      color: var(--dm_white_color);
-      border: 1px solid rgba(248, 248, 248, 0.274);
-    }
   }
 
   #dm_navbar_menu li ul li:hover ul {
@@ -458,10 +454,10 @@ img {
           }
         }
       }
-      li.current-menu-item a {
+      .current-menu-item {
         color: var(--dm_white_color);
         border: 1px solid rgba(0, 0, 0, 0.274);
-        background-color: var(--dm_primary_color);
+        background-color: red;
       }
     }
     #dm_navbar_menu li ul li ul li ul {
@@ -490,7 +486,19 @@ img {
     }
   }
 }
-
+#dm_navbar_menu {
+  .current-menu-item {
+    color: var(--dm_white_color) !important;
+    border: 1px solid rgba(255, 255, 255, 0.274) !important;
+  }
+  ul {
+    .current-menu-item {
+      color: var(--dm_white_color) !important;
+      border: 1px solid rgba(255, 255, 255, 0.274) !important;
+      background-color: var(--dm_primary_color) !important;
+    }
+  }
+}
 // footer area start
 #dm_footer_area {
   background-image: linear-gradient(to bottom, #262d33fb, #21272e),
@@ -661,4 +669,41 @@ img {
   100% {
     transform: rotate(360deg);
   }
+}
+// button
+.btn {
+  background-color: var(--dm_button_bg_color);
+  color: var(--dm_button_color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  :hover {
+    background-color: var(--dm_button_bg_hover_color);
+    color: var(--dm_button_hover_color);
+  }
+}
+
+// erorr page style start
+#error_page {
+  min-height: 400px;
+  .container {
+    padding: 10px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+}
+// erorr page style end
+#searchform {
+  padding: 20px 0px;
+  form {
+    input [type="submit"] {
+      background-color: red !important;
+    }
+  }
+}
+.error_search {
+  padding: 30px;
 }

@@ -211,7 +211,7 @@
     </div>
     <section id="body_area">
     <div class="container">
-    <?php
+    <!-- <?php
         while (have_posts()) :
             the_post();
         ?>
@@ -227,7 +227,7 @@
 
         </article>
 
-        <?php endwhile; ?>
+        <?php endwhile; ?> -->
     <button id="scrollToTopButton"><i class="far fa-arrow-alt-circle-up"></i></button>
     </div>
   </section>
