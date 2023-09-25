@@ -49,10 +49,10 @@ function dm_image_slider_settings_page() {
     <style>
         /* Your custom styles here */
         .swiper-container {
-            overflow: hidden !important; /* Hide overflow */
+            overflow: hidden !important; 
         }
         .admin_img_box_list .swiper{
-            max-width:800px;
+            max-width:100% !important;
             padding:10px;
             overflow: hidden;
             border-radius: 12px;
@@ -204,12 +204,12 @@ add_action('admin_init', 'dm_image_slider_handle_upload');
 function dm_image_slider_shortcode($atts) {
     $atts = shortcode_atts(array(
         'limit' => -1, // Default to display all images
-        'animation_speed' => 3000, // Default animation speed in milliseconds (3 seconds)
+        'animation_speed' => 2000, // Default animation speed in milliseconds (3 seconds)
     ), $atts);
 
     ob_start();
     ?>
-    <div class="swiper-container" style="overflow:hidden">
+    <div class="swiper-container" style="overflow:hidden; position:relative;">
         <div class="swiper-wrapper">
             <?php
             $uploaded_images = get_option('dm_image_slider_uploaded_images', array());
@@ -223,7 +223,7 @@ function dm_image_slider_shortcode($atts) {
                 $image_url = wp_get_attachment_image_url($image_id, 'full');
                 ?>
                 <div class="swiper-slide">
-                    <img src="<?php echo esc_url($image_url); ?>" style="max-width:100%;" alt="Slider Image">
+                    <img src="<?php echo esc_url($image_url); ?>" style="width:100%; max-width:100%;" alt="Slider Image">
                 </div>
                 <?php
             }

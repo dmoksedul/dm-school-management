@@ -42,6 +42,9 @@ include_once('inc/shortcode.php');
 // admin dashboard file
 include_once('theme-option/admin_dashboard.php');
 
+// message post register
+include_once('inc/message_post.php');
+
 
 // ALl Default theme function here
 include_once('inc/default.php');

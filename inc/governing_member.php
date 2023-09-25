@@ -25,12 +25,12 @@ function create_dm_gbm_post_type() {
 		'menu_position' => 5, 
     );
 
-    register_post_type('dm_gbm_member', $args);
+    register_post_type('governing-member', $args);
 }
 add_action('init', 'create_dm_gbm_post_type');
 
 function hide_dm_gbm_menu_item() {
-    remove_menu_page('edit.php?post_type=dm_gbm_member');
+    remove_menu_page('edit.php?post_type=governing-member');
 }
 
 add_action('admin_menu', 'hide_dm_gbm_menu_item');
@@ -70,7 +70,7 @@ function dm_gbm_plugin_page() {
                 $post_id = wp_insert_post(array(
                     'post_title' => $member_name,
                     'post_content' => $member_designation,
-                    'post_type' => 'dm_gbm_member',
+                    'post_type' => 'governing-member',
                     'post_status' => 'publish',
                 ));
             }

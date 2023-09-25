@@ -44,7 +44,10 @@
         <p>© <?php
 $fullYearDate = date('Y'); // This will give you the current date and time with the full year.
 echo $fullYearDate;
-?> <?php echo get_theme_mod('dm_copyright');  ?> | Developed by <a href="https://moksedul.dev/" target="_blank"> Dmoksedul</a></p>
+?> <?php echo get_theme_mod('dm_copyright');  ?> | Developed by <a href="https://moksedul.dev/" style="text-decoration: none;
+margin-left: 5px;
+color: #056839;
+font-weight: bold;" target="_blank"> Dmoksedul</a></p>
     </div>
 </footer>
 

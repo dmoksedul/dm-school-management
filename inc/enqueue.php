@@ -7,6 +7,8 @@ function dm_css_js_file_calling(){
     wp_enqueue_style('bootstrap');
     wp_register_style( 'custom', get_template_directory_uri(  ).'/css/custom.min.css', array(),'1.0.0', 'all' );
     wp_enqueue_style('custom');
+    wp_register_style( 'google_fonts', get_template_directory_uri(  ).'/css/google_fonts.css', array(),'1.0.0', 'all' );
+    wp_enqueue_style('google_fonts');
     // js script
     wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap', get_template_directory_uri().'/js/bootstrap.js', array(), '5.0.2', 'true');

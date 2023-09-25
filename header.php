@@ -192,14 +192,37 @@
             <div class="container">
                 <?php wp_nav_menu( array('theme_location' => 'header_menu', 'menu_id' => 'dm_navbar_menu', 'walker' => new Custom_Walker_Nav_Menu(),) ); ?>
                 <button id="dm_menu_toggler"><i class="fas fa-bars-staggered"></i></button>
+                <!-- navbar clos button -->
+                <div id="navbar_close_button"></div>
             </div>
         </nav>
         <!-- navbar area end -->
     </header>
     <!-- header area end -->
+    <!-- Preloader Container -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
     <section id="body_area">
     <div class="container">
-    <?php the_content();  ?>
+    <?php
+        while (have_posts()) :
+            the_post();
+        ?>
+
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <header class="dm_entry_header">
+                <h1 class="dm_page_title"><?php the_title(); ?></h1>
+            </header>
+
+            <div class="dm_entry_content">
+                <?php the_content(); ?>
+            </div>
+
+        </article>
+
+        <?php endwhile; ?>
+    <button id="scrollToTopButton"><i class="far fa-arrow-alt-circle-up"></i></button>
     </div>
   </section>
 

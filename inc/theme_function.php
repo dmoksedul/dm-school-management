@@ -91,7 +91,7 @@ function dm_customizer_register($wp_customize){
     ));
     $wp_customize->add_control('dm_facebook_page_username', array(
         'label' => 'Facebook Page username',
-        'description' => 'Embed facebook on footer',
+        'description' => 'Embed facebook on footer (only facebook username)',
         'setting' => 'dm_facebook_page_username',
         'section' => 'dm_footer_area',
     ));
@@ -158,7 +158,7 @@ function dm_customizer_register($wp_customize){
     )));
     // text color area
     $wp_customize->add_setting('dm_text_color', array(
-        'default' => '#0000',
+        'default' => '#000',
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'dm_text_color', array(
         'label' => 'Text Color',

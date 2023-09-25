@@ -14,6 +14,28 @@
   --dm_white_color: #fff;
 }
 
+button#scrollToTopButton {
+  display: none;
+  position: fixed;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--dm_primary_color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+}
+button#scrollToTopButton i {
+  font-size: 20px;
+}
+
 * {
   padding: 0%;
   margin: 0%;
@@ -23,14 +45,23 @@
 body {
   width: 100%;
   height: auto;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: normal;
   font-family: "Poppins", sans-serif;
   color: var(--dm_text_color);
+  font-family: "Noto Sans Bengali", sans-serif;
 }
 body ul {
   padding: 0px;
   margin: 0px;
+}
+
+#body_area {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 0 0 17px 0px rgba(0, 0, 0, 0.1882352941);
+  background-color: var(--dm_bg_color) !important;
 }
 
 .container {
@@ -133,12 +164,13 @@ img {
   list-style: none;
   display: inline-block;
   position: relative;
-  padding: 5px 0px;
+  padding: 7px 0px;
+  cursor: pointer;
 }
 #dm_navbar_area #dm_navbar_menu li a {
   color: var(--dm_white_color);
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 7px 12px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -146,16 +178,17 @@ img {
 }
 #dm_navbar_area #dm_navbar_menu li a i {
   margin-left: 5px;
+  pointer-events: none;
 }
 #dm_navbar_area #dm_navbar_menu li a::after {
   display: none;
 }
 #dm_navbar_area #dm_navbar_menu li a:hover {
-  background-color: var(--dm_button_bg_hover_color);
+  background-color: var(--dm_primary_color);
 }
 #dm_navbar_area #dm_navbar_menu li ul {
   position: absolute;
-  background-color: var(--dm_primary_color);
+  background-color: var(--dm_white_color);
   left: 0px;
   top: 100%;
   transition: all 0.5s;
@@ -163,11 +196,13 @@ img {
   opacity: 0;
   pointer-events: none;
   min-width: 200px;
+  border-top: 3px solid var(--dm_text_color);
 }
 #dm_navbar_area #dm_navbar_menu li ul li {
   width: 100%;
   position: relative;
   padding: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0941176471);
 }
 #dm_navbar_area #dm_navbar_menu li ul li a {
   display: block;
@@ -175,10 +210,16 @@ img {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: var(--dm_text_color);
 }
 #dm_navbar_area #dm_navbar_menu li ul li a i {
   margin-left: 0px;
   transform: rotate(-90deg);
+}
+#dm_navbar_area #dm_navbar_menu li ul li a:hover {
+  background-color: var(--dm_primary_color);
+  color: var(--dm_white_color);
+  padding-left: 25px;
 }
 #dm_navbar_area #dm_navbar_menu li ul li ul {
   position: absolute;
@@ -188,6 +229,19 @@ img {
   transform: translateX(50px) !important;
   pointer-events: none !important;
   opacity: 0 !important;
+}
+#dm_navbar_area #dm_navbar_menu li ul li ul li {
+  position: relative;
+}
+#dm_navbar_area #dm_navbar_menu li ul li ul li ul {
+  transform: translateX(50px) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+#dm_navbar_area #dm_navbar_menu li ul li ul li:hover {
+  transform: translateX(0px) !important;
+  pointer-events: all !important;
+  opacity: 11 !important;
 }
 #dm_navbar_area #dm_navbar_menu li ul li:hover ul {
   opacity: 1 !important;
@@ -216,6 +270,23 @@ img {
   color: var(--dm_link_hover_color);
 }
 
+#dm_navbar_area.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  animation: fadeInDown 0.3s;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media screen and (max-width: 992px) {
   #dm_navbar_area .container {
     align-items: end;
@@ -234,11 +305,14 @@ img {
     padding-top: 50px;
     justify-content: start;
     align-items: start;
+    transition: all 0.5s;
+    z-index: 999999;
   }
   #dm_navbar_area #dm_navbar_menu li {
     display: block;
     width: 100%;
     text-align: left;
+    cursor: pointer;
   }
   #dm_navbar_area #dm_navbar_menu li a {
     color: #000;
@@ -248,11 +322,43 @@ img {
   }
   #dm_navbar_area #dm_navbar_menu li ul {
     width: 100%;
+    transform: translateX(0px);
+    pointer-events: all;
+    opacity: 1;
+    position: relative;
+    height: auto;
+    overflow: hidden;
   }
   #dm_navbar_area #dm_navbar_menu li ul li a i {
     transform: rotate(0deg);
   }
+  #dm_navbar_area #navbar_close_button {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.37);
+    height: 100vh;
+    right: 100%;
+    top: 0px;
+    width: 100%;
+    z-index: 99;
+    transition: all 0.5s;
+    transition-delay: 0.2s;
+  }
+  #dm_navbar_area .navbar_close_button_active {
+    display: block !important;
+    right: 0% !important;
+  }
+  #dm_navbar_area .dm_navbar_menu_active {
+    left: 0px !important;
+  }
   #dm_navbar_area #dm_menu_toggler {
+    display: block;
+  }
+  /* Hide the submenu by default */
+  .sub-menu {
+    display: none;
+  }
+  /* Show the submenu when the 'active' class is applied */
+  .sub-menu.active {
     display: block;
   }
 }
@@ -374,5 +480,49 @@ img {
   #dm_footer_area .container {
     grid-template-columns: 1fr;
     gap: 50px;
+  }
+}
+.dm_entry_header {
+  padding: 10px 0px;
+}
+.dm_entry_header h1 {
+  background-color: var(--dm_primary_color);
+  color: var(--dm_white_color);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+  padding: 15px;
+  font-family: "Anek Bangla", sans-serif;
+}
+
+/* CSS for the Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dm_bg_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid #e2e2e2;
+  border-radius: 50%;
+  border-top: 4px solid var(--dm_primary_color);
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }/*# sourceMappingURL=custom.min.css.map */
