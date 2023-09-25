@@ -27,7 +27,7 @@ body {
   line-height: normal;
   font-family: "Poppins", sans-serif;
   color: var(--dm_text_color);
-  font-family: "Anek Bangla", sans-serif;
+  font-family: "Noto Sans Bengali";
 }
 body ul {
   padding: 0px;
@@ -39,6 +39,7 @@ button#scrollToTopButton {
   position: fixed;
   right: 20px;
   width: 40px;
+  bottom: 100%;
   height: 40px;
   background-color: var(--dm_primary_color);
   color: #fff;
@@ -67,6 +68,7 @@ button#scrollToTopButton i {
 
 .container {
   max-width: 1200px;
+  padding-top: 1px;
 }
 
 a {

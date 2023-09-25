@@ -10,12 +10,12 @@
         <h3 class="fm_footer_title"><?php bloginfo( 'title' )  ?></h3>
         <p><?php echo get_theme_mod('dm_footer_description');  ?></p>
         <ul class="footer_social_box">
-            <li><a href="<?php echo get_theme_mod('dm_facebook');  ?>"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="<?php echo get_theme_mod('dm_instagram');  ?>"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="<?php echo get_theme_mod('dm_twitter');  ?>"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="<?php echo get_theme_mod('dm_linkedin');  ?>"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="<?php echo get_theme_mod('dm_whatsapp');  ?>"><i class="fab fa-whatsapp"></i></a></li>
-            <li><a href="<?php echo get_theme_mod('dm_youtube');  ?>"><i class="fab fa-youtube"></i></a></li>
+            <li><a target="_blank" href="https://facebook.com/<?php print get_option('dm_facebook_username'); ?>"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a target="_blank" href="https://instagram.com/<?php print get_option('dm_instagram_username'); ?>"><i class="fab fa-instagram"></i></a></li>
+            <li><a target="_blank" href="https://twitter.com/<?php print get_option('dm_twitter_username'); ?>"><i class="fab fa-twitter"></i></a></li>
+            <li><a target="_blank" href="https://linkedin.com/in/<?php print get_option('dm_linkedin_username'); ?>"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a target="_blank" href="https://api.whatsapp.com/send?phone=<?php print get_option('dm_whatsapp_link'); ?>"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a target="_blank" href="https://youtube.com/<?php print get_option('dm_youtube_link'); ?>"><i class="fab fa-youtube"></i></a></li>
         </ul>
     </div>
     <!-- footer box end -->

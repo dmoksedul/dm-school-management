@@ -356,7 +356,7 @@ function dm_notice_slider_shortcode($atts) {
         'posts_per_page' => $limit,
     ));
 
-    $output = '<div class="dm-notice-slider" style="border: 1px solid #00000038; padding-top: 8px; border-radius: 25px;">';
+    $output = '<div class="dm-notice-slider" style="border: 1px solid #00000038; padding-top: 8px; border-radius: 25px;margin:10px 0px;font-size:16px;font-weight:500;">';
     $output .= '<marquee behavior="scroll" direction="left" >';
 
     foreach ($dm_notices as $dm_notice) {

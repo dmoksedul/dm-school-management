@@ -205,7 +205,7 @@ function display_dm_academic_details_list($atts) {
 
     echo '<div class="dm-academic-details-box" style="display:grid; gap:20px;">';
     while ($dm_academic_details_query->have_posts()) : $dm_academic_details_query->the_post();
-        echo '<div class="dm-academic_detail_item" style="padding:10px;border-radius:4px;border:1px solid #00000010;display: flex;
+        echo '<div class="dm-academic_detail_item" style="padding:20px;border-radius:4px;border:1px solid #00000010;display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;min-height: 230px;box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.08)">';
@@ -254,7 +254,7 @@ function display_dm_academic_details_list($atts) {
     echo 'margin-right:5px;color:#066A00';
     echo '}';
     echo '.dm-academic-details-box {';
-    echo '  grid-template-columns: 1fr 1fr;';
+    echo '  grid-template-columns: 1fr 1fr; margin:20px 0px;';
     echo '}';
     echo '@media screen and (max-width: 640px) {';
     echo '  .dm-academic-details-box {';

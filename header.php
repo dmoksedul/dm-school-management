@@ -211,23 +211,13 @@
     </div>
     <section id="body_area">
     <div class="container">
-    <!-- <?php
-        while (have_posts()) :
-            the_post();
+    <?php
         ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="dm_entry_header">
-                <h1 class="dm_page_title"><?php the_title(); ?></h1>
-            </header>
-
-            <div class="dm_entry_content">
-                <?php the_content(); ?>
-            </div>
 
         </article>
 
-        <?php endwhile; ?> -->
     <button id="scrollToTopButton"><i class="far fa-arrow-alt-circle-up"></i></button>
     </div>
   </section>
