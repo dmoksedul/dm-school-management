@@ -165,7 +165,7 @@ function dm_notice_plugin_page() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
+            background-color: var(--dm_white_color);
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
@@ -283,7 +283,7 @@ function dm_notice_list_shortcode($atts) {
         $publish_date = get_the_date('d-m-Y', $dm_notice);
         $output .= '<tr>';
         $output .= '<td>' . esc_html($counter) . '</td>'; // Row number
-        $output .= '<td style="text-align:left"><a href="' . esc_url($pdf_url) . '" target="_blank" class="dm-notice-link" style="color: #000; text-decoration: none;font-size: 16px;">' . esc_html($dm_notice->post_title) . '</a></td>';
+        $output .= '<td style="text-align:left"><a href="' . esc_url($pdf_url) . '" target="_blank" class="dm-notice-link" style="color: var(--dm_text_color); text-decoration: none;font-size: 16px;">' . esc_html($dm_notice->post_title) . '</a></td>';
         $output .= '<td>' . esc_html($publish_date) . '</td>';
         $output .= '<td><a href="' . esc_url($pdf_url) . '" download class="button button-primary">Download</a></td>';
         $output .= '</tr>';
@@ -307,16 +307,16 @@ function dm_notice_list_shortcode($atts) {
     $output .= '    border-bottom: 1px solid #cbcbcb;border-right: 1px solid #cbcbcb;';
     $output .= '}';
     $output .= '.dm-notice-list-table th {';
-    $output .= '    color:#000;font-weight:bold';
+    $output .= '    color:var(--dm_text_color);font-weight:bold';
     $output .= '}';
     $output .= '.dm-notice-link {';
     $output .= '    text-decoration: none;';
     $output .= '}';
 	$output .= '.button.button-primary {
-    background-color: #fff;
+    background-color: var(--dm_button_color);
     border-radius: 25px;
-    color: #000;
-    border: 1px solid #cbcbcb;
+    color: var(--dm_white_color);
+    border: none;
     padding: 2px 10px;
     padding-top: 6px;
     border-radius: 25px;
@@ -326,8 +326,8 @@ function dm_notice_list_shortcode($atts) {
     text-transform: capitalize}';
 	$output .= '
 	.button.button-primary:hover {
-		background-color: #006a4e;
-		color: #fff;
+		background-color: var(--dm_button_hover_color);
+		color: var(--dm_white_color);
 		border-color:#006a4e;
 	} ';
     $output .= '.date-column {';
@@ -417,15 +417,15 @@ function dm_notice_list_title_shortcode($atts) {
     $output .= '    border-bottom: 1px solid #cbcbcb; border-right: 1px solid #cbcbcb;';
     $output .= '}';
     $output .= '.dm-notice-list-table th {';
-    $output .= '    color: #000; font-weight: bold;';
+    $output .= '    color: var(--dm_text_color); font-weight: bold;';
     $output .= '}';
     $output .= '.dm-notice-link-title {';
-    $output .= '    text-decoration: none;color:#000;';
+    $output .= '    text-decoration: none;color:var(--dm_text_color);';
     $output .= '}';
 	$output .= '.button.button-primary {
-    background-color: #fff;
+    background-color: var(--dm_white_color);
     border-radius: 25px;
-    color: #000;
+    color: var(--dm_text_color);
     border: 1px solid #cbcbcb;
     padding: 2px 10px;
     padding-top: 6px;
@@ -437,13 +437,13 @@ function dm_notice_list_title_shortcode($atts) {
 	$output .= '
 	.button.button-primary:hover {
 		background-color: #006a4e;
-		color: #fff;
+		color: var(--dm_white_color);
 		border-color:#006a4e;
 	} ';
     $output .= '.newAnimate {';
     $output .= '    background: red;';
     $output .= '    padding: 0px 8px;';
-    $output .= '    color: #fff;';
+    $output .= '    color: var(--dm_white_color);';
     $output .= '    border-radius: 100%;';
     $output .= '    margin-right: 5px;';
     $output .= '    font-size: 10px;';

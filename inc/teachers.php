@@ -345,7 +345,7 @@ function display_dm_teachers_list($atts) {
         margin-right:5px;
     }
     .dm_teacher_header {
-        color: #fff;
+        color: var(--dm_white_color);
         text-align: center;
         padding: 5px;
         padding-bottom:8px;
@@ -356,7 +356,7 @@ function display_dm_teachers_list($atts) {
         position:relative;
         z-index:2;
         margin-top:-30px;
-        border:1px solid #006a4e;
+        border:1px solid var(--dm_primary_color);
         position:relative;
     }
     .dm_teacher_header::after{
@@ -366,7 +366,7 @@ function display_dm_teachers_list($atts) {
         position:absolute;
         top:0px;
         left:0px;
-        background:#006a4e;
+        background:var(--dm_primary_color);
         transition: all 0.5s;
         z-index:-1;
     }
@@ -401,13 +401,13 @@ function display_dm_teachers_list($atts) {
         justify-content: space-around;
         align-items: center;
         gap: 10px;
-        background:#006a4e;
+        background:var(--dm_primary_color);
         border-radius:50px;
         padding:8px;
     }
     .dm_teacher_social_box a i{
-        color: #fff;
-        border: 1px solid #fff;
+        color: var(--dm_white_color);
+        border: 1px solid var(--dm_white_color);
         border-radius:100%;
         width:22px;
         height:22px;
@@ -420,8 +420,8 @@ function display_dm_teachers_list($atts) {
         transition: all 0.5s;
     }
     .dm_teacher_social_box a:hover i{
-        background: #fff;
-        color:#006a4e;
+        background: var(--dm_white_color);
+        color:var(--dm_primary_color);
     }
     .dm_teacher-list .dm_teacher:hover .dm_teacher_social_main{
         transform:scale(1);
@@ -432,9 +432,9 @@ function display_dm_teachers_list($atts) {
         transform:scale(1)
     }
     .dm_teacher-list .dm_teacher:hover .dm_teacher_header{
-        background:#fff;
+        background:var(--dm_white_color);
         color: #000;
-        border: 1px dashed #006a4e;
+        border: 1px dashed var(--dm_primary_color);
     }
     .dm_teacher-list .dm_teacher:hover  .dm_teacher_header::after{
         width:0%;

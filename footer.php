@@ -82,7 +82,7 @@
             echo $fullYearDate;
             ?> <?php print get_option('footer_copyright_text', 'DM School & College'); ?> | Developed by <a href="https://moksedul.dev/" style="text-decoration: none;
             margin-left: 5px;
-            color: #056839;
+            color: var(--dm_primary_color);
             font-weight: bold;" target="_blank"> Dmoksedul</a></p>
     </div>
 </footer>

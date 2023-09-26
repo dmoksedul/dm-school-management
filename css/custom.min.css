@@ -450,7 +450,7 @@ img {
   #dm_navbar_area #dm_navbar_menu .current-menu-item {
     color: var(--dm_white_color);
     border: 1px solid rgba(0, 0, 0, 0.274);
-    background-color: red;
+    background-color: var(--dm_primary_color);
   }
   #dm_navbar_area #dm_navbar_menu li ul li ul li ul {
     height: 0px !important;
