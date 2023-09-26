@@ -48,3 +48,5 @@ include_once('inc/message_post.php');
 
 // ALl Default theme function here
 include_once('inc/default.php');
+
+

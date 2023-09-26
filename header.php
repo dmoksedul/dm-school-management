@@ -183,9 +183,17 @@
         <!-- header banner start -->
         <div id="dm_header_banner_area">
             <div class="container">
-            <img src="<?php echo get_theme_mod('dm_logo'); ?>" alt="">
+                <!-- Display the logo -->
+                <?php $logoUrl = get_option('header-image'); ?>
+                <?php if (!empty($logoUrl)) : ?>
+                    <img src="<?php echo esc_url($logoUrl); ?>" alt="Logo">
+                <?php else : ?>
+                    <!-- Display the default logo if no custom logo is set -->
+                    <img src="<?php echo get_template_directory_uri() . '/img/logo.png'; ?>" alt="Default Logo">
+                <?php endif; ?>
             </div>
         </div>
+
         <!-- nav menheader banner end -->
         <!-- navbar area start -->
         <nav id="dm_navbar_area">

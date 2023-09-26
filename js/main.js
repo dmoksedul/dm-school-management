@@ -53,3 +53,4 @@ window.addEventListener('scroll', handleScroll);
 document.querySelector("#dm_navbar_menu").classList.remove      ('dm_navbar_menu_active');
 document.getElementById("navbar_close_button").classList.remove('navbar_close_button_active')
 })
+

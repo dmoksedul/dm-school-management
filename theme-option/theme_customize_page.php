@@ -311,7 +311,55 @@
         box-shadow: inset 0 0 10px #00000026;
         }
   /* ===================== */
-
+/* banner area start */
+.ds_banner_area {
+    background: #003517;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+    overflow: hidden;
+}
+p.ds_banner_area img {
+    width: 100%;
+}
+.banner_upload_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+input#upload-image-button {
+    background: #08a88a;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 3px 20px;
+}
+.banner_upload_box input[type="text"]{
+  padding: 3px 10px;
+    font-size: 16px;
+    display: inline-block;
+    width: 100%;
+}
+button#restore-default-button {
+    background: #007e67;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor:pointer;
+}
+/* banner area end */
 
 
 
@@ -395,7 +443,18 @@ body
                 <h2 class="dm_sub_menu_title">Header Area</h2>
               </div>
               <div class="ds_editor_body">
-                  
+                  <div>
+                    <div>
+                      <h2>Upload Header Bannner Image</h2>
+                      <p>Image must be <b>(width:1366px and height: 152px)</b> and <b>transparent</b>.</p>
+                    </div>
+                      <div class="banner_upload_box">
+                      <input type="button" class="button-secondary ds_banner_area_upload_btn" value="Upload Banner Image" id="upload-image-button"><span>or</span>
+                      <input type="text" class="banner_upload_url" placeholder="Enter your banner URL" name="header-image" value="<?php echo esc_attr(get_option('header-image')); ?>">
+                      </div>
+                      <div class="ds_banner_area"><img src="<?php echo esc_attr(get_option('header-image')); ?>" id="preview-image"></div>
+                      <button type="button" id="restore-default-button">Restore Default</button>
+                  </div>
               </div>
             </div>
             <!-- header end-->
@@ -435,19 +494,19 @@ body
 
             
                 <!-- popup box for save change start -->
-                <div class="save_popup_box">
-                  <div>
-                  <h2>Do you want to save change?</h2>
-                  <div>
-                    <!-- ================================================================================================================== -->
-                    <input type="hidden" name="action" value="update">
-                    <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username">
-                    <input class="save_yes_btn" type="submit" name="submit" value="<?php _e('Yes', 'dmoksedul') ?>">
+                  <div class="save_popup_box">
+                    <div>
+                    <h2>Do you want to save change?</h2>
+                    <div>
+                      <!-- ================================================================================================================== -->
+                      <input type="hidden" name="action" value="update">
+                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username, header-image">
+                      <input class="save_yes_btn" type="submit" name="submit" value="<?php _e('Yes', 'dmoksedul') ?>">
 
-                    <button type="button" class="save_no_btn">Cancel</button>
+                      <button type="button" class="save_no_btn">Cancel</button>
+                    </div>
+                    </div>
                   </div>
-                  </div>
-                </div>
                 <!-- popup box for save change end -->
           </form>
 
@@ -459,10 +518,14 @@ body
 
   
 
-<!-- javascript codes -->
+
+<!-- ==================================================================
+              JavaScript Code here
+=================================================================== -->
+<!-- Include the external JavaScript file -->
 <script>
-  // Get the ul element
-  const ul = document.querySelector('#customize_side_bar ul');
+// Get the ul element
+const ul = document.querySelector('#customize_side_bar ul');
 
 // Add a click event listener to the ul to capture clicks on buttons
 ul.addEventListener('click', function (event) {
@@ -476,6 +539,7 @@ ul.addEventListener('click', function (event) {
         event.target.classList.add('active');
     }
 });
+
 // Get all buttons with the "toggle-tab" class
 const toggleButtons = document.querySelectorAll('.toggle-tab');
 
@@ -484,52 +548,66 @@ const editorTabs = document.querySelectorAll('.editor-tab');
 
 // Add click event listeners to each button
 toggleButtons.forEach(button => {
-  button.addEventListener('click', function () {
-    // Remove the "active" class from all buttons
-    toggleButtons.forEach(btn => btn.classList.remove('active'));
-    
-    // Add the "active" class to the clicked button
-    this.classList.add('active');
-    
-    // Get the target tab ID from the "data-target" attribute
-    const targetTabId = this.getAttribute('data-target');
-    
-    // Toggle the visibility of editor tabs
-    editorTabs.forEach(tab => {
-      if (tab.id === targetTabId) {
-        tab.style.display = 'block';
-      } else {
-        tab.style.display = 'none';
-      }
+    button.addEventListener('click', function () {
+        // Remove the "active" class from all buttons
+        toggleButtons.forEach(btn => btn.classList.remove('active'));
+
+        // Add the "active" class to the clicked button
+        this.classList.add('active');
+
+        // Get the target tab ID from the "data-target" attribute
+        const targetTabId = this.getAttribute('data-target');
+
+        // Toggle the visibility of editor tabs
+        editorTabs.forEach(tab => {
+            if (tab.id === targetTabId) {
+                tab.style.display = 'block';
+            } else {
+                tab.style.display = 'none';
+            }
+        });
     });
-  });
 });
-
-
-
 // Locate the "Save Change" button element by its class
 const saveButton = document.querySelector('.dm_save_button');
-
 // Locate the custom popup elements
 const savePopup = document.querySelector('.save_popup_box');
 const yesButton = document.querySelector('.save_yes_btn');
 const noButton = document.querySelector('.save_no_btn');
-
 // Add a click event listener to the "Save Change" button
 saveButton.addEventListener('click', function () {
     // Display the custom popup
     savePopup.classList.add("save_popup_box_active");
-
 });
-
 // Add a click event listener to the "Save Change" button
 noButton.addEventListener('click', function () {
     // Display the custom popup
     savePopup.classList.remove("save_popup_box_active");
-
 });
 
+jQuery(document).ready(function($) {
+    $('#upload-image-button').click(function() {
+        var image = wp.media({ title: 'Upload Image', multiple: false }).open()
+            .on('select', function(e) {
+                var uploadedImage = image.state().get('selection').first();
+                var imageSrc = uploadedImage.toJSON().url;
+                $('#preview-image').attr('src', imageSrc);
+                $('input[name="header-image"]').val(imageSrc);
+                // Show the "Restore Default" button
+                $('#restore-default-button').show();
+            });
+    });
+    // Handle the "Restore Default" button click
+    $('#restore-default-button').click(function() {
+        // Set the input value to the default image URL
+        $('input[name="header-image"]').val('<?php echo get_template_directory_uri() . '/img/logo.png'; ?>');
+        // Show the default image
+        $('#preview-image').attr('src', '<?php echo get_template_directory_uri() . '/img/logo.png'; ?>');
+        // Hide the "Restore Default" button
+        $(this).hide();
+    });
 
+});
 
 </script>
 <?php 
