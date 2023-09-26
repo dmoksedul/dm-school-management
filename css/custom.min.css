@@ -89,7 +89,7 @@ img {
 }
 
 #dm_top_header {
-  background-color: var(--dm_primary_color);
+  background-color: var(--dm_top_header_color);
   padding: 10px 0px;
 }
 #dm_top_header .container {
@@ -149,7 +149,7 @@ img {
 }
 
 #dm_navbar_area {
-  background: var(--dm_primary_color);
+  background: var(--dm_menu_bg_color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

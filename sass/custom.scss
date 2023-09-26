@@ -14,7 +14,6 @@
   --dm_button_bg_hover_color: #ff0000;
   --dm_white_color: #fff;
 }
-
 //website desgn file ==================
 * {
   padding: 0%;
@@ -88,7 +87,7 @@ img {
 // header area end
 // top header area start
 #dm_top_header {
-  background-color: var(--dm_primary_color);
+  background-color: var(--dm_top_header_color);
   padding: 10px 0px;
   .container {
     display: flex;
@@ -149,7 +148,7 @@ img {
 }
 // dm_navbar area
 #dm_navbar_area {
-  background: var(--dm_primary_color);
+  background: var(--dm_menu_bg_color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

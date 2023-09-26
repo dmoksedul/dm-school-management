@@ -74,7 +74,7 @@
             top: 6px;
             left: -20px;
             transform: rotate(45deg);
-            border-top: 25px solid #1d2327;
+            border-top: 25px solid #0f171c;
             border-left: 25px solid transparent;
           }
             /* #customize_side_bar ul li button.active::after {
@@ -311,66 +311,132 @@
         box-shadow: inset 0 0 10px #00000026;
         }
   /* ===================== */
-/* banner area start */
-.ds_banner_area {
-    background: #003517;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 10px;
-    overflow: hidden;
+  /* banner area start */
+      .ds_banner_area {
+          background: #003517;
+          height: 90px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px 10px;
+          overflow: hidden;
+      }
+      p.ds_banner_area img {
+          width: 100%;
+      }
+      .banner_upload_box {
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          align-items: center;
+          gap: 5px;
+          margin-bottom: 20px;
+      }
+      input#upload-image-button {
+          background: #08a88a;
+          color: #fff;
+          border: none;
+          outline: none;
+          font-size: 16px;
+          font-weight: 500;
+          padding: 3px 20px;
+      }
+      .banner_upload_box input[type="text"]{
+        padding: 3px 10px;
+          font-size: 16px;
+          display: inline-block;
+          width: 100%;
+      }
+      button#restore-default-button {
+          background: #007e67;
+          border: none;
+          outline: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+          margin-top: 20px;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          cursor:pointer;
+      }
+  /* banner area end */
+  img#admin_logo {
+    position: absolute;
+    left: 20px;
+    width: 75px;
+    top: 15px;
 }
-p.ds_banner_area img {
-    width: 100%;
-}
-.banner_upload_box {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 20px;
-}
-input#upload-image-button {
-    background: #08a88a;
-    color: #fff;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 3px 20px;
-}
-.banner_upload_box input[type="text"]{
-  padding: 3px 10px;
-    font-size: 16px;
-    display: inline-block;
-    width: 100%;
-}
-button#restore-default-button {
-    background: #007e67;
-    border: none;
-    outline: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-top: 20px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor:pointer;
-}
-/* banner area end */
-
-
+  /* footer area start */
+      .ds_footer_area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 20px;
+    }
+    .ds_footer_area div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .ds_footer_area div label {
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    .ds_footer_area div input, textarea {
+        padding: 5px 15px;
+        border-radius: 5px;
+        border: 1px solid #0202021f;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .ds_footer_area textarea {
+        height: 130px;
+    }
+  /* footer area end */
+/* color code editor start */
+    .color_main_box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .color_box {
+        display: flex;
+        flex-direction: revert;
+        justify-content: start;
+        align-items: center;
+        box-shadow: 0 0 10px #0000000d;
+        padding: 5px 20px;
+    }
+    .color_box label {
+        font-size: 16px;
+        font-weight: 500;
+        width: 100%;
+    }
+    .color_box input[type="color"] {
+        background: transparent;
+        width: 100px;
+        height: 50px;
+        border: none;
+        box-shadow: 0 0 10px #0000002e;
+        padding: 2px 5px;
+        border-radius: 2px;
+        margin-left: 20px;
+        width: 100%;
+    }
+/* color code editor end */
 
 
 </style>
+
 <!-- =============================================================================
 body
 =================================================================================== -->
    <div id="theme_customize_body">
     <!-- header area -->
     <div class="main_header">
+      <img id="admin_logo" src="" alt="">
       <h2>DM School Management</h2>
       <p>Developer : <a target="_blank" href="https://moksedul.dev/">Moksedul Islam</a></p>
       <button type="button" class="dm_save_button">Save Change</button>
@@ -385,6 +451,7 @@ body
         <li><button data-target="contact_tab_editor" class="toggle-tab active">General Settings</button></li>
         <li><button data-target="header_tab_editor" class="toggle-tab">Header Area</button></li>
         <li><button data-target="footer_tab_editor" class="toggle-tab">Footer Area</button></li>
+        <li><button data-target="color_setting_tab_editor" class="toggle-tab">Theme Color</button></li>
         <li><button data-target="setting_tab_editor" class="toggle-tab">Settings</button></li>
         <li><button data-target="shortcode_tab_editor" class="toggle-tab">Shortcode</button></li>
       </ul>
@@ -404,34 +471,41 @@ body
                   <div class="basic_information">
                     
                     <label for="email-info" name="email-info">Email Address</label>
-                    <input type="text" name="email-info" value="<?php echo get_option('email-info'); ?>" placeholder="Enter Your Email Address">
+                    <input type="text" name="email-info" value="<?php echo get_option('email-info', 'info@moksedul.dev'); ?>" placeholder="Enter Your Email Address">
                     
                     <label for="phone-number" name="phone-number">Phone Number</label>
-                    <input type="text" name="phone-number" value="<?php echo get_option('phone-number'); ?>" placeholder="Enter Your Phone">
+                    <input type="text" name="phone-number" value="<?php echo get_option('phone-number', '+8801518301895'); ?>" placeholder="Enter Your Phone">
 
                     <label for="address-info" name="address-info">Address Info</label>
-                    <input type="text" name="address-info" value="<?php echo get_option('address-info'); ?>" placeholder="Enter Your Address">
+                    <input type="text" name="address-info" value="<?php echo get_option('address-info', 'Rangpur Bangladesh'); ?>" placeholder="Enter Your Address">
                   </div>
                   <h4>Social Information</h4>
                   <div class="social_account">
-                  <!-- facebook usernames -->
-                    <label for="dm_facebook_username" name="dm_facebook_username">Facebook Username</label>
-                    <div><span>https://facebook.com/</span><input type="text" name="dm_facebook_username" value="<?php echo get_option('dm_facebook_username'); ?>" placeholder="Enter Your facebook username"></div>
-                  <!-- Instagram usernames -->
-                    <label for="dm_instagram_username" name="dm_instagram_username">Instagram Username</label>
-                    <div><span>https://instagram.com/</span><input type="text" name="dm_instagram_username" value="<?php echo get_option('dm_instagram_username'); ?>" placeholder="Enter Your instagram username"></div>
-                  <!-- Twitter usernames -->
-                    <label for="dm_twitter_username" name="dm_twitter_username">Twitter Username</label>
-                    <div><span>https://twitter.com/</span><input type="text" name="dm_twitter_username" value="<?php echo get_option('dm_twitter_username'); ?>" placeholder="Enter Your facebook username"></div>
-                  <!-- Linkedin usernames -->
-                    <label for="dm_linkedin_username" name="dm_linkedin_username">Linkedin Username</label>
-                    <div><span>https://linkedin.com/in/</span><input type="text" name="dm_linkedin_username" value="<?php echo get_option('dm_linkedin_username'); ?>" placeholder="Enter Your facebook username"></div>
-                  <!-- Whatsapp usernames -->
-                    <label for="dm_whatsapp_link" name="dm_whatsapp_link">Whatsapp Link</label>
-                    <div><span>https://api.whatsapp.com/</span><input type="text" name="dm_whatsapp_link" value="<?php echo get_option('dm_whatsapp_link'); ?>" placeholder="Enter Your whatsapp link"></div>
-                  <!-- Youtube usernames -->
-                    <label for="dm_youtube_username" name="dm_youtube_username">Youtube Link</label>
-                    <div><span>https://www.youtube.com/</span><input type="text" name="dm_youtube_username" value="<?php echo get_option('dm_youtube_username'); ?>" placeholder="Enter Your youtube link"></div>
+                      <!-- facebook usernames -->
+                        <label for="dm_facebook_username" name="dm_facebook_username">Facebook Username</label>
+                        <div><span>https://facebook.com/</span><input type="text" name="dm_facebook_username" value="<?php echo get_option('dm_facebook_username', 'dmoksedul'); ?>" placeholder="Enter Your facebook username"></div>
+                      <!-- Instagram usernames -->
+                        <label for="dm_instagram_username" name="dm_instagram_username">Instagram Username</label>
+                        <div><span>https://instagram.com/</span><input type="text" name="dm_instagram_username" value="<?php echo get_option('dm_instagram_username', 'dmoksedul'); ?>" placeholder="Enter Your instagram username"></div>
+                      <!-- Twitter usernames -->
+                        <label for="dm_twitter_username" name="dm_twitter_username">Twitter Username</label>
+                        <div><span>https://twitter.com/</span><input type="text" name="dm_twitter_username" value="<?php echo get_option('dm_twitter_username', 'dmoksedul'); ?>" placeholder="Enter Your facebook username"></div>
+                      <!-- Linkedin usernames -->
+                        <label for="dm_linkedin_username" name="dm_linkedin_username">Linkedin Username</label>
+                        <div><span>https://linkedin.com/in/</span><input type="text" name="dm_linkedin_username" value="<?php echo get_option('dm_linkedin_username', 'dmoksedul'); ?>" placeholder="Enter Your facebook username"></div>
+                      <!-- Whatsapp usernames -->
+                        <label for="dm_whatsapp_link" name="dm_whatsapp_link">Whatsapp number</label>
+                        <div><span>https://api.whatsapp.com/</span><input type="text" name="dm_whatsapp_link" value="<?php echo get_option('dm_whatsapp_link', 'dmoksedul'); ?>" placeholder="Enter Your whatsapp number"></div>
+                      <!-- Whatsapp usernames -->
+                        <label for="dm_telegram_link" name="dm_telegram_link">Telegram Username</label>
+                        <div><span>https://telegram.com/</span><input type="text" name="dm_telegram_link" value="<?php echo get_option('dm_telegram_link', 'dmoksedul'); ?>" placeholder="Enter Your telegram username"></div>
+                      <!-- Youtube usernames -->
+                        <label for="dm_tiktok_username" name="dm_tiktok_username">Tiktok Username</label>
+                        <div><span>https://www.tiktok.com/</span><input type="text" name="dm_tiktok_username" value="<?php echo get_option('dm_tiktok_username', 'dmoksedul'); ?>" placeholder="Enter Your Tiktok username"></div>
+                      <!-- Youtube usernames -->
+                        <label for="dm_youtube_username" name="dm_youtube_username">Youtube Username</label>
+                        <div><span>https://www.youtube.com/</span><input type="text" name="dm_youtube_username" value="<?php echo get_option('dm_youtube_username', 'dmoksedul'); ?>" placeholder="Enter Your youtube link"></div>
+                      <!-- Youtube usernames -->
                   </div>
                 </div>
             </div>
@@ -445,15 +519,40 @@ body
               <div class="ds_editor_body">
                   <div>
                     <div>
-                      <h2>Upload Header Bannner Image</h2>
-                      <p>Image must be <b>(width:1366px and height: 152px)</b> and <b>transparent</b>.</p>
+                      <h4>Upload Header Bannner Image</h4>
+                      <p>Image max size <b>(width:1366px and height: 152px)</b> and <b>transparent</b>.</p>
                     </div>
                       <div class="banner_upload_box">
                       <input type="button" class="button-secondary ds_banner_area_upload_btn" value="Upload Banner Image" id="upload-image-button"><span>or</span>
-                      <input type="text" class="banner_upload_url" placeholder="Enter your banner URL" name="header-image" value="<?php echo esc_attr(get_option('header-image')); ?>">
+                      <input type="text" class="banner_upload_url" placeholder="Enter your banner URL" name="dm_header_banner" value="<?php echo esc_attr(get_option('dm_header_banner', '/img/banner.png')); ?>">
                       </div>
-                      <div class="ds_banner_area"><img src="<?php echo esc_attr(get_option('header-image')); ?>" id="preview-image"></div>
+                      <div class="ds_banner_area"><img src="<?php echo esc_attr(get_option('dm_header_banner', '/img/banner.png')); ?>" id="preview-image"></div>
                       <button type="button" id="restore-default-button">Restore Default</button>
+                      <br><br><br>
+                        <h4>Header Color</h4>
+                      <!-- color area color -->
+                      <div class="color_main_box">
+                        <!-- banner color -->
+                        <div class="color_box">
+                            <label for="dm_banner_color" name="dm_banner_color">Banner Background Color</label>
+                            <input type="color" name="dm_banner_color" value="<?php echo get_option('dm_banner_color', '#003517'); ?>">
+                        </div>
+                        <!-- menu text color -->
+                        <div class="color_box">
+                            <label for="dm_menu_color" name="dm_menu_color">Menu Color</label>
+                            <input type="color" name="dm_menu_color" value="<?php echo get_option('dm_menu_color', '#fff'); ?>">
+                        </div>
+                        <!-- menu text color -->
+                        <div class="color_box">
+                            <label for="dm_menu_bg_color" name="dm_menu_bg_color">Menu Background Color</label>
+                            <input type="color" name="dm_menu_bg_color" value="<?php echo get_option('dm_menu_bg_color', '#056839'); ?>">
+                        </div>
+                        <!-- top header color -->
+                        <div class="color_box">
+                            <label for="dm_top_header_color" name="dm_top_header_color">Menu Background Color</label>
+                            <input type="color" name="dm_top_header_color" value="<?php echo get_option('dm_top_header_color', '#056839'); ?>">
+                        </div>
+                      </div>
                   </div>
               </div>
             </div>
@@ -464,10 +563,100 @@ body
                 <h2 class="dm_sub_menu_title">Footer Area</h2>
               </div>
               <div class="ds_editor_body">
-                  
+                <!-- footer description here -->
+                <div class="ds_footer_area">
+                <div>
+                    <label for="footer_description" name="footer_description">Footer short description</label>
+                    <textarea name="footer_description" placeholder="Enter Your Footer Description"><?php echo get_option('footer_description','Transform your online presence with our professional web design and development services. Specializing in WordPress'); ?></textarea>
+                </div>
+
+
+                <!-- footer footer_facebook_page_username here -->
+                  <div>
+                    <label for="footer_facebook_page_username" name="footer_facebook_page_username">Facebook Page Username</label>
+                      <input type="text" name="footer_facebook_page_username" value="<?php echo get_option('footer_facebook_page_username', 'dmoksedul'); ?>" placeholder="Enter Your Facebook Username">
+                  </div>
+                <!-- footer footer_copyright_text here -->
+                  <div>
+                    <label for="footer_copyright_text" name="footer_copyright_text">Footer Copyright Text</label>
+                      <input type="text" name="footer_copyright_text" value="<?php echo get_option('footer_copyright_text', 'DM School'); ?>" placeholder="Enter your copyright text">
+                  </div>
+                </div>
               </div>
             </div>
             <!-- footer end-->
+
+            <!-- settings start-->
+            <div id="color_setting_tab_editor" class="editor-tab">
+              <div class="ds_header_area">
+                <h2 class="dm_sub_menu_title">Settings</h2>
+              </div>
+              <div class="ds_editor_body">
+                  <div class="color_main_box">
+                    <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_bg_color" name="dm_bg_color">Background Color</label>
+                          <input type="color" name="dm_bg_color" value="<?php echo get_option('dm_bg_color', '#ffffff'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_primary_color" name="dm_primary_color">Primary Color</label>
+                          <input type="color" name="dm_primary_color" value="<?php echo get_option('dm_primary_color', '#056839'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_heading_color" name="dm_heading_color">Heading Color</label>
+                          <input type="color" name="dm_heading_color" value="<?php echo get_option('dm_heading_color', '#000000'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_secondary_color" name="dm_secondary_color">Secondary Color</label>
+                          <input type="color" name="dm_secondary_color" value="<?php echo get_option('dm_secondary_color', '#012330'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_text_color" name="dm_text_color">Text Color</label>
+                          <input type="color" name="dm_text_color" value="<?php echo get_option('dm_text_color', '#000000'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_link_color" name="dm_link_color">Link Color</label>
+                          <input type="color" name="dm_link_color" value="<?php echo get_option('dm_link_color', '#39835d'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_linkdm_link_hover_color_color" name="dm_link_hover_color">Link Hover Color</label>
+                          <input type="color" name="dm_link_hover_color" value="<?php echo get_option('dm_link_hover_color', '#ff0000'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_button_color" name="dm_button_color">Button Color</label>
+                          <input type="color" name="dm_button_color" value="<?php echo get_option('dm_button_color', '#ffffff'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_button_hover_color" name="dm_button_hover_color">Button Hover Color</label>
+                          <input type="color" name="dm_button_hover_color" value="<?php echo get_option('dm_button_hover_color', '#ffffff'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_button_bg_color" name="dm_button_bg_color">Button Background Color</label>
+                          <input type="color" name="dm_button_bg_color" value="<?php echo get_option('dm_button_bg_color', '#39835d'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_button_bg_hover_color" name="dm_button_bg_hover_color">Button Background Hover Color</label>
+                          <input type="color" name="dm_button_bg_hover_color" value="<?php echo get_option('dm_button_bg_hover_color', '#ff0000'); ?>">
+                      </div>
+                      <!-- primary color -->
+                      <div class="color_box">
+                          <label for="dm_white_color" name="dm_white_color">White Color</label>
+                          <input type="color" name="dm_white_color" value="<?php echo get_option('dm_white_color', '#ffffff'); ?>">
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <!-- settings end-->
             <!-- settings start-->
             <div id="setting_tab_editor" class="editor-tab">
               <div class="ds_header_area">
@@ -500,7 +689,7 @@ body
                     <div>
                       <!-- ================================================================================================================== -->
                       <input type="hidden" name="action" value="update">
-                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username, header-image">
+                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color">
                       <input class="save_yes_btn" type="submit" name="submit" value="<?php _e('Yes', 'dmoksedul') ?>">
 
                       <button type="button" class="save_no_btn">Cancel</button>
@@ -524,90 +713,97 @@ body
 =================================================================== -->
 <!-- Include the external JavaScript file -->
 <script>
-// Get the ul element
-const ul = document.querySelector('#customize_side_bar ul');
+//javascript code start
+      // Get the ul element
+      const ul = document.querySelector('#customize_side_bar ul');
 
-// Add a click event listener to the ul to capture clicks on buttons
-ul.addEventListener('click', function (event) {
-    // Check if the clicked element is a button
-    if (event.target.tagName === 'BUTTON') {
-        // Remove the "active" class from all buttons within the ul
-        const buttons = ul.querySelectorAll('button');
-        buttons.forEach(button => button.classList.remove('active'));
+      // Add a click event listener to the ul to capture clicks on buttons
+      ul.addEventListener('click', function (event) {
+          // Check if the clicked element is a button
+          if (event.target.tagName === 'BUTTON') {
+              // Remove the "active" class from all buttons within the ul
+              const buttons = ul.querySelectorAll('button');
+              buttons.forEach(button => button.classList.remove('active'));
 
-        // Add the "active" class to the clicked button
-        event.target.classList.add('active');
-    }
-});
+              // Add the "active" class to the clicked button
+              event.target.classList.add('active');
+          }
+      });
 
-// Get all buttons with the "toggle-tab" class
-const toggleButtons = document.querySelectorAll('.toggle-tab');
+      // Get all buttons with the "toggle-tab" class
+      const toggleButtons = document.querySelectorAll('.toggle-tab');
 
-// Get all editor tabs
-const editorTabs = document.querySelectorAll('.editor-tab');
+      // Get all editor tabs
+      const editorTabs = document.querySelectorAll('.editor-tab');
 
-// Add click event listeners to each button
-toggleButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        // Remove the "active" class from all buttons
-        toggleButtons.forEach(btn => btn.classList.remove('active'));
+      // Add click event listeners to each button
+      toggleButtons.forEach(button => {
+          button.addEventListener('click', function () {
+              // Remove the "active" class from all buttons
+              toggleButtons.forEach(btn => btn.classList.remove('active'));
 
-        // Add the "active" class to the clicked button
-        this.classList.add('active');
+              // Add the "active" class to the clicked button
+              this.classList.add('active');
 
-        // Get the target tab ID from the "data-target" attribute
-        const targetTabId = this.getAttribute('data-target');
+              // Get the target tab ID from the "data-target" attribute
+              const targetTabId = this.getAttribute('data-target');
 
-        // Toggle the visibility of editor tabs
-        editorTabs.forEach(tab => {
-            if (tab.id === targetTabId) {
-                tab.style.display = 'block';
-            } else {
-                tab.style.display = 'none';
-            }
-        });
-    });
-});
-// Locate the "Save Change" button element by its class
-const saveButton = document.querySelector('.dm_save_button');
-// Locate the custom popup elements
-const savePopup = document.querySelector('.save_popup_box');
-const yesButton = document.querySelector('.save_yes_btn');
-const noButton = document.querySelector('.save_no_btn');
-// Add a click event listener to the "Save Change" button
-saveButton.addEventListener('click', function () {
-    // Display the custom popup
-    savePopup.classList.add("save_popup_box_active");
-});
-// Add a click event listener to the "Save Change" button
-noButton.addEventListener('click', function () {
-    // Display the custom popup
-    savePopup.classList.remove("save_popup_box_active");
-});
+              // Toggle the visibility of editor tabs
+              editorTabs.forEach(tab => {
+                  if (tab.id === targetTabId) {
+                      tab.style.display = 'block';
+                  } else {
+                      tab.style.display = 'none';
+                  }
+              });
+          });
+      });
 
-jQuery(document).ready(function($) {
-    $('#upload-image-button').click(function() {
-        var image = wp.media({ title: 'Upload Image', multiple: false }).open()
-            .on('select', function(e) {
-                var uploadedImage = image.state().get('selection').first();
-                var imageSrc = uploadedImage.toJSON().url;
-                $('#preview-image').attr('src', imageSrc);
-                $('input[name="header-image"]').val(imageSrc);
-                // Show the "Restore Default" button
-                $('#restore-default-button').show();
-            });
-    });
-    // Handle the "Restore Default" button click
-    $('#restore-default-button').click(function() {
-        // Set the input value to the default image URL
-        $('input[name="header-image"]').val('<?php echo get_template_directory_uri() . '/img/logo.png'; ?>');
-        // Show the default image
-        $('#preview-image').attr('src', '<?php echo get_template_directory_uri() . '/img/logo.png'; ?>');
-        // Hide the "Restore Default" button
-        $(this).hide();
-    });
+      // Locate the "Save Change" button element by its class
+      const saveButton = document.querySelector('.dm_save_button');
+      // Locate the custom popup elements
+      const savePopup = document.querySelector('.save_popup_box');
+      const yesButton = document.querySelector('.save_yes_btn');
+      const noButton = document.querySelector('.save_no_btn');
+      // Add a click event listener to the "Save Change" button
+      saveButton.addEventListener('click', function () {
+          // Display the custom popup
+          savePopup.classList.add("save_popup_box_active");
+      });
+      // Add a click event listener to the "Save Change" button
+      noButton.addEventListener('click', function () {
+          // Display the custom popup
+          savePopup.classList.remove("save_popup_box_active");
+      });
 
-});
+      jQuery(document).ready(function($) {
+          $('#upload-image-button').click(function() {
+              var image = wp.media({ title: 'Upload Image', multiple: false }).open()
+                  .on('select', function(e) {
+                      var uploadedImage = image.state().get('selection').first();
+                      var imageSrc = uploadedImage.toJSON().url;
+                      $('#preview-image').attr('src', imageSrc);
+                      $('input[name="dm_header_banner"]').val(imageSrc);
+                      // Show the "Restore Default" button
+                      $('#restore-default-button').show();
+                  });
+          });
+          // Handle the "Restore Default" button click
+          $('#restore-default-button').click(function() {
+              // Set the input value to the default image URL
+              $('input[name="dm_header_banner"]').val('<?php echo get_template_directory_uri() . '/img/banner.png'; ?>');
+              // Show the default image
+              $('#preview-image').attr('src', '<?php echo get_template_directory_uri() . '/img/banner.png'; ?>');
+              // Hide the "Restore Default" button
+              $(this).hide();
+          });
 
+      });
+//javascript code end
+        // Get the current domain or URL dynamically
+        var currentDomain = window.location.origin;
+        // Set the src attribute of the image element with the dynamic domain
+        var imageElement = document.getElementById('admin_logo');
+        imageElement.src = currentDomain + '/wp-content/themes/dm-school-management/img/admin-icon.png';
 </script>
 <?php 

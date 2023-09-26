@@ -172,8 +172,8 @@
                     <!-- contact info box start -->
                     <ul class="dm_top_contact_box">
                         <!-- <li><a href="/"><i class="fas fa-house-user"></i><?php print get_option('address-info'); ?></a></li> -->
-                        <li><a href="tel:<?php print get_option('phone-number'); ?>"><i class="fas fa-phone"></i><?php print get_option('phone-number'); ?></a></li>
-                        <li><a href="mailto:<?php print get_option('email-info'); ?>"><i class="fas fa-envelope"></i><?php print get_option('email-info'); ?></a></li>
+                        <li><a href="tel:<?php print get_option('phone-number', '+8801518301895'); ?>"><i class="fas fa-phone"></i><?php print get_option('phone-number', '8801518301895'); ?></a></li>
+                        <li><a href="mailto:<?php print get_option('email-info', 'info@moksedul.dev'); ?>"><i class="fas fa-envelope"></i><?php print get_option('email-info', 'info@moksedul.dev'); ?></a></li>
                     </ul>
                     <!-- contact info box end -->
                 </div>
@@ -184,12 +184,12 @@
         <div id="dm_header_banner_area">
             <div class="container">
                 <!-- Display the logo -->
-                <?php $logoUrl = get_option('header-image'); ?>
+                <?php $logoUrl = get_option('dm_header_banner', '/img/banner.png'); ?>
                 <?php if (!empty($logoUrl)) : ?>
                     <img src="<?php echo esc_url($logoUrl); ?>" alt="Logo">
                 <?php else : ?>
                     <!-- Display the default logo if no custom logo is set -->
-                    <img src="<?php echo get_template_directory_uri() . '/img/logo.png'; ?>" alt="Default Logo">
+                    <img src="<?php echo get_template_directory_uri() . '/img/banner.png'; ?>" alt="Logo">
                 <?php endif; ?>
             </div>
         </div>

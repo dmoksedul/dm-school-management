@@ -54,3 +54,17 @@ document.querySelector("#dm_navbar_menu").classList.remove      ('dm_navbar_menu
 document.getElementById("navbar_close_button").classList.remove('navbar_close_button_active')
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
