@@ -18,7 +18,7 @@ function dm_image_slider_menu() {
         'dm-image-slider-settings',
         'dm_image_slider_settings_page',
         'dashicons-format-gallery',
-		'5',
+        '5'
     );
 }
 
@@ -32,11 +32,15 @@ function dm_image_slider_settings_page() {
         }
     }
 
-    // Handle image upload
-    if (isset($_POST['upload_image']) && !empty($_FILES['slider_image']['tmp_name'])) {
-        $uploaded_image = media_handle_upload('slider_image', 0);
+    // Handle image upload (Updated)
+    if (isset($_POST['upload_image']) && !empty($_POST['slider_image'])) {
+        $image_id = intval($_POST['slider_image']);
 
-        if (!is_wp_error($uploaded_image)) {
+        if ($image_id) {
+            $uploaded_images = get_option('dm_image_slider_uploaded_images', array());
+            $uploaded_images[] = $image_id;
+            update_option('dm_image_slider_uploaded_images', $uploaded_images);
+
             echo '<div class="updated"><p>Image uploaded successfully.</p></div>';
         }
     }
@@ -97,7 +101,7 @@ function dm_image_slider_settings_page() {
     <div class="wrap">
         <h2>DM Image Slider</h2>
         <!-- Upload image form -->
-        <form method="post" enctype="multipart/form-data" action="" style="padding: 10px;
+        <form method="post" action="" style="padding: 10px;
             border-radius: 12px;
             max-width: 800px;
             margin: 30px 20px;
@@ -110,10 +114,18 @@ function dm_image_slider_settings_page() {
                 <tr style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center">
                     <th style="text-align: center; width: 100%; font-size: 18px;line-height:22px" scope="row">Upload Image</th>
                     <td>
-                        <label for="slider_image" style="cursor: pointer; background-color: #3498db; color: #fff; padding: 10px 15px; border-radius: 5px; border: 1px solid #3498db;">
-                            Choose Image
-                        </label>
-                        <input required type="file" name="slider_image" id="slider_image" style='width:100%;display:none; text-align:center;margin:auto' accept="image/*">
+                        <input type="button" id="upload_image_button" class="button" value="Choose Image">
+                        <input type="hidden" name="slider_image" id="slider_image" value="">
+                        <div id="image_preview" style="display: none;">
+                            <?php
+                            if (!empty($uploaded_images)) {
+                                $image_url = wp_get_attachment_image_url($uploaded_images[0], 'full');
+                                if ($image_url) {
+                                    echo '<img src="' . esc_url($image_url) . '" alt="Slider Image" style="max-width:100%;">';
+                                }
+                            }
+                            ?>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -145,6 +157,32 @@ function dm_image_slider_settings_page() {
             </div>
         </div>
     </div>
+    <script>
+        jQuery(document).ready(function ($) {
+            var customUploader;
+            $('#upload_image_button').click(function (e) {
+                e.preventDefault();
+                if (customUploader) {
+                    customUploader.open();
+                    return;
+                }
+                customUploader = wp.media.frames.file_frame = wp.media({
+                    title: 'Choose Image',
+                    button: {
+                        text: 'Choose Image'
+                    },
+                    multiple: false
+                });
+                customUploader.on('select', function () {
+                    var attachment = customUploader.state().get('selection').first().toJSON();
+                    $('#slider_image').val(attachment.id);
+                    $('#image_preview img').attr('src', attachment.url);
+                    $('#image_preview').show(); // Show the preview image
+                });
+                customUploader.open();
+            });
+        });
+    </script>
     <?php
 }
 
@@ -184,18 +222,9 @@ function dm_image_slider_delete_image($image_id) {
     }
 }
 
-// Handle image uploads
+// Handle image uploads (Updated)
 function dm_image_slider_handle_upload() {
-    // Handle image upload
-    if (isset($_POST['upload_image']) && !empty($_FILES['slider_image']['tmp_name'])) {
-        $uploaded_image = media_handle_upload('slider_image', 0);
-
-        if (!is_wp_error($uploaded_image)) {
-            $uploaded_images = get_option('dm_image_slider_uploaded_images', array());
-            $uploaded_images[] = $uploaded_image;
-            update_option('dm_image_slider_uploaded_images', $uploaded_images);
-        }
-    }
+    // No need for this function anymore since we use the media uploader
 }
 
 add_action('admin_init', 'dm_image_slider_handle_upload');

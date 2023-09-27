@@ -1,0 +1,14 @@
+/* =================================================================
+Theme Name: DM School Management
+Theme URI: https://moksedul.dev/
+Version: 1.0.0.0
+Author: Moksedul Islam
+Author URI: https://moksedul.dev/
+Text Domain: dmoksedul
+Requires at least: 5.9
+Requires PHP: 5.6
+Description: Transform your online presence with our professional web design and development services. Specializing in WordPress, Shopify, e-commerce, HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, jQuery, ReactJS, and Next.js. From captivating visuals to seamless functionality. Elevate your brand and engage your audience with my cutting-edge solutions. Let's bring your vision to life!
+Tag: school-management, dm-school-management, school
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+================================================================= */
