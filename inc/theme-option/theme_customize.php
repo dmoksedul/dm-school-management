@@ -244,10 +244,65 @@ body
             <!-- shortcode start-->
             <div id="shortcode_tab_editor" class="editor-tab">
               <div class="ds_header_area">
-                <h2 class="dm_sub_menu_title">Shortcode</h2>
+                <h2 class="dm_sub_menu_title">Theme Shortcode</h2>
               </div>
               <div class="ds_editor_body">
-                  
+                  <div>
+                    <h4>Image Slider Shortcode:</h4>
+                    <p><b>[dm_image_slider]</b></p>
+                    If you use limit slider to use limit functions.
+                    <p><b>[dm_image_slider limit=5]</b></p>
+                  </div>
+                  <div>
+                    <h4>Image Gallery Shortcode:</h4>
+                    <p><b>[dm_gallery_slider]</b></p>
+                    If you use limit slider to use limit functions.
+                    <p><b>[dm_gallery_slider limit=5]</b></p>
+                  </div>
+                  <div>
+                    <h4>Teachers Shortcode:</h4>
+                    <p><b>[dm_teachers_slider]</b></p>
+                    <p><b>[dm_teacherslist]</b></p>
+                    If you use limit slider to use limit functions.
+                    <p><b>[dm_teachers_slider limit=5]</b></p>
+                    <p><b>[dm_teacherslist limit=5]</b></p>
+                  </div>
+                  <div>
+                    <h4>Notice Shortcode:</h4>
+                    <p><b>[dm_notice_slider]</b></p>
+                    <p><b>[dm_notice_list]</b></p>
+                    <p><b>[dm_notice_list_title]</b></p>
+                    If you use limit slider to use limit functions.
+                    just use <b>[limit=5]</b>
+                  </div>
+                  <div>
+                    <h4>Class Routine Shortcode:</h4>
+                    <p><b>[dm_class_routine_slider]</b></p>
+                    <p><b>[dm_class_routine_list]</b></p>
+                    <p><b>[dm_class_routine_list_title]</b></p>
+                    If you use limit slider to use limit functions.
+                    just use <b>[limit=5]</b>
+                  </div>
+                  <div>
+                    <h4>Exam Routine Shortcode:</h4>
+                    <p><b>[dm_exam_routine_slider]</b></p>
+                    <p><b>[dm_exam_routine_list]</b></p>
+                    <p><b>[dm_exam_routine_list_title]</b></p>
+                    If you use limit slider to use limit functions.
+                    just use <b>[limit=5]</b>
+                  </div>
+                  <div>
+                    <h4>Academic Details List Shortcode:</h4>
+                    <p><b>[dm_academic_details_list]</b></p>
+                    If you use limit slider to use limit functions.
+                    just use <b>[limit=5]</b>
+                  </div>
+                  <div>
+                    <h4>Governing Member List Shortcode:</h4>
+                    <p><b>[dm_gbm_list]</b></p>
+                    If you use limit slider to use limit functions.
+                    just use <b>[limit=5]</b>
+                  </div>
               </div>
             </div>
             <!-- shortcode end-->
