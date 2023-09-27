@@ -111,7 +111,7 @@ function dm_image_gallery_settings_page() {
                     .dm-image-gallery{
                         display:grid;
                         grid-template-columns:1fr 1fr 1fr;
-                        gap:10px;
+                        gap:20px;
                         width:800px;
                     }
                     @media screen and (max-width:640px){
@@ -222,7 +222,7 @@ function dm_image_gallery_shortcode($atts) {
         .dm-image-gallery {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
         @media screen and (max-width:768px){
             .dm-image-gallery {

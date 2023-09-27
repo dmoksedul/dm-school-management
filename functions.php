@@ -45,3 +45,7 @@ include_once('theme-option/admin_dashboard.php');
 // message post register
 include_once('inc/message_post.php');
 
+
+// message post register
+include_once('inc/default.php');
+
