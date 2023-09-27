@@ -1,4 +1,9 @@
 <?php
+function enqueue_swiper_js() {
+    wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_swiper_js');
 
 // Register a custom post type for dm_teachers
 function register_dm_teacher_post_type() {
@@ -202,7 +207,7 @@ function display_dm_teachers_list($atts) {
 
     echo '<div class="dm_teacher-list">';
     while ($dm_teachers_query->have_posts()) : $dm_teachers_query->the_post();
-        echo '<div class="dm_teacher">';
+        echo '<div class="dm_teacher teacher_box">';
 
         // Display the featured image (dm_teacher's photo)
         if (has_post_thumbnail()) {
@@ -495,5 +500,294 @@ function populate_custom_columns_in_dm_teacher_list($column, $post_id) {
             break;
     }
 }
-add_action('manage_dm_teacher_posts_custom_column', 'populate_custom_columns_in_dm_teacher_list', 10, 2)
+add_action('manage_dm_teacher_posts_custom_column', 'populate_custom_columns_in_dm_teacher_list', 10, 2);
+
+// Function to display the list of dm_teachers in a slider
+function display_dm_teachers_slider($atts) {
+    $atts = shortcode_atts(array(
+        'count' => -1,
+    ), $atts);
+
+    $args = array(
+        'post_type' => 'dm_teacher', // Change 'teacher' to 'dm_teacher'
+        'posts_per_page' => $atts['count'],
+    );
+
+    $dm_teachers_query = new WP_Query($args);
+
+    ob_start(); // Start output buffering
+
+    echo '<div class="swiper-container" style="overflow:hidden;position:relative">';
+    echo '<div class="swiper-wrapper">';
+    while ($dm_teachers_query->have_posts()) : $dm_teachers_query->the_post();
+        echo '<div class="swiper-slide dm_teacher teacher_box">'; // Each teacher is a slide with "teacher_box" class
+
+        // Display teacher profile in "teacher_box" style
+        echo '<div class="dm_teacher_photo">';
+        if (has_post_thumbnail()) {
+            the_post_thumbnail('dm_teacher-photo'); // Use the custom image size
+        }
+        echo '</div>';
+
+        echo '<div class="dm_teacher_info">';
+        echo '<h2 class="dm_teacher_title">' . get_the_title() . '</h2>';
+        
+        $dm_teacher_designation = get_post_meta(get_the_ID(), 'dm_teacher_designation', true);
+        echo '<p class="dm_teacher_designation">' . esc_html($dm_teacher_designation) . '</p>';
+
+        // Display other teacher details
+        // Example: Phone, Email, Qualification, Address, Social Links, WhatsApp
+
+        echo '<div class="dm_teacher_details">';
+        echo '<p><strong>Phone:</strong> ' . esc_html(get_post_meta(get_the_ID(), 'dm_teacher_phone', true)) . '</p>';
+        echo '<p><strong>Email:</strong> ' . esc_html(get_post_meta(get_the_ID(), 'dm_teacher_email', true)) . '</p>';
+        echo '<p><strong>Qualification:</strong> ' . esc_html(get_post_meta(get_the_ID(), 'dm_teacher_qualification', true)) . '</p>';
+        echo '<p><strong>Address:</strong> ' . esc_html(get_post_meta(get_the_ID(), 'dm_teacher_address', true)) . '</p>';
+        echo '</div>'; // Close .dm_teacher_details
+
+        // Display social links
+        echo '<div class="dm_teacher_social">';
+        if ($dm_teacher_facebook = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_facebook', true))) {
+            echo '<a href="' . $dm_teacher_facebook . '">Facebook</a>';
+        }
+        if ($dm_teacher_twitter = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_twitter', true))) {
+            echo '<a href="' . $dm_teacher_twitter . '">Twitter</a>';
+        }
+        if ($dm_teacher_instagram = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_instagram', true))) {
+            echo '<a href="' . $dm_teacher_instagram . '">Instagram</a>';
+        }
+        if ($dm_teacher_linkedin = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_linkedin', true))) {
+            echo '<a href="' . $dm_teacher_linkedin . '">LinkedIn</a>';
+        }
+        if ($dm_teacher_whatsapp = esc_html(get_post_meta(get_the_ID(), 'dm_teacher_whatsapp', true))) {
+            echo '<a href="https://wa.me/' . $dm_teacher_whatsapp . '">WhatsApp</a>';
+        }
+        echo '</div>'; // Close .dm_teacher_social
+
+        echo '</div>'; // Close .dm_teacher_info
+
+        echo '</div>'; // Close .swiper-slide
+    endwhile;
+    echo '</div>'; // Close .swiper-wrapper
+
+    // Add navigation buttons
+    echo '<div class="swiper-button-prev"></div>';
+    echo '<div class="swiper-button-next"></div>';
+
+    echo '</div>'; // Close .swiper-container
+
+    echo '<style>';
+    echo '
+    /* dm_teacher box */
+.dm_teacher_photo img {
+    max-height:450px !important;
+}
+
+.dm_teacher {
+    border: 1px solid #0000001f;
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+}
+
+.dm_teacher_info_box {
+    padding: 0px 20px;
+}
+
+.dm_teacher_photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:0px 0px;
+    position:relative;
+}
+
+.dm_teacher_photo::after {
+    width:100%;
+    height:100%;
+    content:"";
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:#0b0d0ebf;
+    transform:scale(1);
+    opacity:0;
+    transition: all 0.5s;
+}
+
+.dm_teacher_photo img {
+    width:100%;
+    max-height:280px;
+}
+
+a {
+    text-decoration:none;
+}
+
+.dm_teacher_info_box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom:10px;
+}
+
+.dm_teacher_info_box p {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    width: 100%;
+    font-size:14px;
+}
+
+.dm_teacher_info_box p b {
+    margin-right:5px;
+}
+
+.dm_teacher_header {
+    color: var(--dm_white_color);
+    text-align: center;
+    padding: 5px;
+    padding-bottom:8px;
+    width:85%;
+    margin:auto;
+    margin-bottom:10px;
+    transform:skew(-15deg);
+    position:relative;
+    z-index:2;
+    margin-top:-30px;
+    border:1px solid var(--dm_primary_color);
+    position:relative;
+}
+
+.dm_teacher_header::after {
+    width:100%;
+    height:100%;
+    content:"";
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:var(--dm_primary_color);
+    transition: all 0.5s;
+    z-index:-1;
+}
+
+.dm_teacher_header .dm_teacher_title {
+    font-size:22px;
+    text-align:center;
+    line-height:22px;
+    margin-bottom:5px;
+    transform:skew(15deg);
+}
+
+.dm_teacher_header p {
+    line-height:14px;
+    margin-bottom:0px;
+    transform:skew(15deg);
+    font-size:14px;
+}
+
+.dm_teacher_social_main {
+    position:absolute;
+    top:30%;
+    width:100%;
+    left:0%;
+    transform:scale(0.3);
+    opacity:0;
+    transition: all 0.5s;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.dm_teacher_social_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    background:var(--dm_primary_color);
+    border-radius:50px;
+    padding:8px;
+}
+
+.dm_teacher_social_box a i {
+    color: var(--dm_white_color);
+    border: 1px solid var(--dm_white_color);
+    border-radius:100%;
+    width:22px;
+    height:22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:1px;
+    font-size:10px;
+    transition: all 0.5s;
+}
+
+.dm_teacher_social_box a:hover i {
+    background: var(--dm_white_color);
+    color:var(--dm_primary_color);
+}
+
+.dm_teacher:hover .dm_teacher_social_main {
+    transform:scale(1);
+    opacity:1;
+}
+
+.dm_teacher:hover .dm_teacher_photo::after {
+    opacity:1;
+    transform:scale(1);
+}
+
+.dm_teacher:hover .dm_teacher_header {
+    background:var(--dm_white_color);
+    color: #000;
+    border: 1px dashed var(--dm_primary_color);
+}
+
+.dm_teacher:hover  .dm_teacher_header::after {
+    width:0%;
+}
+
+    
+    
+    
+    
+    ';
+    echo '</style>';
+    
+    // Initialize Swiper
+    echo '<script>
+        var swiper = new Swiper(".swiper-container", {
+            slidesPerView: 3, // Number of slides per view for desktop
+            spaceBetween: 30, // Space between slides
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            // autoplay: {
+            //     delay: 3000, // Auto-slide delay in milliseconds (3 seconds)
+            //     disableOnInteraction: false, // Allow interaction to stop autoplay
+            // },
+            loop: true, // Enable looping of slides
+            breakpoints: {
+                1024: {
+                    slidesPerView: 3, // Number of slides per view for tablet
+                },
+                768: {
+                    slidesPerView: 2, // Number of slides per view for mobile
+                },
+                640: {
+                    slidesPerView: 1, // Number of slides per view for smaller mobile
+                }
+            }
+        });
+    </script>';
+    
+    wp_reset_postdata();
+
+    return ob_get_clean(); // Return the buffered output
+}
+add_shortcode('dm_teachers_slider', 'display_dm_teachers_slider');
 ?>
