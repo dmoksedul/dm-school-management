@@ -517,7 +517,7 @@ function display_dm_teachers_slider($atts) {
 
     ob_start(); // Start output buffering
 
-    echo '<div class="swiper-container" style="overflow:hidden;position:relative">';
+    echo '<div class=" swiper-container-slider" style="overflow:hidden;position:relative; margin:20px 0px;">';
     echo '<div class="swiper-wrapper">';
     while ($dm_teachers_query->have_posts()) : $dm_teachers_query->the_post();
         echo '<div class="swiper-slide dm_teacher teacher_box">'; // Each teacher is a slide with "teacher_box" class
@@ -528,12 +528,15 @@ function display_dm_teachers_slider($atts) {
             the_post_thumbnail('dm_teacher-photo'); // Use the custom image size
         }
         echo '</div>';
-
-        echo '<div class="dm_teacher_info">';
+        echo '<div class="dm_teacher_header">';
         echo '<h2 class="dm_teacher_title">' . get_the_title() . '</h2>';
         
         $dm_teacher_designation = get_post_meta(get_the_ID(), 'dm_teacher_designation', true);
         echo '<p class="dm_teacher_designation">' . esc_html($dm_teacher_designation) . '</p>';
+        echo '</div>';
+
+        echo '<div class="dm_teacher_info_box">';
+        
 
         // Display other teacher details
         // Example: Phone, Email, Qualification, Address, Social Links, WhatsApp
@@ -546,23 +549,25 @@ function display_dm_teachers_slider($atts) {
         echo '</div>'; // Close .dm_teacher_details
 
         // Display social links
-        echo '<div class="dm_teacher_social">';
+        echo '<div class="dm_teacher_social_main">';
+        echo '<div class="dm_teacher_social_box">';
         if ($dm_teacher_facebook = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_facebook', true))) {
-            echo '<a href="' . $dm_teacher_facebook . '">Facebook</a>';
+            echo '<a href="' . $dm_teacher_facebook . '"><i class="fab fa-facebook-f"></i></a>';
         }
         if ($dm_teacher_twitter = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_twitter', true))) {
-            echo '<a href="' . $dm_teacher_twitter . '">Twitter</a>';
+            echo '<a href="' . $dm_teacher_twitter . '"><i class="fab fa-twitter"></i></a>';
         }
         if ($dm_teacher_instagram = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_instagram', true))) {
-            echo '<a href="' . $dm_teacher_instagram . '">Instagram</a>';
+            echo '<a href="' . $dm_teacher_instagram . '"><i class="fab fa-instagram"></i></a>';
         }
         if ($dm_teacher_linkedin = esc_url(get_post_meta(get_the_ID(), 'dm_teacher_linkedin', true))) {
-            echo '<a href="' . $dm_teacher_linkedin . '">LinkedIn</a>';
+            echo '<a href="' . $dm_teacher_linkedin . '"><i class="fab fa-linkedin-in"></i></a>';
         }
         if ($dm_teacher_whatsapp = esc_html(get_post_meta(get_the_ID(), 'dm_teacher_whatsapp', true))) {
-            echo '<a href="https://wa.me/' . $dm_teacher_whatsapp . '">WhatsApp</a>';
+            echo '<a href="https://wa.me/' . $dm_teacher_whatsapp . '"><i class="fab fa-whatsapp"></i></a>';
         }
         echo '</div>'; // Close .dm_teacher_social
+        echo '</div>';
 
         echo '</div>'; // Close .dm_teacher_info
 
@@ -579,9 +584,21 @@ function display_dm_teachers_slider($atts) {
     echo '<style>';
     echo '
     /* dm_teacher box */
-.dm_teacher_photo img {
-    max-height:450px !important;
-}
+    .dm_teacher_photo img {
+        max-height:280px !important;
+    }
+    
+    @media screen and (max-width:1024px){
+        .dm_teacher_photo img {
+        max-height:300px;
+    }
+    }
+
+    @media screen and (max-width:540px){
+        .dm_teacher_photo img {
+            min-height:450px;
+        }
+    }
 
 .dm_teacher {
     border: 1px solid #0000001f;
@@ -750,6 +767,44 @@ a {
     width:0%;
 }
 
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    content: "next";
+    padding: 10px !important;
+    font-size: 15px;
+    font-weight: bold;
+    background: white;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    content: "prev";
+    padding: 10px !important;
+    font-size: 15px;
+    font-weight: bold;
+    background: white;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 15px;
+}
+span.swiper-pagination-bullet {
+    background: #fff;
+    width: 20px;
+    height: 5px;
+    border-radius: 0;
+    overflow: hidden;
+}
     
     
     
@@ -757,33 +812,39 @@ a {
     ';
     echo '</style>';
     
-    // Initialize Swiper
-    echo '<script>
-        var swiper = new Swiper(".swiper-container", {
-            slidesPerView: 3, // Number of slides per view for desktop
-            spaceBetween: 30, // Space between slides
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+// Initialize Swiper
+echo '<script>
+    var swiper = new Swiper(".swiper-container-slider", {
+        slidesPerView: 3, // Number of slides per view for desktop
+        spaceBetween: 30, // Space between slides
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+            delay: 3000, // Auto-slide delay in milliseconds (3 seconds)
+            disableOnInteraction: false, // Allow interaction to stop autoplay
+        },
+        loop: true, // Enable looping of slides
+        effect: "slide", // Smooth sliding animation
+        speed: 800, // Speed of slide animation in milliseconds
+        breakpoints: {
+            1024: {
+                slidesPerView: 4, // Number of slides per view for tablet
             },
-            // autoplay: {
-            //     delay: 3000, // Auto-slide delay in milliseconds (3 seconds)
-            //     disableOnInteraction: false, // Allow interaction to stop autoplay
-            // },
-            loop: true, // Enable looping of slides
-            breakpoints: {
-                1024: {
-                    slidesPerView: 3, // Number of slides per view for tablet
-                },
-                768: {
-                    slidesPerView: 2, // Number of slides per view for mobile
-                },
-                640: {
-                    slidesPerView: 1, // Number of slides per view for smaller mobile
-                }
+            768: {
+                slidesPerView: 3, // Number of slides per view for mobile
+            },
+            640: {
+                slidesPerView: 2, // Number of slides per view for smaller mobile
+            },
+            0: {
+                slidesPerView: 1, // Number of slides per view for smaller mobile
             }
-        });
-    </script>';
+        }
+    });
+</script>';
+
     
     wp_reset_postdata();
 
