@@ -23,7 +23,7 @@ function dm_theme_page() {
 
 function dm_theme_customize_page() {
     //General Custom JS Page
-    require_once(get_template_directory() . '/theme-option/theme_customize_page.php');
+    require_once(get_template_directory() . '/inc/theme-option/theme_customize.php');
 }
 
 ?>

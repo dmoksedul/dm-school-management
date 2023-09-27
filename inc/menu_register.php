@@ -31,6 +31,3 @@ class Custom_Submenu_Walker extends Walker_Nav_Menu {
     }
 }
 ?>
-
-
-

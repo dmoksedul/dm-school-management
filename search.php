@@ -12,7 +12,7 @@ get_header(); ?>
               <h1 class="title"><?php printf( __( 'Search Results for: %s', 'dmoksedul'), get_search_query()); ?></h1>
             </div>
 
-            <?php get_template_part('template_part/blog_setup'); ?>
+            <?php get_template_part('template-parts/blog_setup'); ?>
         </div>
         <div class="col-md-3">
           <?php get_sidebar(); ?>

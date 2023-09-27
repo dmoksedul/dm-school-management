@@ -13,7 +13,7 @@ get_header(); ?>
         ?>
       </div>
       <div id="dm_main_blog_area">
-        <?php get_template_part('templates/blog_setup'); ?>
+        <?php get_template_part('template-parts/blog_setup'); ?>
       </div>
       <div id="dm_page_nav">
         <?php if ('dm_pagenav') {dm_pagenav(); } else{ ?>

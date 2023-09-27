@@ -83,16 +83,16 @@
 }
 
 /* #customize_side_bar ul li button.active::after {
-          content: "";
-        width: 0px;
-        height: 0px;
-        position: absolute;
-        top: 6px;
-        right: -20px;
-        transform: rotate(45deg);
-        border-top: 25px solid #1d2327;
-        border-left: 25px solid transparent;
-      } */
+            content: "";
+          width: 0px;
+          height: 0px;
+          position: absolute;
+          top: 6px;
+          right: -20px;
+          transform: rotate(45deg);
+          border-top: 25px solid #1d2327;
+          border-left: 25px solid transparent;
+        } */
 #customize_editor_bar {
   width: 100%;
   padding: 10px 20px;

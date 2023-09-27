@@ -1,5 +1,4 @@
 <?php
-
 // Enqueue custom plugin styles
 function dm_image_gallery_enqueue_styles() {
     wp_enqueue_style('dm-image-gallery-css', plugins_url('css/styles.css', __FILE__));
@@ -31,10 +30,15 @@ function dm_image_gallery_settings_page() {
     }
 
     // Handle image upload
-    if (isset($_POST['upload_image']) && !empty($_FILES['gallery_image']['tmp_name'])) {
-        $uploaded_image = media_handle_upload('gallery_image', 0);
+    if (isset($_POST['upload_image']) && !empty($_POST['gallery_image'])) {
+        $image_id = intval($_POST['gallery_image']);
 
-        if (!is_wp_error($uploaded_image)) {
+        if ($image_id) {
+            $uploaded_images = get_option('dm_image_gallery_uploaded_images', array());
+            $image_title = sanitize_text_field($_POST['image_title']);
+            $uploaded_images[] = array('id' => $image_id, 'title' => $image_title);
+            update_option('dm_image_gallery_uploaded_images', $uploaded_images);
+
             echo '<div class="updated"><p>Image uploaded successfully.</p></div>';
         }
     }
@@ -64,7 +68,11 @@ function dm_image_gallery_settings_page() {
                 <tr>
                     <th scope="row">Upload Image</th>
                     <td>
-                        <input required type="file" name="gallery_image" id="gallery_image" accept="image/*">
+                        <input type="button" id="upload_image_button" class="button" value="Choose Image">
+                        <input type="hidden" name="gallery_image" id="gallery_image" value="">
+                        <div id="image_preview" style="display: none;">
+                            <!-- Preview image will be shown here -->
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -78,14 +86,8 @@ function dm_image_gallery_settings_page() {
         </form>
         <div class="dm-image-gallery">
             <!-- Display uploaded images with titles -->
-            <?php $count = 0; ?>
-            <?php $limit = isset($atts['limit']) ? intval($atts['limit']) : PHP_INT_MAX; ?>
             <?php foreach ($uploaded_images as $image_data) : ?>
                 <?php
-                if ($count >= $limit) {
-                    break; // Limit reached
-                }
-
                 $image_id = $image_data['id'];
                 $image_url = wp_get_attachment_image_url($image_id, 'full');
                 $image_title = esc_html($image_data['title']);
@@ -103,46 +105,37 @@ function dm_image_gallery_settings_page() {
                             <a href="<?php echo esc_url($delete_url); ?>" class="delete-image-button" style="color: red; text-decoration: underline;">Delete</a>
                         <?php } ?>
                     </div>
-                <?php
-                    $count++;
-                endif;
-                ?>
-                <style>
-                    .dm-image-gallery{
-                        display:grid;
-                        grid-template-columns:1fr 1fr 1fr;
-                        gap:20px;
-                        width:800px;
-                    }
-                    @media screen and (max-width:640px){
-                        .dm-image-gallery{
-                            grid-template-columns:1fr !important;
-                        }
-                    }
-                    .dm-image-gallery-item{
-                        box-shadow:0 0 10px #0000001F;
-                        padding:10px;
-                        border-radius:12px;
-                    }
-                    .dm-image-gallery-item img{
-                        max-width:250px;
-                        border-radius:12px;
-                    }
-                    .dm-image-gallery-item p{
-                        font-size:16px;
-                    }
-                    .dm-image-gallery-item a{
-                        background: #135E96;
-                        color: #fff !important;
-                        padding:5px 20px;
-                        border-radius:2px;
-                        text-decoration:none !important;
-                        display:inline-block;
-                        margin-bottom:5px
-                    }
-                </style>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
+    </div>
+    <script>
+        // Add JavaScript to open the media uploader and toggle image preview
+            jQuery(document).ready(function ($) {
+                var customUploader;
+                $('#upload_image_button').click(function (e) {
+                    e.preventDefault();
+                    if (customUploader) {
+                        customUploader.open();
+                        return;
+                    }
+                    customUploader = wp.media.frames.file_frame = wp.media({
+                        title: 'Choose Image',
+                        button: {
+                            text: 'Choose Image'
+                        },
+                        multiple: false
+                    });
+                    customUploader.on('select', function () {
+                        var attachment = customUploader.state().get('selection').first().toJSON();
+                        $('#gallery_image').val(attachment.id);
+                        // Display the selected image as a preview
+                        $('#image_preview').html('<img src="' + attachment.url + '" alt="Selected Image" style="max-width:100%;">').show();
+                    });
+                    customUploader.open();
+                });
+            });
+    </script>
     </div>
     <?php
 }
@@ -170,14 +163,16 @@ function dm_image_gallery_delete_image($image_id) {
 // Handle image uploads with titles
 function dm_image_gallery_handle_upload() {
     // Handle image upload
-    if (isset($_POST['upload_image']) && !empty($_FILES['gallery_image']['tmp_name'])) {
-        $uploaded_image = media_handle_upload('gallery_image', 0);
+    if (isset($_POST['upload_image']) && !empty($_POST['gallery_image'])) {
+        $image_id = intval($_POST['gallery_image']);
 
-        if (!is_wp_error($uploaded_image)) {
+        if ($image_id) {
             $uploaded_images = get_option('dm_image_gallery_uploaded_images', array());
             $image_title = sanitize_text_field($_POST['image_title']);
-            $uploaded_images[] = array('id' => $uploaded_image, 'title' => $image_title);
+            $uploaded_images[] = array('id' => $image_id, 'title' => $image_title);
             update_option('dm_image_gallery_uploaded_images', $uploaded_images);
+
+            echo '<div class="updated"><p>Image uploaded successfully.</p></div>';
         }
     }
 }

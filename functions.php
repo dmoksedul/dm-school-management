@@ -2,6 +2,8 @@
 /*
 * Theme functions here
 */
+// ALl Default theme function here
+include_once('inc/default.php');
 
 // Theme CSS and jQuery File calling
 include_once('inc/enqueue.php');
@@ -12,6 +14,8 @@ include_once('inc/theme_function.php');
 // Menu Register
 include_once('inc/menu_register.php');
 
+// admin dashboard file
+include_once('inc/theme-option/admin_theme_option.php');
 // teachers Register
 include_once('inc/teachers.php');
 
@@ -36,16 +40,6 @@ include_once('inc/governing_member.php');
 // academic_details Register
 include_once('inc/academic_details.php');
 
-// shortcode Register
-include_once('inc/shortcode.php');
-
-// admin dashboard file
-include_once('theme-option/admin_dashboard.php');
-
-// message post register
+// message_post Register
 include_once('inc/message_post.php');
-
-
-// message post register
-include_once('inc/default.php');
 

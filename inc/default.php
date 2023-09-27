@@ -1,21 +1,9 @@
 <?php 
 // Theme Title
-
 add_theme_support('title-tag');
-// Theme Check Support 
-add_theme_support( 'automatic-feed-links' );
-add_theme_support( "wp-block-styles" );
-add_theme_support( "responsive-embeds" );
-add_theme_support( 'html5', array(
-    // Any or all of these.
-    'comment-list', 
-    'comment-form',
-    'search-form',
-    'gallery',
-    'caption',
-) );
+add_theme_support('post-thumbnails');
 
-add_theme_support('post-thumbnails', array('page', 'post',));
+add_theme_support('post-thumbnails', array('page', 'post', 'message'));
 add_theme_support('post-thumbnails',);
 add_image_size( 'post-thumbnails', 350, false );
 // Enqueue scripts and styles
