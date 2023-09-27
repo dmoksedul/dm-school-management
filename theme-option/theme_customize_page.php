@@ -114,7 +114,7 @@ body
                         <!-- menu text color -->
                         <div class="color_box">
                             <label for="dm_menu_color" name="dm_menu_color">Menu Color</label>
-                            <input type="color" name="dm_menu_color" value="<?php echo get_option('dm_menu_color', '#fff'); ?>">
+                            <input type="color" name="dm_menu_color" value="<?php echo get_option('dm_menu_color', '#ffffff'); ?>">
                         </div>
                         <!-- menu text color -->
                         <div class="color_box">
@@ -263,7 +263,7 @@ body
                     <div>
                       <!-- ================================================================================================================== -->
                       <input type="hidden" name="action" value="update">
-                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color">
+                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color, dm_menu_color">
                       <input class="save_yes_btn" type="submit" name="submit" value="<?php _e('Yes', 'dmoksedul') ?>">
 
                       <button type="button" class="save_no_btn">Cancel</button>

@@ -23,7 +23,7 @@ function dm_message() {
       'show_ui' => true,
       'capability_type' => 'post',
       'rewrite' => array('slug' => 'message'),
-      'supports' => array('title', 'thumbnail', 'editor', 'excerpt'),
+      'supports' => array('title', 'thumbnail', 'editor'),
     )
   );
 

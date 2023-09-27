@@ -15,9 +15,9 @@ add_theme_support( 'html5', array(
     'caption',
 ) );
 
-add_theme_support('post-thumbnails', array('page', 'post', 'message',));
+add_theme_support('post-thumbnails', array('page', 'post',));
 add_theme_support('post-thumbnails',);
-add_image_size( 'post-thumbnails', 970, false );
+add_image_size( 'post-thumbnails', 350, false );
 // Enqueue scripts and styles
 function enqueue_media_uploader() {
     if (is_admin()) {
