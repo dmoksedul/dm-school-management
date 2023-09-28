@@ -3,7 +3,7 @@
 add_theme_support('title-tag');
 add_theme_support('post-thumbnails');
 
-add_theme_support('post-thumbnails', array('page', 'post', 'message'));
+add_theme_support('post-thumbnails', array('page', 'post', 'message', 'history'));
 add_theme_support('post-thumbnails',);
 add_image_size( 'post-thumbnails', 350, false );
 // Enqueue scripts and styles

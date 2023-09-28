@@ -43,6 +43,9 @@ include_once('inc/academic_details.php');
 // message_post Register
 include_once('inc/message_post.php');
 
+// message_post Register
+include_once('inc/history_post.php');
+
 // login-enqueue Register
 include_once('inc/login-enqueue.php');
 

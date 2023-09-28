@@ -265,9 +265,9 @@ body
                   </div>
                   <div>
                     <h4>Image Gallery Shortcode:</h4>
-                    <p><b>[dm_gallery_slider]</b></p>
+                    <p><b>[dm_image_gallery]</b></p>
                     If you use limit slider to use limit functions.
-                    <p><b>[dm_gallery_slider limit=5]</b></p>
+                    <p><b>[dm_image_gallery limit=5]</b></p>
                   </div>
                   <div>
                     <h4>Teachers Shortcode:</h4>
