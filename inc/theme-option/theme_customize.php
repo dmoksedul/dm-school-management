@@ -241,10 +241,10 @@ body
                     <h4>Upload Login Page Logo</h4>
                     <div class="login_logo_upload_box">
                         <input type="button" class="button-secondary ds_banner_area_upload_btn" value="Upload Login Logo" id="upload_login_logo_button"><span>or</span>
-                        <input type="text" class="banner_upload_url" placeholder="Enter your banner URL" name="dm_login_logo" value="<?php echo esc_attr(get_option('dm_login_logo', '/img/logo.png')); ?>">
+                        <input type="text" class="banner_upload_url" placeholder="Enter your banner URL" name="dm_login_logo" value="<?php echo esc_attr(get_option('dm_login_logo', '<?php echo get_template_directory_uri() . "/img/logo.png"; ?>')); ?>">
                     </div>
                     <div id="login_logo_preview">
-                        <img src="<?php echo esc_attr(get_option('dm_login_logo', '/img/logo.png')); ?>" id="dm_login_logo">
+                        <img src="<?php echo esc_attr(get_option('dm_login_logo', '<?php echo get_template_directory_uri() . "/img/logo.png"; ?>')); ?>" id="dm_login_logo">
                         <button type="button" id="restore_login_logo">Restore Default</button>
                     </div>
                   </div>
@@ -353,6 +353,7 @@ body
 <script>
 jQuery(document).ready(function($) {
           // Handle the "Restore Default" button click
+          
           $('#restore-default-button').click(function() {
               // Set the input value to the default image URL
               $('input[name="dm_header_banner"]').val('<?php echo get_template_directory_uri() . "/img/banner.png"; ?>');
@@ -361,7 +362,6 @@ jQuery(document).ready(function($) {
               // Hide the "Restore Default" button
               $(this).hide();
           });
-          // Handle the login page logo "Restore Default" button click
           $('#restore_login_logo').click(function() {
               // Set the input value to the default image URL
               $('input[name="dm_login_logo"]').val('<?php echo get_template_directory_uri() . "/img/logo.png"; ?>');
