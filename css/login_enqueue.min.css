@@ -1,0 +1,109 @@
+body.login {
+  background: linear-gradient(45deg, rgba(7, 4, 14, 0.7882352941), rgba(6, 24, 36, 0.8235294118)), url(../img/login_bg.webp);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+body.login p.message {
+  display: none;
+}
+body.login div#login {
+  background: linear-gradient(45deg, #0a334c, rgba(20, 106, 161, 0.83));
+  padding: 30px;
+  border-radius: 25px;
+  border: 2px solid rgba(0, 167, 205, 0.48);
+}
+body.login div#login .user-pass-wrap {
+  width: 100%;
+}
+body.login div#login form#loginform,
+body.login div#login #lostpasswordform {
+  background: transparent;
+  border: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px;
+}
+body.login div#login form#loginform label,
+body.login div#login #lostpasswordform label {
+  font-size: 15px;
+  font-weight: 500;
+}
+body.login div#login form#loginform input#user_login,
+body.login div#login form#loginform input#user_pass,
+body.login div#login #lostpasswordform input#user_login,
+body.login div#login #lostpasswordform input#user_pass {
+  background: linear-gradient(45deg, #051e34, #004682);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}
+body.login div#login form#loginform p.forgetmenot,
+body.login div#login #lostpasswordform p.forgetmenot {
+  width: 100%;
+}
+body.login div#login form#loginform p.forgetmenot label,
+body.login div#login #lostpasswordform p.forgetmenot label {
+  font-size: 13px;
+}
+body.login div#login form#loginform p.forgetmenot input#rememberme,
+body.login div#login #lostpasswordform p.forgetmenot input#rememberme {
+  background: transparent;
+  border: 2px solid #00a5cb;
+}
+body.login div#login form#loginform p.submit,
+body.login div#login #lostpasswordform p.submit {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px !important;
+}
+body.login div#login form#loginform p.submit input#wp-submit,
+body.login div#login #lostpasswordform p.submit input#wp-submit {
+  background: linear-gradient(45deg, #051e34, #004682);
+  display: block;
+  width: 100%;
+  padding: 2px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+}
+body.login p#backtoblog {
+  display: none;
+}
+body.login p#nav {
+  text-align: center;
+}
+body.login p#nav a {
+  color: #00a5cb !important;
+}
+body.login form#lostpasswordform {
+  border: none !important;
+  box-shadow: none !important;
+}
+body.login form#lostpasswordform input {
+  background: linear-gradient(45deg, #051e34, #004682);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}/*# sourceMappingURL=login_enqueue.min.css.map */

@@ -237,7 +237,17 @@ body
                 <h2 class="dm_sub_menu_title">Settings</h2>
               </div>
               <div class="ds_editor_body">
-                  
+                  <div class="login_page_box">
+                    <h4>Upload Login Page Logo</h4>
+                    <div class="login_logo_upload_box">
+                        <input type="button" class="button-secondary ds_banner_area_upload_btn" value="Upload Login Logo" id="upload_login_logo_button"><span>or</span>
+                        <input type="text" class="banner_upload_url" placeholder="Enter your banner URL" name="dm_login_logo" value="<?php echo esc_attr(get_option('dm_login_logo', '/img/logo.png')); ?>">
+                    </div>
+                    <div id="login_logo_preview">
+                        <img src="<?php echo esc_attr(get_option('dm_login_logo', '/img/logo.png')); ?>" id="dm_login_logo">
+                        <button type="button" id="restore_login_logo">Restore Default</button>
+                    </div>
+                  </div>
               </div>
             </div>
             <!-- settings end-->
@@ -318,7 +328,7 @@ body
                     <div>
                       <!-- ================================================================================================================== -->
                       <input type="hidden" name="action" value="update">
-                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color, dm_menu_color">
+                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color, dm_menu_color, dm_login_logo">
                       <input class="save_yes_btn" type="submit" name="submit" value="<?php _e('Yes', 'dmoksedul') ?>">
 
                       <button type="button" class="save_no_btn">Cancel</button>
@@ -348,6 +358,15 @@ jQuery(document).ready(function($) {
               $('input[name="dm_header_banner"]').val('<?php echo get_template_directory_uri() . "/img/banner.png"; ?>');
               // Show the default image
               $('#banner_image').attr('src', '<?php echo get_template_directory_uri() . "/img/banner.png"; ?>');
+              // Hide the "Restore Default" button
+              $(this).hide();
+          });
+          // Handle the login page logo "Restore Default" button click
+          $('#restore_login_logo').click(function() {
+              // Set the input value to the default image URL
+              $('input[name="dm_login_logo"]').val('<?php echo get_template_directory_uri() . "/img/logo.png"; ?>');
+              // Show the default image
+              $('#dm_login_logo').attr('src', '<?php echo get_template_directory_uri() . "/img/logo.png"; ?>');
               // Hide the "Restore Default" button
               $(this).hide();
           });

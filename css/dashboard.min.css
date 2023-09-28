@@ -480,4 +480,52 @@ textarea {
   width: 100%;
 }
 
-/* color code editor end *//*# sourceMappingURL=dashboard.min.css.map */
+/* color code editor end */
+.login_page_box .login_logo_upload_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.login_page_box .login_logo_upload_box input[type=button] {
+  padding: 3px 20px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #08a88a;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.login_page_box .login_logo_upload_box input[type=text] {
+  padding: 3px 20px;
+  font-size: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1294117647);
+  width: 100%;
+}
+.login_page_box div#login_logo_preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+  margin-top: 20px;
+}
+.login_page_box div#login_logo_preview img {
+  width: 80px;
+  overflow: hidden;
+}
+.login_page_box div#login_logo_preview button#restore_login_logo {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #08a88a;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 2px;
+  cursor: pointer;
+}/*# sourceMappingURL=dashboard.min.css.map */

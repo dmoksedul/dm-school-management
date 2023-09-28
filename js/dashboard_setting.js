@@ -75,4 +75,19 @@
           });
 
       });
+    //   login logo
+      jQuery(document).ready(function($) {
+          $('#upload_login_logo_button').click(function() {
+              var image = wp.media({ title: 'Upload Image', multiple: false }).open()
+                  .on('select', function(e) {
+                      var uploadedImage = image.state().get('selection').first();
+                      var imageSrc = uploadedImage.toJSON().url;
+                      $('#dm_login_logo').attr('src', imageSrc);
+                      $('input[name="dm_login_logo"]').val(imageSrc);
+                      // Show the "Restore Default" button
+                      $('#restore_login_logo').show();
+                  });
+          });
+
+      });
 //javascript code end

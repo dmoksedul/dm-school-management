@@ -1,0 +1,102 @@
+body.login {
+  background: linear-gradient(45deg, #07040ec9, #061824d2),
+    url(../img/login_bg.webp);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  p.message {
+    display: none;
+  }
+  div#login {
+    background: linear-gradient(45deg, #0a334c, rgb(20 106 161 / 83%));
+    padding: 30px;
+    border-radius: 25px;
+    border: 2px solid rgb(0 167 205 / 48%);
+    .user-pass-wrap {
+      width: 100%;
+    }
+    form#loginform,
+    #lostpasswordform {
+      background: transparent;
+      border: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 15px;
+      label {
+        font-size: 15px;
+        font-weight: 500;
+      }
+      input#user_login,
+      input#user_pass {
+        background: linear-gradient(45deg, #051e34, #004682);
+        color: #fff;
+        font-size: 17px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+      }
+      p.forgetmenot {
+        width: 100%;
+        label {
+          font-size: 13px;
+        }
+        input#rememberme {
+          background: transparent;
+          border: 2px solid #00a5cb;
+        }
+      }
+      p.submit {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px !important;
+        input#wp-submit {
+          background: linear-gradient(45deg, #051e34, #004682);
+          display: block;
+          width: 100%;
+          padding: 2px;
+          font-size: 15px;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+  p#backtoblog {
+    display: none;
+  }
+  p#nav {
+    text-align: center;
+    a {
+      color: #00a5cb !important;
+    }
+  }
+  form#lostpasswordform {
+    border: none !important;
+    box-shadow: none !important;
+    input {
+      background: linear-gradient(45deg, #051e34, #004682);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 2px;
+    }
+  }
+}
