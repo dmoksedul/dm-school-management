@@ -28,4 +28,22 @@ body.wp-admin ul.subsubsub {
 }
 body.wp-admin ul.subsubsub li a {
   color: #fff;
+}
+body.wp-admin #wpfooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  color: #50575e;
+  display: none;
+}
+body.wp-admin #wpadminbar {
+  background: #08a88a;
+}
+body.wp-admin #adminmenu,
+body.wp-admin #adminmenu .wp-submenu,
+body.wp-admin #adminmenuback,
+body.wp-admin #adminmenuwrap {
+  background-color: #0f171c;
 }/*# sourceMappingURL=dashboard_custom_styles.min.css.map */

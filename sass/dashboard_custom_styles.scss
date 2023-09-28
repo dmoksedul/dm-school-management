@@ -35,4 +35,22 @@ body.wp-admin {
       }
     }
   }
+  #wpfooter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    color: #50575e;
+    display: none;
+  }
+  #wpadminbar {
+    background: #08a88a;
+  }
+  #adminmenu,
+  #adminmenu .wp-submenu,
+  #adminmenuback,
+  #adminmenuwrap {
+    background-color: #0f171c;
+  }
 }
