@@ -220,7 +220,6 @@ function dm_image_gallery_delete_image($image_id) {
     }
 }
 
-// Shortcode for displaying the image gallery
 function dm_image_gallery_shortcode($atts) {
     ob_start();
     ?>
@@ -242,9 +241,9 @@ function dm_image_gallery_shortcode($atts) {
 
             if ($image_url) :
         ?>
-                <div class="dm-image-gallery-item">
+                <a class="dm-image-gallery-item" data-fancybox="gallery" href="<?php echo esc_url($image_url); ?>">
                     <img src="<?php echo esc_url($image_url); ?>" alt="Image">
-                </div>
+                </a>
         <?php
                 $count++;
             endif;
@@ -268,6 +267,7 @@ function dm_image_gallery_shortcode($atts) {
             border-radius: 4px;
             position: relative;
             overflow: hidden;
+            display: block; /* Make sure the images are displayed as blocks to fit the anchor */
         }
         .dm-image-gallery .dm-image-gallery-item img {
             transition: all 0.5s;
@@ -283,4 +283,3 @@ function dm_image_gallery_shortcode($atts) {
 }
 
 add_shortcode('dm_image_gallery', 'dm_image_gallery_shortcode');
-?>

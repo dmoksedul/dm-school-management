@@ -22,7 +22,7 @@ body
     <!-- sidebar area -->
     <div id="customize_side_bar">
       <ul>
-        <li><button data-target="contact_tab_editor" class="toggle-tab active">General Settings</button></li>
+        <li><button data-target="contact_tab_editor" class="toggle-tab active">General</button></li>
         <li><button data-target="header_tab_editor" class="toggle-tab">Header Area</button></li>
         <li><button data-target="footer_tab_editor" class="toggle-tab">Footer Area</button></li>
         <li><button data-target="color_setting_tab_editor" class="toggle-tab">Theme Color</button></li>
