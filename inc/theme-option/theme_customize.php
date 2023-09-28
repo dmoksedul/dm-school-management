@@ -2,7 +2,7 @@
 // Genereal functions here
 
     ?>
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(  ) . '/css/dashboard.min.css' ?>"/>
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(  ) . '/css/theme_option.min.css' ?>"/>
 
 <!-- =============================================================================
 body

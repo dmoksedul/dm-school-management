@@ -1,0 +1,38 @@
+body.wp-admin {
+  a.current {
+    background: #08a88a !important;
+  }
+  ul#adminmenu {
+    li &::before {
+      color: #fff !important;
+    }
+    a:hover {
+      background: #08a88a;
+      color: #fff;
+      .wp-menu-image.dashicons-before::before {
+        color: #fff !important;
+      }
+    }
+    .wp-has-submenu .wp-not-current-submenu .menu-top {
+      background-color: red !important;
+    }
+  }
+  #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+  #adminmenu .wp-menu-arrow,
+  #adminmenu .wp-menu-arrow div,
+  #adminmenu li.current a.menu-top,
+  #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+    background: #08a88a;
+    color: #fff;
+  }
+
+  ul.subsubsub {
+    background: #08a88a;
+    padding: 0px 10px;
+    li {
+      a {
+        color: #fff;
+      }
+    }
+  }
+}

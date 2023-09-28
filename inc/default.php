@@ -32,4 +32,14 @@ function dm_pagenav(){
         echo $pages . paginate_links($args);
         if ($max > 1 ) echo '</div><pre>';
   }
+  // Hide the WordPress admin bar for all users
+add_filter('show_admin_bar', '__return_false');
+// Hide the admin bar for specific user roles (e.g., subscribers)
+function hide_admin_bar_for_subscribers() {
+    if (current_user_can('subscriber')) {
+        show_admin_bar(false);
+    }
+}
+add_action('wp_loaded', 'hide_admin_bar_for_subscribers');
+
 ?>

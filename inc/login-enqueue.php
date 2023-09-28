@@ -5,6 +5,12 @@ function login_enqueue_register(){
 }
 add_action('login_enqueue_scripts' ,'login_enqueue_register');
 
+function dashboard_enqueue_register() {
+    // Enqueue custom stylesheet for the dashboard
+    wp_enqueue_style('custom-dashboard-styles', get_stylesheet_directory_uri() . '/css/dashboard_custom_styles.min.css', array(), '1.0.0', 'all');
+}
+add_action('admin_enqueue_scripts', 'dashboard_enqueue_register');
+
 // login logo  change
 function login_logo_change(){
     ?>

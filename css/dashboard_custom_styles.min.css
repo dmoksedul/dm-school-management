@@ -1,0 +1,31 @@
+body.wp-admin a.current {
+  background: #08a88a !important;
+}
+li body.wp-admin ul#adminmenu::before {
+  color: #fff !important;
+}
+body.wp-admin ul#adminmenu a:hover {
+  background: #08a88a;
+  color: #fff;
+}
+body.wp-admin ul#adminmenu a:hover .wp-menu-image.dashicons-before::before {
+  color: #fff !important;
+}
+body.wp-admin ul#adminmenu .wp-has-submenu .wp-not-current-submenu .menu-top {
+  background-color: red !important;
+}
+body.wp-admin #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+body.wp-admin #adminmenu .wp-menu-arrow,
+body.wp-admin #adminmenu .wp-menu-arrow div,
+body.wp-admin #adminmenu li.current a.menu-top,
+body.wp-admin #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+  background: #08a88a;
+  color: #fff;
+}
+body.wp-admin ul.subsubsub {
+  background: #08a88a;
+  padding: 0px 10px;
+}
+body.wp-admin ul.subsubsub li a {
+  color: #fff;
+}/*# sourceMappingURL=dashboard_custom_styles.min.css.map */
