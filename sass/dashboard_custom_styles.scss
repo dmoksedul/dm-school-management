@@ -3,6 +3,7 @@ body.wp-admin {
     background: #08a88a !important;
   }
   ul#adminmenu {
+    width: 100%;
     li &::before {
       color: #fff !important;
     }
@@ -27,11 +28,28 @@ body.wp-admin {
   }
 
   ul.subsubsub {
-    background: #08a88a;
-    padding: 0px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    padding: 8px 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3019607843);
+    margin-bottom: 8px;
     li {
       a {
-        color: #fff;
+        padding: 6px 20px;
+        &:hover {
+          background: #08a88a !important;
+          color: #fff !important;
+          span {
+            color: #fff !important;
+          }
+        }
+      }
+      a.current {
+        background: #08a88a !important;
+        color: #fff !important;
+        span {
+          color: #fff !important;
+        }
       }
     }
   }
@@ -46,11 +64,5 @@ body.wp-admin {
   }
   #wpadminbar {
     background: #08a88a;
-  }
-  #adminmenu,
-  #adminmenu .wp-submenu,
-  #adminmenuback,
-  #adminmenuwrap {
-    background-color: #0f171c;
   }
 }

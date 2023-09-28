@@ -103,41 +103,36 @@ function dm_image_slider_settings_page() {
         <!-- Upload image form -->
         <form method="post" action="" style="padding: 10px;
             border-radius: 12px;
-            max-width: 800px;
+            max-width: 500px;
             margin: 30px 20px;
             box-shadow: 0 0 10px 0 #00000026;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;">
-            <table class="form-table">
-                <tr style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center">
-                    <th style="text-align: center; width: 100%; font-size: 18px;line-height:22px" scope="row">Upload Image</th>
-                    <td>
-                        <input type="button" id="upload_image_button" class="button" value="Choose Image">
-                        <input type="hidden" name="slider_image" id="slider_image" value="">
-                        <div id="image_preview" style="display: none;">
+            <div class="image_upload_form">
+                <input style="margin-bottom:-5px" type="button" id="upload_image_button" class="button" value="Choose Image" required>
+                <input type="hidden" name="slider_image" id="slider_image" value="" required>
+                <?php submit_button('Upload Image', 'primary', 'upload_image'); ?>
+            </div>
+            
+            <div id="image_preview" style="display: none;">
                             <?php
                             if (!empty($uploaded_images)) {
                                 $image_url = wp_get_attachment_image_url($uploaded_images[0], 'full');
                                 if ($image_url) {
-                                    echo '<img src="' . esc_url($image_url) . '" alt="Slider Image" style="max-width:100%;">';
+                                    echo '<img style="max-width:400px" src="' . esc_url($image_url) . '" alt="Slider Image" style="max-width:100%;">';
                                 }
                             }
                             ?>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <?php submit_button('Upload Image', 'primary', 'upload_image'); ?>
+            </div>
         </form>
         <div class="admin_img_box_list">
             <!-- Display uploaded images -->
-            <div class="swiper mySwiper">
-                <h3>Slider Images</h3>
-                <div class="swiper-wrapper">
-                    <?php foreach ($uploaded_images as $image_id) : ?>
-                        <div class="swiper-slide">
+        <h3 class="title">Uploaded Image List</h3>
+            <div class="item_box">
+            <?php foreach ($uploaded_images as $image_id) : ?>
+                        <div class="list_item">
                             <?php
                             $image_url = wp_get_attachment_image_url($image_id, 'full');
                             if ($image_url) {
@@ -153,10 +148,64 @@ function dm_image_slider_settings_page() {
                             <?php } ?>
                         </div>
                     <?php endforeach; ?>
-                </div>
             </div>
         </div>
     </div>
+    <style>
+        .image_upload_form{
+            display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;margin-bottom:20px
+        }
+        .admin_img_box_list {
+            box-shadow: 0 0 10px #0000002e;
+            padding: 20px;
+            max-width: 1200px;
+            border-radius: 12px;
+        }
+        h3.title {
+            font-size: 23px;
+            margin-left: 20px;
+            border-bottom: 1px solid #00000045;
+            padding-bottom: 10px;
+        }
+        img{
+            max-width:100%;
+        }
+        .item_box {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .list_item {
+            box-shadow: 0 0 10px #0000003d;
+            margin: 10px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .list_item img {
+            max-height: 150px;
+            width: 100%;
+            height: 100%;
+        }
+        a.delete-image-button {
+            background: #08a88a !important;
+            padding: 5px 20px;
+            border-radius: 2px;
+            color: #fff !important;
+            text-decoration: none !important;
+            margin: 15px;
+        }
+    </style>
     <script>
         jQuery(document).ready(function ($) {
             var customUploader;
@@ -188,7 +237,7 @@ function dm_image_slider_settings_page() {
 
 add_action('admin_menu', 'dm_image_slider_menu');
 
-// Delete image
+// Delete image from the gallery only
 function dm_image_slider_delete_image($image_id) {
     $image_id = intval($image_id);
 
@@ -200,27 +249,10 @@ function dm_image_slider_delete_image($image_id) {
         if ($key !== false) {
             unset($uploaded_images[$key]);
             update_option('dm_image_slider_uploaded_images', $uploaded_images);
-
-            // Delete the image from the media library
-            wp_delete_attachment($image_id, true); // Set true to permanently delete the file
-
-            // Optionally, you can delete any image sizes associated with the image
-            $metadata = wp_get_attachment_metadata($image_id);
-            if ($metadata) {
-                foreach ($metadata['sizes'] as $size => $info) {
-                    $file = $info['file'];
-                    $path = path_join(wp_upload_dir()['basedir'], $file);
-                    if (file_exists($path)) {
-                        unlink($path);
-                    }
-                }
-            }
-
-            // Optionally, you can delete any additional metadata associated with the image
-            wp_delete_post($image_id, true); // Set true to permanently delete the post
         }
     }
 }
+
 
 // Handle image uploads (Updated)
 function dm_image_slider_handle_upload() {

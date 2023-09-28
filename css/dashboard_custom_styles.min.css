@@ -1,6 +1,9 @@
 body.wp-admin a.current {
   background: #08a88a !important;
 }
+body.wp-admin ul#adminmenu {
+  width: 100%;
+}
 li body.wp-admin ul#adminmenu::before {
   color: #fff !important;
 }
@@ -23,11 +26,28 @@ body.wp-admin #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
   color: #fff;
 }
 body.wp-admin ul.subsubsub {
-  background: #08a88a;
-  padding: 0px 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 2px;
+  padding: 8px 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3019607843);
+  margin-bottom: 8px;
 }
 body.wp-admin ul.subsubsub li a {
-  color: #fff;
+  padding: 6px 20px;
+}
+body.wp-admin ul.subsubsub li a:hover {
+  background: #08a88a !important;
+  color: #fff !important;
+}
+body.wp-admin ul.subsubsub li a:hover span {
+  color: #fff !important;
+}
+body.wp-admin ul.subsubsub li a.current {
+  background: #08a88a !important;
+  color: #fff !important;
+}
+body.wp-admin ul.subsubsub li a.current span {
+  color: #fff !important;
 }
 body.wp-admin #wpfooter {
   position: absolute;
@@ -40,10 +60,4 @@ body.wp-admin #wpfooter {
 }
 body.wp-admin #wpadminbar {
   background: #08a88a;
-}
-body.wp-admin #adminmenu,
-body.wp-admin #adminmenu .wp-submenu,
-body.wp-admin #adminmenuback,
-body.wp-admin #adminmenuwrap {
-  background-color: #0f171c;
 }/*# sourceMappingURL=dashboard_custom_styles.min.css.map */
