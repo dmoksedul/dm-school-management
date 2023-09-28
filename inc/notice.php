@@ -80,18 +80,20 @@ function dm_notice_plugin_page() {
 
     // Display the form for adding DM notices
     ?>
+    <div id='dashboard_notice_box'>
     <div class="wrap">
-        <h2>DM Notice Plugin</h2>
-        <h3>Add a New DM Notice</h3>
-        <form method="post" enctype="multipart/form-data">
+        <h2 style="text-align:center;margin:10px 0px;font-weight:bold; color: #08A88A">Notice</h2>
+        <!-- <h3>Add a New Notice</h3> -->
+        <form class="upload_form_box" method="post" enctype="multipart/form-data">
             <input type="file" name="dm_notice_pdf" required>
-            <input type="text" name="dm_notice_title" placeholder="DM Notice Title" required>
-            <input type="submit" name="add_dm_notice" value="Add DM Notice">
+            <input type="text" name="dm_notice_title" placeholder="Enter Notice Title" required>
+            <input type="submit" name="add_dm_notice" value="Add Notice">
             <?php wp_nonce_field('add_dm_notice', 'add_dm_notice_nonce'); ?>
         </form>
     </div>
     <hr>
-    <h3>Uploaded DM Notices</h3>
+    <h3>Uploaded Notices List:</h3>
+    <div class="table_list">
     <table class="wp-list-table widefat fixed striped">
         <thead>
             <tr>
@@ -121,10 +123,10 @@ function dm_notice_plugin_page() {
                     <td><a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="dm-notice-link"><?php echo esc_html($dm_notice->post_title); ?></a></td>
                     <td><?php echo esc_html($publish_date); ?></td>
                     <td>
-                        <a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="button button-primary">View</a>
+                        <a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="button button-primary view_button">View</a>
                         <form method="post" style="display:inline;">
                             <input type="hidden" name="delete_dm_notice_id" value="<?php echo esc_attr($dm_notice->ID); ?>">
-                            <input type="submit" name="delete_dm_notice" value="Delete" class="button button-danger">
+                            <input class="delete_button" type="submit" name="delete_dm_notice" value="Delete" class="button button-danger">
                             <?php wp_nonce_field('delete_dm_notice_' . $dm_notice->ID, 'delete_dm_notice_nonce'); ?>
                         </form>
                     </td>
@@ -135,21 +137,60 @@ function dm_notice_plugin_page() {
             ?>
         </tbody>
     </table>
-    <div id="edit-dm-notice-popup" class="dm-notice-popup">
-        <div class="dm-notice-popup-content">
-            <span class="close-popup">&times;</span>
-            <h3>Edit DM Notice Title</h3>
-            <form id="edit-dm-notice-form" method="post">
-                <input type="hidden" id="edit-dm-notice-id" name="edit_dm_notice_id">
-                <input type="text" id="new-title" name="new_title" placeholder="New Title" required>
-                <input type="submit" name="edit_dm_notice" value="Save Change" class="button button-primary">
-                <?php wp_nonce_field('edit_dm_notice_', 'edit_dm_notice_nonce'); ?>
-            </form>
-        </div>
+    </div>
     </div>
 
     <style>
         /* Styles for the popup and table */
+        div#dashboard_notice_box {
+            border: 1px solid #0202021f;
+            padding: 20px;
+            background: #fff;
+            max-width: 1200px;
+            margin: auto;
+            box-shadow: 0 0 10px #0000002e;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding-top: 0px;
+        }
+        form.upload_form_box {
+            padding: 30px;
+            box-shadow: 0 0 10px #0000002e;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .wrap{
+            box-shadow:none !important;
+            padding:0px !important;
+        }
+        .table_list {
+            height: 500px;
+            overflow-y: scroll;
+        }
+        form.upload_form_box input {
+            display: block;
+            width: 100%;
+            border: 1px solid #00000033;
+            padding: 3px 10px;
+        }
+        form.upload_form_box input[type="file"]{
+            border:none;
+            max-width:200px;
+        }
+        form.upload_form_box input[type="submit"] {
+            background: #08a88a;
+            color: #fff;
+            width: 250px;
+            padding: 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
         .dm-notice-popup {
             display: none;
             position: fixed;
@@ -177,19 +218,33 @@ function dm_notice_plugin_page() {
             font-size: 20px;
             cursor: pointer;
         }
-
-        tbody {
-            text-align: left;
+        table.wp-list-table thead tr th:nth-child(3) {
+            width: 150px;
         }
-
+        table.wp-list-table thead tr th:nth-child(4) {
+            width: 250px;
+        }
+        table.wp-list-table tbody tr td:nth-child(2) {
+            text-align:left;
+        }
         .wp-list-table th {
-            text-align: left;
+            border-right: 1px solid #00000040;
+            border-bottom: 1px solid #00000040;
+            text-align: center;
+            background: #08a88a;
+            color: #fff !important;
+            font-weight: bold;
+            font-size: 16px !important;
         }
-
         .wp-list-table td {
             vertical-align: middle;
+            border-right: 1px solid #00000040;
+            border-bottom: 1px solid #00000040;
+            text-align: center;
         }
-
+        .wp-list-table tr:last-child td {
+            border-bottom:none;
+        }
         .wp-list-table td:first-child {
             text-align: center;
         }
@@ -201,6 +256,30 @@ function dm_notice_plugin_page() {
 
         .shortcode_setting {
             margin-top: 100px;
+        }
+        a.button.view_button {
+            border: 1px solid #08A88A;
+            color: #fff;
+            padding: 0px 15px;
+            border-radius: 1px;
+            background: #08A88A;
+        }
+        .button.view_button:hover{
+            color: #08A88A;
+            background: #fff;
+        }
+        .delete_button {
+            background: #f6f7f7;
+            border-color: red;
+            box-shadow: none;
+            color: red;
+            border: 1px solid;
+            padding: 4px 10px;
+        }
+        .delete_button:hover{
+            background:red;
+            color:#fff;
+            cursor:pointer;
         }
     </style>
     <script>

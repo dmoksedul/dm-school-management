@@ -32,7 +32,7 @@ body.wp-admin {
     border-radius: 2px;
     padding: 8px 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3019607843);
-    margin-bottom: 8px;
+    margin: 20px 2px;
     li {
       a {
         padding: 6px 20px;
@@ -64,5 +64,43 @@ body.wp-admin {
   }
   #wpadminbar {
     background: #08a88a;
+  }
+  .wrap {
+    box-shadow: 0 0 10px #0000001f;
+    border-radius: 12px;
+    padding: 30px;
+    background: #fff;
+    margin-top: 20px;
+    padding-top: 10px;
+    a.page-title-action,
+    input#search-submit,
+    input[type="submit"],
+    button.button.media-button.select-mode-toggle-button {
+      background: #08a88a !important;
+      color: #fff !important;
+      border-color: #08a88a !important;
+      &:hover {
+        background: #fff !important;
+        color: #08a88a !important;
+      }
+    }
+  }
+  .updated {
+    width: 200px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    justify-content: center;
+  }
+  body.wp-admin ul#adminmenu {
+    width: 100%;
+    background: #0f171c;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  li#wp-admin-bar-wp-logo {
+    display: none;
   }
 }
