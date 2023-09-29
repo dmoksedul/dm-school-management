@@ -40,6 +40,9 @@ include_once('inc/governing_member.php');
 // academic_details Register
 include_once('inc/academic_details.php');
 
+// officers_employees Register
+include_once('inc/staff_members.php');
+
 // message_post Register
 include_once('inc/message_post.php');
 

@@ -1,8 +1,8 @@
 <?php
-// Register a custom post type for DM Governing Body Members
-function create_dm_gbm_post_type() {
+// Register a custom post type for DM Staff Members
+function create_dm_staff_members_post_type() {
     $labels = array(
-        'name' => 'DM Governing Body Members',
+        'name' => 'DM Staff Members',
         'singular_name' => 'Member',
         'add_new' => 'Add New Member',
         'add_new_item' => 'Add New Member',
@@ -20,44 +20,41 @@ function create_dm_gbm_post_type() {
         'public' => true,
         'menu_icon' => 'dashicons-businessman',
         'menu_position' => 5,
-        'supports' => array('title', 'editor', 'thumbnail'), // Add 'thumbnail' support for images
+        'supports' => array('title', 'editor', 'thumbnail'),
     );
 
-    register_post_type('governing-member', $args);
+    register_post_type('staff-members', $args);
 }
-add_action('init', 'create_dm_gbm_post_type');
+add_action('init', 'create_dm_staff_members_post_type');
 
-function hide_dm_gbm_menu_item() {
-    remove_menu_page('edit.php?post_type=governing-member');
+function hide_dm_staff_members_menu_item() {
+    remove_menu_page('edit.php?post_type=staff-members');
 }
-add_action('admin_menu', 'hide_dm_gbm_menu_item');
+add_action('admin_menu', 'hide_dm_staff_members_menu_item');
 
-// Add a menu item for the plugin in the WordPress admin menu
-function add_dm_gbm_plugin_menu() {
+function add_dm_staff_members_plugin_menu() {
     add_menu_page(
-        'DM Governing Members',
-        'DM Governing Members',
+        'DM Staff Members',
+        'DM Staff Members',
         'manage_options',
-        'dm_gbm_plugin',
-        'dm_gbm_plugin_page',
+        'dm_staff_members_plugin',
+        'dm_staff_members_page',
         'dashicons-businessman',
         6
     );
 
-    // Add a submenu item under the DM Governing Body Members menu
     add_submenu_page(
-        'dm_gbm_plugin',
+        'dm_staff_members_plugin',
         'Manage Members',
         'Manage Members',
         'manage_options',
-        'dm_gbm_manage_members',
-        'dm_gbm_plugin_page'
+        'dm_staff_members_manage_members',
+        'dm_staff_members_page'
     );
 }
-add_action('admin_menu', 'add_dm_gbm_plugin_menu');
+add_action('admin_menu', 'add_dm_staff_members_plugin_menu');
 
-// Create the admin page content
-function dm_gbm_plugin_page() {
+function dm_staff_members_page() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['add_member']) && check_admin_referer('add_member', 'add_member_nonce')) {
             $member_name = sanitize_text_field($_POST['member_name']);
@@ -67,11 +64,10 @@ function dm_gbm_plugin_page() {
                 $post_id = wp_insert_post(array(
                     'post_title' => $member_name,
                     'post_content' => $member_designation,
-                    'post_type' => 'governing-member',
+                    'post_type' => 'staff-members',
                     'post_status' => 'publish',
                 ));
 
-                // Handle image upload
                 if ($post_id && isset($_FILES['member_image']) && !empty($_FILES['member_image']['name'])) {
                     require_once ABSPATH . 'wp-admin/includes/file.php';
                     require_once ABSPATH . 'wp-admin/includes/media.php';
@@ -85,7 +81,6 @@ function dm_gbm_plugin_page() {
             }
         }
 
-        // Handle member deletion
         if (isset($_POST['delete_member']) && check_admin_referer('delete_member', 'delete_member_nonce')) {
             $member_id = intval($_POST['member_id']);
             if ($member_id > 0) {
@@ -94,16 +89,14 @@ function dm_gbm_plugin_page() {
         }
     }
 
-    // Display the form for adding DM Governing Body Members
     ?>
     <div id="dashboard_notice_box">
         <div class="wrap">
-        <h2 style="text-align:center;margin:10px 0px;font-weight:bold; color: #08A88A">Governing Body Members</h2>
-            <!-- <h3>Add a New Member</h3> -->
+            <h2 style="text-align:center;margin:10px 0px;font-weight:bold; color: #08A88A">Staff Members</h2>
             <form class="upload_form_box" method="post" enctype="multipart/form-data">
                 <input type="text" name="member_name" placeholder="Member Name" required>
                 <input type="text" name="member_designation" placeholder="Designation" required>
-                <input type="file" name="member_image" accept="image/*"> <!-- Image upload field -->
+                <input type="file" name="member_image" accept="image/*">
                 <input type="submit" name="add_member" value="Add Member">
                 <?php wp_nonce_field('add_member', 'add_member_nonce'); ?>
             </form>
@@ -116,14 +109,14 @@ function dm_gbm_plugin_page() {
                             <th>No.</th>
                             <th>Name</th>
                             <th>Designation</th>
-                            <th>Image</th> <!-- Display image column -->
-                            <th>Action</th> <!-- Action column for deleting -->
+                            <th>Image</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $members = get_posts(array(
-                            'post_type' => 'governing-member',
+                            'post_type' => 'staff-members',
                             'posts_per_page' => -1,
                         ));
 
@@ -133,7 +126,7 @@ function dm_gbm_plugin_page() {
                             $member_id = $member->ID;
                             $member_name = esc_html($member->post_title);
                             $member_designation = esc_html(get_post_field('post_content', $member));
-                            $member_image = get_the_post_thumbnail_url($member_id, 'thumbnail'); // Get thumbnail image URL
+                            $member_image = get_the_post_thumbnail_url($member_id, 'thumbnail');
                             ?>
                             <tr>
                                 <td><?php echo esc_html($counter); ?></td>
@@ -165,7 +158,6 @@ function dm_gbm_plugin_page() {
     </div>
 
     <style>
-        /* Styles for the popup and table */
         div#dashboard_notice_box {
             border: 1px solid #0202021f;
             padding: 20px;
@@ -305,23 +297,21 @@ function dm_gbm_plugin_page() {
     <?php
 }
 
-// Shortcode for displaying the list of DM Governing Body Members
-// Shortcode for displaying the list of DM Governing Body Members
-function dm_gbm_list_shortcode() {
-    $output = '<div class="dm-gbm-list">';
-    $output .= '<table class="dm-gbm-list-table">';
+function dm_staff_members_list_shortcode() {
+    $output = '<div class="dm-staff-members-list">';
+    $output .= '<table class="dm-staff-members-list-table">';
     $output .= '<thead>';
     $output .= '<tr>';
-    $output .= '<th>No.</th>'; // Row number column
+    $output .= '<th>No.</th>';
     $output .= '<th>Name</th>';
     $output .= '<th>Designation</th>';
-    $output .= '<th>Image</th>'; // Image column
+    $output .= '<th>Image</th>';
     $output .= '</tr>';
     $output .= '</thead>';
     $output .= '<tbody>';
 
     $members = get_posts(array(
-        'post_type' => 'governing-member',
+        'post_type' => 'staff-members',
         'posts_per_page' => -1,
     ));
 
@@ -330,9 +320,9 @@ function dm_gbm_list_shortcode() {
     foreach ($members as $member) {
         $member_name = esc_html($member->post_title);
         $member_designation = esc_html(get_post_field('post_content', $member));
-        $member_image = get_the_post_thumbnail_url($member->ID, 'thumbnail'); // Get thumbnail image URL
+        $member_image = get_the_post_thumbnail_url($member->ID, 'thumbnail');
         $output .= '<tr>';
-        $output .= '<td>' . esc_html($counter) . '</td>'; // Row number
+        $output .= '<td>' . esc_html($counter) . '</td>';
         $output .= '<td>' . $member_name . '</td>';
         $output .= '<td>' . $member_designation . '</td>';
         $output .= '<td>';
@@ -350,52 +340,63 @@ function dm_gbm_list_shortcode() {
     $output .= '</table>';
     $output .= '</div>';
 
-    // Add CSS styles for the table design
     $output .= '<style>';
-    $output .= '.dm-gbm-list-table {';
+    $output .= '.dm-staff-members-list-table {';
     $output .= '    width: 100%;';
     $output .= '    border-collapse: collapse;';
     $output .= '}';
-    $output .= '.dm-gbm-list-table th, .dm-gbm-list-table td {';
+    $output .= '.dm-staff-members-list-table th, .dm-staff-members-list-table td {';
     $output .= '    border: 1px solid #ddd;';
     $output .= '    padding: 8px;';
     $output .= '    text-align: left;';
     $output .= '}';
-    $output .= '.dm-gbm-list-table th {';
+    $output .= '.dm-staff-members-list-table th {';
     $output .= '    background-color: #f2f2f2;';
     $output .= '}';
     $output .= '</style>';
-	?>
-	<style>
-		table.dm-gbm-list-table thead tr th:nth-child(1) {
-    width: 100px;
-    text-align: center;
-}
-table.dm-gbm-list-table thead tr th:nth-child(3) {
-    width: 200px;
-    text-align: center;
-}
-		table.dm-gbm-list-table thead tr th:nth-child(4) {
-    width: 200px;
-    text-align: center;
-}
-		table.dm-gbm-list-table tbody tr td:nth-child(1) {
-
-    text-align: center;
-}
-				table.dm-gbm-list-table tbody tr td:nth-child(3) {
-
-    text-align: center;
-}
-				table.dm-gbm-list-table tbody tr td:nth-child(4) {
-
-    text-align: center;
-}
-</style>
-<?php
+    ?>
+    <style>
+        table.dm-staff-members-list-table thead tr th:nth-child(1) {
+            width: 100px;
+            text-align: center;
+        }
+        table.dm-staff-members-list-table thead tr th:nth-child(3) {
+            width: 200px;
+            text-align: center;
+        }
+        table.dm-staff-members-list-table thead tr th:nth-child(4) {
+            width: 200px;
+            text-align: center;
+        }
+        table.dm-staff-members-list-table tbody tr td:nth-child(1) {
+            text-align: center;
+        }
+        table.dm-staff-members-list-table tbody tr td:nth-child(3) {
+            text-align: center;
+        }
+        table.dm-staff-members-list-table tbody tr td:nth-child(4) {
+            text-align: center;
+        }
+    </style>
+    <?php
     return $output;
 }
 
-add_shortcode('dm_gbm_list', 'dm_gbm_list_shortcode');
+add_shortcode('dm_staff_members_list', 'dm_staff_members_list_shortcode');
 
+// Rename the DM Governing Body Members to DM Staff Members
+function rename_dm_gbm_to_dm_staff_members($translated_text, $text, $domain) {
+    if ($domain === 'default') {
+        if ($text === 'DM Governing Body Members') {
+            $translated_text = 'DM Staff Members';
+        } elseif ($text === 'Governing Body Members') {
+            $translated_text = 'Staff Members';
+        } elseif ($text === 'Governing Member') {
+            $translated_text = 'Staff Member';
+        }
+    }
+    return $translated_text;
+}
+add_filter('gettext', 'rename_dm_gbm_to_dm_staff_members', 20, 3);
+add_filter('ngettext', 'rename_dm_gbm_to_dm_staff_members', 20, 3);
 ?>
