@@ -71,15 +71,13 @@ button#scrollToTopButton {
     width: 150px;
     height: 100%;
     left: 99%;
-    background: url(../img/bg-right.png);
+    background: url(../img/bg-left.png);
     top: 0px;
     z-index: 9999;
     opacity: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-repeat: repeat-y;
     z-index: -1;
     pointer-events: none;
+    transform: rotate(-180deg);
   }
   &::before {
     content: "";
@@ -91,9 +89,6 @@ button#scrollToTopButton {
     top: 0px;
     z-index: 9999;
     opacity: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-repeat: repeat-y;
     z-index: -1;
     pointer-events: none;
   }
