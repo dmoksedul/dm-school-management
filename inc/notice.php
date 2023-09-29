@@ -206,7 +206,7 @@ function dm_notice_plugin_page() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: var(--dm_white_color);
+            background-color: #ffffff;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
@@ -362,7 +362,7 @@ function dm_notice_list_shortcode($atts) {
         $publish_date = get_the_date('d-m-Y', $dm_notice);
         $output .= '<tr>';
         $output .= '<td>' . esc_html($counter) . '</td>'; // Row number
-        $output .= '<td style="text-align:left"><a href="' . esc_url($pdf_url) . '" target="_blank" class="dm-notice-link" style="color: var(--dm_text_color); text-decoration: none;font-size: 16px;">' . esc_html($dm_notice->post_title) . '</a></td>';
+        $output .= '<td style="text-align:left"><a href="' . esc_url($pdf_url) . '" target="_blank" class="dm-notice-link" style="color: #000000; text-decoration: none;font-size: 16px;">' . esc_html($dm_notice->post_title) . '</a></td>';
         $output .= '<td>' . esc_html($publish_date) . '</td>';
         $output .= '<td><a href="' . esc_url($pdf_url) . '" download class="button button-primary">Download</a></td>';
         $output .= '</tr>';
@@ -386,16 +386,16 @@ function dm_notice_list_shortcode($atts) {
     $output .= '    border-bottom: 1px solid #cbcbcb;border-right: 1px solid #cbcbcb;';
     $output .= '}';
     $output .= '.dm-notice-list-table th {';
-    $output .= '    color:var(--dm_text_color);font-weight:bold';
+    $output .= '    color:#000000;font-weight:bold';
     $output .= '}';
     $output .= '.dm-notice-link {';
     $output .= '    text-decoration: none;';
     $output .= '}';
 	$output .= '.button.button-primary {
-    background-color: var(--dm_button_color);
+    background-color: #ffffff;
     border-radius: 25px;
-    color: var(--dm_white_color);
-    border: none;
+    color: #056839;
+    border: 1px solid #056839;
     padding: 2px 10px;
     padding-top: 6px;
     border-radius: 25px;
@@ -405,9 +405,9 @@ function dm_notice_list_shortcode($atts) {
     text-transform: capitalize}';
 	$output .= '
 	.button.button-primary:hover {
-		background-color: var(--dm_button_hover_color);
-		color: var(--dm_white_color);
-		border-color:#006a4e;
+		background-color: #056839;
+		color: #ffffff;
+		border-color:#056839;
 	} ';
     $output .= '.date-column {';
     $output .= '    width: 20%; /* Set the width of the date column */';
@@ -496,15 +496,15 @@ function dm_notice_list_title_shortcode($atts) {
     $output .= '    border-bottom: 1px solid #cbcbcb; border-right: 1px solid #cbcbcb;';
     $output .= '}';
     $output .= '.dm-notice-list-table th {';
-    $output .= '    color: var(--dm_text_color); font-weight: bold;';
+    $output .= '    color: #000000; font-weight: bold;';
     $output .= '}';
     $output .= '.dm-notice-link-title {';
-    $output .= '    text-decoration: none;color:var(--dm_text_color);';
+    $output .= '    text-decoration: none;color:#000000;';
     $output .= '}';
 	$output .= '.button.button-primary {
-    background-color: var(--dm_white_color);
+    background-color: #ffffff;
     border-radius: 25px;
-    color: var(--dm_text_color);
+    color: #000000;
     border: 1px solid #cbcbcb;
     padding: 2px 10px;
     padding-top: 6px;
@@ -516,13 +516,13 @@ function dm_notice_list_title_shortcode($atts) {
 	$output .= '
 	.button.button-primary:hover {
 		background-color: #006a4e;
-		color: var(--dm_white_color);
+		color: #ffffff;
 		border-color:#006a4e;
 	} ';
     $output .= '.newAnimate {';
     $output .= '    background: red;';
     $output .= '    padding: 0px 8px;';
-    $output .= '    color: var(--dm_white_color);';
+    $output .= '    color: #ffffff;';
     $output .= '    border-radius: 100%;';
     $output .= '    margin-right: 5px;';
     $output .= '    font-size: 10px;';

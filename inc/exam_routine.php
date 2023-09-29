@@ -207,7 +207,7 @@ function dm_exam_routine_plugin_page() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: var(--dm_white_color);
+            background-color: #ffffff;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
@@ -394,10 +394,10 @@ function dm_exam_routine_list_shortcode($atts) {
     $output .= '    text-decoration: none;';
     $output .= '}';
 	$output .= '.button.button-primary {
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 25px;
-    color: #000;
-    border: 1px solid #cbcbcb;
+    color: #056839;
+    border: 1px solid #056839;
     padding: 2px 10px;
     padding-top: 6px;
     border-radius: 25px;
@@ -407,9 +407,9 @@ function dm_exam_routine_list_shortcode($atts) {
     text-transform: capitalize}';
 	$output .= '
 	.button.button-primary:hover {
-		background-color: #006a4e;
-		color: #fff;
-		border-color:#006a4e;
+		background-color: #056839;
+		color: #ffffff;
+		border-color:#056839;
 	} ';
     $output .= '.date-column {';
     $output .= '    width: 20%; /* Set the width of the date column */';

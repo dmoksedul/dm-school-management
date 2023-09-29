@@ -195,7 +195,7 @@ function dm_gbm_plugin_page() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: var(--dm_white_color);
+            background-color: #ffffff;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }

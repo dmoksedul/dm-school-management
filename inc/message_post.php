@@ -4,7 +4,7 @@ function dm_message() {
   register_post_type('message',
     array(
       'labels' => array(
-        'name' => __('Messages'),
+        'name' => __('DM Messages'),
         'singular_name' => __('Message'),
         'add_new' => __('Add New Message'),
         'add_new_item' => __('Add New Message'),

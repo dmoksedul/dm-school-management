@@ -4,7 +4,7 @@ function custom_history() {
   register_post_type('history',
     array(
       'labels' => array(
-        'name' => __('History'),             // Change "Messages" to "History"
+        'name' => __('DM History'),             // Change "Messages" to "History"
         'singular_name' => __('History'),    // Change "Message" to "History"
         'add_new' => __('Add New History'),  // Change "Add New Message" to "Add New History"
         'add_new_item' => __('Add New History'),
@@ -27,10 +27,10 @@ function custom_history() {
     )
   );
 
-  // Add custom taxonomy 'designation' to the custom post type 'history'
-  register_taxonomy('designation', 'history', array(
-    'label' => __('Designation'),
-    'rewrite' => array('slug' => 'designation'),
+  // Add custom taxonomy 'category' to the custom post type 'history'
+  register_taxonomy('category', 'history', array(
+    'label' => __('category'),
+    'rewrite' => array('slug' => 'category'),
     'hierarchical' => true,
     'show_admin_column' => true,
   ));
@@ -48,8 +48,8 @@ add_action('init', 'custom_history');
     $atts = shortcode_atts(array(
         'length' => 100,           // Default description length
         'limit' => -1,             // Default to display all history posts
-        'designation' => '',       // Default to show history posts from all designations
-        'designation_output' => true,  // Default to true, meaning it will show the designation
+        'category' => '',       // Default to show history posts from all designations
+        'designation_output' => true,  // Default to true, meaning it will show the category
     ), $atts);
   
     // Query parameters
@@ -59,11 +59,11 @@ add_action('init', 'custom_history');
         'tax_query' => array(),
     );
   
-    if (!empty($atts['designation'])) {
+    if (!empty($atts['category'])) {
         $args['tax_query'][] = array(
-            'taxonomy' => 'designation',
+            'taxonomy' => 'category',
             'field' => 'slug',
-            'terms' => $atts['designation'],
+            'terms' => $atts['category'],
         );
     }
   
@@ -88,11 +88,11 @@ add_action('init', 'custom_history');
                 </div>
                                   <!-- <?php
                 if ($atts['designation_output']) {
-                    $terms = get_the_terms(get_the_ID(), 'designation');
+                    $terms = get_the_terms(get_the_ID(), 'category');
                     if ($terms && !is_wp_error($terms)) {
-                        echo '<div class="designation">';
+                        echo '<div class="category">';
                         foreach ($terms as $term) {
-                            echo '<span class="designation-term">' . esc_html($term->name) . '</span>';
+                            echo '<span class="category-term">' . esc_html($term->name) . '</span>';
                         }
                         echo '</div>';
                     }

@@ -23,8 +23,8 @@ function register_dm_teacher_post_type() {
         'labels' => $labels,
         'public' => true,
         'has_archive' => false,
-        'supports' => array('title', 'thumbnail',),
-        'rewrite' => array('slug' => 'dm_teachers'),
+        'supports' => array('title', 'thumbnail', 'editor',),
+        'rewrite' => array('slug' => 'teachers'),
         'menu_icon' => 'dashicons-buddicons-buddypress-logo', // Fallback Dashicon
 		'menu_position' => 5, 
     );
