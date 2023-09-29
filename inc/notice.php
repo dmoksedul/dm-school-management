@@ -378,7 +378,7 @@ function dm_notice_list_shortcode($atts) {
     $output .= '.dm-notice-list-table {';
     $output .= '    width: 100%;';
     $output .= '    border-collapse: collapse;';
-    $output .= '    margin-top: 20px;border:1px solid #00000017;';
+    $output .= '    margin-top: 0px;border:1px solid #00000017;';
     $output .= '}';
     $output .= '.dm-notice-list-table th, .dm-notice-list-table td {';
     $output .= '    padding: 10px;';

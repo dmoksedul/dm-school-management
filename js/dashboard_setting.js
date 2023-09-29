@@ -75,6 +75,20 @@
           });
 
       });
+      jQuery(document).ready(function($) {
+          $('#upload-mobile-logo-button').click(function() {
+              var image = wp.media({ title: 'Upload Image', multiple: false }).open()
+                  .on('select', function(e) {
+                      var uploadedImage = image.state().get('selection').first();
+                      var imageSrc = uploadedImage.toJSON().url;
+                      $('#mobile_logo_image').attr('src', imageSrc);
+                      $('input[name="dm_mobile_logo"]').val(imageSrc);
+                      // Show the "Restore Default" button
+                      $('#restore-mobile-logo-button').show();
+                  });
+          });
+
+      });
     //   login logo
       jQuery(document).ready(function($) {
           $('#upload_login_logo_button').click(function() {

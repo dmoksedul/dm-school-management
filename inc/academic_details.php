@@ -233,7 +233,7 @@ function display_dm_academic_details_list($atts) {
         if (is_array($dm_academic_links) && !empty($dm_academic_links)) {
             echo '<ul class="dm-academic-links" style="padding:0px">';
             foreach ($dm_academic_links as $link) {
-                echo '<li style="list-style:none;font-weight:500;margin-bottom:2px;"><a class="dm-acd_link" href="' . esc_url($link['address']) . '"><i class="fas fa-caret-right"></i> ' . esc_html($link['label']) . '</a></li>';
+                echo '<li style="list-style:none;font-weight:500;margin-bottom:2px;"><a style="color:#000 !important" class="dm-acd_link" href="' . esc_url($link['address']) . '"><i class="fas fa-caret-right"></i> ' . esc_html($link['label']) . '</a></li>';
             }
             echo '</ul>';
         }
@@ -298,6 +298,9 @@ function display_dm_academic_details_list($atts) {
         @media screen and (max-width:640px){
             .dm-elementor-page-title h1{
             width:94%;
+        }
+        .dm-footer_about_box a:hover{
+            color: #056839 !important;
         }
     ';
     echo '</style>';

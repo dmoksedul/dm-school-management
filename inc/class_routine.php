@@ -384,7 +384,7 @@ function dm_class_routine_list_shortcode($atts) {
     $output .= '.dm-class-routine-list-table {';
     $output .= '    width: 100%;';
     $output .= '    border-collapse: collapse;';
-    $output .= '    margin-top: 20px;border:1px solid #00000017;';
+    $output .= '    margin-top: 0px;border:1px solid #00000017;';
     $output .= '}';
     $output .= '.dm-class-routine-list-table th, .dm-class-routine-list-table td {';
     $output .= '    padding: 10px;';

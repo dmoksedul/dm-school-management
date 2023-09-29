@@ -103,6 +103,22 @@ body
                       <div class="ds_banner_area"><img src="<?php echo esc_attr(get_option('dm_header_banner', '/img/banner.png')); ?>" id="banner_image"></div>
                       <button type="button" id="restore-default-button">Restore Default</button>
                       <br><br><br>
+                      <h4>Mobile Logo</h4>
+                      <!-- Add the mobile logo upload field -->
+                        <div id="mobile_logo">
+                          <div class="mobile_logo_upload_box">
+                              <input type="button" class="button-secondary ds_banner_area_upload_btn" value="Upload Mobile Logo" id="upload-mobile-logo-button">
+                              <span>or</span>
+                              <input type="text" class="mobile_logo_upload_url" placeholder="Enter your mobile logo URL" name="dm_mobile_logo" value="<?php echo esc_attr(get_option('dm_mobile_logo', get_template_directory_uri() . '/img/mobile-logo.png')); ?>">
+                          </div>
+
+                          <!-- Display the mobile logo -->
+                          <div class="ds_mobile_logo">
+                              <img src="<?php echo esc_attr(get_option('dm_mobile_logo', get_template_directory_uri() . '/img/mobile-logo.png')); ?>" id="mobile_logo_image">
+                          </div>
+                          
+                          <button type="button" id="restore-mobile-logo-button">Restore Default</button>
+                        </div>
                         <h4>Header Color</h4>
                       <!-- color area color -->
                       <div class="color_main_box">
@@ -328,7 +344,7 @@ body
                     <div>
                       <!-- ================================================================================================================== -->
                       <input type="hidden" name="action" value="update">
-                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color, dm_menu_color, dm_login_logo">
+                      <input type="hidden" name="page_options" value="address-info, email-info, phone-number, dm_facebook_username, dm_instagram_username, dm_twitter_username, dm_linkedin_username, dm_whatsapp_link, dm_youtube_username,dm_tiktok_username,dm_telegram_link, dm_header_banner,footer_description, footer_facebook_page_username, footer_copyright_text, dm_primary_color, dm_bg_color, dm_banner_color, dm_secondary_color, dm_heading_color, dm_text_color, dm_link_color, dm_link_hover_color, dm_button_color, dm_button_hover_color, dm_button_bg_color, dm_button_bg_hover_color, dm_menu_bg_color, dm_top_header_color, dm_menu_color, dm_login_logo, dm_mobile_logo">
                       <input class="save_yes_btn" type="submit" name="submit" value="<?php _e('Yes', 'dmoksedul') ?>">
 
                       <button type="button" class="save_no_btn">Cancel</button>
@@ -370,7 +386,15 @@ jQuery(document).ready(function($) {
               // Hide the "Restore Default" button
               $(this).hide();
           });
-
+          // Handle the "Restore Default" button click for the mobile logo
+          $('#restore-mobile-logo-button').click(function() {
+              // Set the input value to the default mobile logo URL
+              $('input[name="dm_mobile_logo"]').val('<?php echo get_template_directory_uri() . "/img/mobile-logo.png"; ?>');
+              // Show the default mobile logo
+              $('#mobile_logo_image').attr('src', '<?php echo get_template_directory_uri() . "/img/mobile-logo.png"; ?>');
+              // Hide the "Restore Default" button
+              $(this).hide();
+          });
       });
 </script>
 <script src="<?php echo get_template_directory_uri() . '/js/dashboard_setting.js'; ?>"></script>

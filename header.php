@@ -199,6 +199,16 @@
         <!-- navbar area start -->
         <nav id="dm_navbar_area">
             <div class="container">
+                <div id="dm_mobile_logo">
+                    <!-- Display the logo -->
+                <?php $logoUrl = get_option('dm_mobile_logo', '/img/mobile-logo.png'); ?>
+                <?php if (!empty($logoUrl)) : ?>
+                    <img src="<?php echo esc_url($logoUrl); ?>" alt="Logo">
+                <?php else : ?>
+                    <!-- Display the default logo if no custom logo is set -->
+                    <img src="<?php echo get_template_directory_uri() . '/img/mobile-logo.png'; ?>" alt="Logo">
+                <?php endif; ?>
+                </div>
                 <?php
         wp_nav_menu(array(
             'theme_location' => 'header_menu',

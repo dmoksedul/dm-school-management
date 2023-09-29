@@ -585,7 +585,7 @@ function display_dm_teachers_slider($atts) {
     echo '
     /* dm_teacher box */
     .dm_teacher_photo img {
-        max-height:280px !important;
+        max-height:275px !important;
     }
     
     @media screen and (max-width:1024px){
@@ -594,9 +594,19 @@ function display_dm_teachers_slider($atts) {
     }
     }
 
+    @media screen and (max-width:650px){
+        .dm_teacher_photo img {
+            min-height:640px;
+        }
+    }
     @media screen and (max-width:540px){
         .dm_teacher_photo img {
-            min-height:450px;
+            min-height:400px;
+        }
+    }
+    @media screen and (max-width:400px){
+        .dm_teacher_photo img {
+            min-height:350px;
         }
     }
 

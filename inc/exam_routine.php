@@ -380,7 +380,7 @@ function dm_exam_routine_list_shortcode($atts) {
     $output .= '.dm-exam-routine-list-table {';
     $output .= '    width: 100%;';
     $output .= '    border-collapse: collapse;';
-    $output .= '    margin-top: 20px;border:1px solid #00000017;';
+    $output .= '    margin-top: 0px;border:1px solid #00000017;';
     $output .= '}';
     $output .= '.dm-exam-routine-list-table th, .dm-exam-routine-list-table td {';
     $output .= '    padding: 10px;';

@@ -481,3 +481,65 @@ textarea {
   }
 }
 // login page section end
+//mobile logo
+
+.ds_mobile_logo {
+  background: #003517;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.ds_mobile_logo img {
+  width: 100%;
+}
+button#restore-mobile-logo-button,
+input#upload-mobile-logo-button {
+  background: #08a88a;
+  border: 1px solid #08a88a;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 20px;
+  border-radius: 3px;
+  margin-top: 0px;
+  &:hover {
+    background-color: #fff;
+    color: #08a88a;
+    cursor: pointer;
+  }
+}
+input#upload-mobile-logo-button {
+  background: #08a88a;
+  border: 1px solid #08a88a;
+  color: #fff;
+  font-size: 16px;
+  padding: 2px 20px;
+  border-radius: 3px;
+  margin-top: 10px;
+  &:hover {
+    background-color: #fff;
+    color: #08a88a;
+    cursor: pointer;
+  }
+}
+.mobile_logo_upload_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  span {
+    margin-top: 10px;
+  }
+  input.mobile_logo_upload_url {
+    width: 100%;
+    font-size: 16px;
+    padding: 3px;
+    margin-top: 10px;
+    border: 1px solid #00000021;
+  }
+}
