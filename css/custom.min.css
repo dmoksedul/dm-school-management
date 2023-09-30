@@ -162,6 +162,18 @@ img {
   #dm_top_header .container {
     flex-direction: column;
   }
+  #body_area {
+    width: 100%;
+    overflow: hidden;
+  }
+  #body_area::after {
+    content: "";
+    display: none;
+  }
+  #body_area::before {
+    content: "";
+    display: none;
+  }
 }
 #dm_header_banner_area {
   background-color: var(--dm_banner_color);

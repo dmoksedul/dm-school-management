@@ -159,6 +159,18 @@ img {
       flex-direction: column;
     }
   }
+  #body_area {
+    width: 100%;
+    overflow: hidden;
+    &::after {
+      content: "";
+      display: none;
+    }
+    &::before {
+      content: "";
+      display: none;
+    }
+  }
 }
 // top header area end
 // navbar area
