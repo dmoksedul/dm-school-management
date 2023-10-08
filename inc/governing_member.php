@@ -32,32 +32,8 @@ function hide_dm_gbm_menu_item() {
 }
 add_action('admin_menu', 'hide_dm_gbm_menu_item');
 
-// Add a menu item for the plugin in the WordPress admin menu
-function add_dm_gbm_plugin_menu() {
-    add_menu_page(
-        'DM Governing Members',
-        'DM Governing Members',
-        'manage_options',
-        'dm_gbm_plugin',
-        'dm_gbm_plugin_page',
-        'dashicons-businessman',
-        6
-    );
-
-    // Add a submenu item under the DM Governing Body Members menu
-    add_submenu_page(
-        'dm_gbm_plugin',
-        'Manage Members',
-        'Manage Members',
-        'manage_options',
-        'dm_gbm_manage_members',
-        'dm_gbm_plugin_page'
-    );
-}
-add_action('admin_menu', 'add_dm_gbm_plugin_menu');
-
 // Create the admin page content
-function dm_gbm_plugin_page() {
+function dm_governing_members_page() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['add_member']) && check_admin_referer('add_member', 'add_member_nonce')) {
             $member_name = sanitize_text_field($_POST['member_name']);

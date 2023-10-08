@@ -9,19 +9,6 @@ function dm_image_slider_enqueue_scripts() {
 
 add_action('wp_enqueue_scripts', 'dm_image_slider_enqueue_scripts');
 
-// Admin settings page
-function dm_image_slider_menu() {
-    add_menu_page(
-        'DM Image Slider Settings',
-        'DM Image Slider',
-        'manage_options',
-        'dm-image-slider-settings',
-        'dm_image_slider_settings_page',
-        'dashicons-format-gallery',
-        '5'
-    );
-}
-
 function dm_image_slider_settings_page() {
     // Check if the current user is an administrator
     if (current_user_can('administrator')) {
@@ -141,7 +128,7 @@ function dm_image_slider_settings_page() {
                                 <?php
                                 // Display the delete button for administrators
                                 if (current_user_can('administrator')) {
-                                    $delete_url = admin_url('admin.php?page=dm-image-slider-settings&delete=' . $image_id);
+                                    $delete_url = admin_url('admin.php?page=dm_theme_management&delete=' . $image_id);
                                     ?>
                                     <a href="<?php echo esc_url($delete_url); ?>" class="delete-image-button" style="color: red; text-decoration: underline;">Delete</a>
                                 <?php } ?>
@@ -235,7 +222,6 @@ function dm_image_slider_settings_page() {
     <?php
 }
 
-add_action('admin_menu', 'dm_image_slider_menu');
 
 // Delete image from the gallery only
 function dm_image_slider_delete_image($image_id) {

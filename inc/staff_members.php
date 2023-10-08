@@ -32,28 +32,6 @@ function hide_dm_staff_members_menu_item() {
 }
 add_action('admin_menu', 'hide_dm_staff_members_menu_item');
 
-function add_dm_staff_members_plugin_menu() {
-    add_menu_page(
-        'DM Staff Members',
-        'DM Staff Members',
-        'manage_options',
-        'dm_staff_members_plugin',
-        'dm_staff_members_page',
-        'dashicons-businessman',
-        6
-    );
-
-    add_submenu_page(
-        'dm_staff_members_plugin',
-        'Manage Members',
-        'Manage Members',
-        'manage_options',
-        'dm_staff_members_manage_members',
-        'dm_staff_members_page'
-    );
-}
-add_action('admin_menu', 'add_dm_staff_members_plugin_menu');
-
 function dm_staff_members_page() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['add_member']) && check_admin_referer('add_member', 'add_member_nonce')) {

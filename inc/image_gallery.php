@@ -3,21 +3,8 @@
 function dm_image_gallery_enqueue_styles() {
     wp_enqueue_style('dm-image-gallery-css', plugins_url('css/styles.css', __FILE__));
 }
-
 add_action('wp_enqueue_scripts', 'dm_image_gallery_enqueue_styles');
 
-// Admin settings page
-function dm_image_gallery_menu() {
-    add_menu_page(
-        'DM Image Gallery Settings',
-        'DM Image Gallery',
-        'manage_options',
-        'dm-image-gallery-settings',
-        'dm_image_gallery_settings_page',
-        'dashicons-format-gallery',
-        '5'
-    );
-}
 
 function dm_image_gallery_settings_page() {
     // Check if the current user is an administrator
@@ -200,7 +187,6 @@ function dm_image_gallery_settings_page() {
     <?php
 }
 
-add_action('admin_menu', 'dm_image_gallery_menu');
 
 // Delete image from gallery
 function dm_image_gallery_delete_image($image_id) {

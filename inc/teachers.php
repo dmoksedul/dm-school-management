@@ -32,6 +32,11 @@ function register_dm_teacher_post_type() {
     register_post_type('dm_teacher', $args); // Change 'teacher' to 'dm_teacher'
 }
 add_action('init', 'register_dm_teacher_post_type');
+function custom_change_featured_image_label($content) {
+    return str_replace(__('Set featured image'), __('Set Teacher Photo'), $content);
+}
+
+add_filter('admin_post_thumbnail_html', 'custom_change_featured_image_label');
 
 // Add custom fields for dm_teacher details
 function add_dm_teacher_custom_fields() {

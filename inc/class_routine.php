@@ -29,22 +29,9 @@ function create_dm_class_routine_post_type() {
 }
 add_action('init', 'create_dm_class_routine_post_type');
 
-// Add a menu item for the plugin in the WordPress admin menu
-function add_dm_class_routine_plugin_menu() {
-    add_menu_page(
-        'DM Class Routine',
-        'DM Class Routine',
-        'manage_options',
-        'dm-class-routine-plugin',
-        'dm_class_routine_plugin_page',
-        'dashicons-calendar',
-        6
-    );
-}
-add_action('admin_menu', 'add_dm_class_routine_plugin_menu');
 
 // Create the admin page content
-function dm_class_routine_plugin_page() {
+function dm_class_routine_page() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['add_dm_class_routine']) && check_admin_referer('add_dm_class_routine', 'add_dm_class_routine_nonce')) {
             $dm_class_routine_title = sanitize_text_field($_POST['dm_class_routine_title']);
@@ -122,7 +109,7 @@ function dm_class_routine_plugin_page() {
                         <td><?php echo esc_html($counter); ?></td>
                         <td><a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="dm-class-routine-link"><?php echo esc_html($dm_class_routine->post_title); ?></a></td>
                         <td><?php echo esc_html($publish_date); ?></td>
-                        <td>
+                        <td style="display:flex;justify-content:center; align-items:center;gap:10px">
                             <a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="button button-primary view_button">View</a>
                             <form method="post" style="display:inline;">
                                 <input type="hidden" name="delete_dm_class_routine_id" value="<?php echo esc_attr($dm_class_routine->ID); ?>">
@@ -270,16 +257,16 @@ function dm_class_routine_plugin_page() {
             background: #fff;
         }
         .delete_button {
-            background: #f6f7f7;
-            border-color: red;
+            background: #f6f7f7 !important;
+            border-color: red !important;
             box-shadow: none;
-            color: red;
+            color: red !important;
             border: 1px solid;
-            padding: 4px 10px;
+            padding: 5px 10px !important;
         }
         .delete_button:hover{
-            background:red;
-            color:#fff;
+            background:red !important;
+            color:#fff !important;
             cursor:pointer;
         }
     </style>

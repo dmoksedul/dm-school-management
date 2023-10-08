@@ -29,22 +29,9 @@ function create_dm_notice_post_type() {
 }
 add_action('init', 'create_dm_notice_post_type');
 
-// Add a menu item for the plugin in the WordPress admin menu
-function add_dm_notice_plugin_menu() {
-    add_menu_page(
-        'DM Notice',
-        'DM Notice',
-        'manage_options',
-        'dm-notice-plugin',
-        'dm_notice_plugin_page',
-        'dashicons-megaphone',
-        6
-    );
-}
-add_action('admin_menu', 'add_dm_notice_plugin_menu');
 
 // Create the admin page content
-function dm_notice_plugin_page() {
+function dm_notice_page() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['add_dm_notice']) && check_admin_referer('add_dm_notice', 'add_dm_notice_nonce')) {
             $dm_notice_title = sanitize_text_field($_POST['dm_notice_title']);
@@ -122,7 +109,7 @@ function dm_notice_plugin_page() {
                     <td><?php echo esc_html($counter); ?></td>
                     <td><a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="dm-notice-link"><?php echo esc_html($dm_notice->post_title); ?></a></td>
                     <td><?php echo esc_html($publish_date); ?></td>
-                    <td>
+                    <td style="display:flex;justify-content:center; align-items:center;gap:10px">
                         <a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="button button-primary view_button">View</a>
                         <form method="post" style="display:inline;">
                             <input type="hidden" name="delete_dm_notice_id" value="<?php echo esc_attr($dm_notice->ID); ?>">
@@ -269,16 +256,16 @@ function dm_notice_plugin_page() {
             background: #fff;
         }
         .delete_button {
-            background: #f6f7f7;
-            border-color: red;
+            background: #f6f7f7 !important;
+            border-color: red !important;
             box-shadow: none;
-            color: red;
+            color: red !important;
             border: 1px solid;
-            padding: 4px 10px;
+            padding: 5px 10px !important;
         }
         .delete_button:hover{
-            background:red;
-            color:#fff;
+            background:red !important;
+            color:#fff !important;
             cursor:pointer;
         }
     </style>
