@@ -94,16 +94,48 @@ function dm_add_theme_management_menu() {
         'dm-staff-members',
         'dm_staff_members_page',
      );
+     // Add the "Teachers" menu under "dm_theme_management" submenu
+     
+    // Remove the "Teachers" menu from the sidebar
+    remove_menu_page('edit.php?post_type=dm_teacher');
+    add_submenu_page(
+        'dm_theme_management',  // Parent menu slug
+        'Teachers',            // Page title
+        'Teachers',            // Menu title
+        'edit_posts',           // Capability (or any appropriate capability)
+        'edit.php?post_type=dm_teacher' // Menu slug
+    );
+
+    // Remove the "message" menu from the sidebar
+    remove_menu_page('edit.php?post_type=message');
+    add_submenu_page(
+        'dm_theme_management',  // Parent menu slug
+        'Message',            // Page title
+        'Message',            // Menu title
+        'edit_posts',           // Capability (or any appropriate capability)
+        'edit.php?post_type=message' // Menu slug
+    );
+    // Remove the "history" menu from the sidebar
+    remove_menu_page('edit.php?post_type=history');
+    add_submenu_page(
+        'dm_theme_management',  // Parent menu slug
+        'History',            // Page title
+        'History',            // Menu title
+        'edit_posts',           // Capability (or any appropriate capability)
+        'edit.php?post_type=history' // Menu slug
+    );
+    // Remove the "dm-academic-details" menu from the sidebar
+    remove_menu_page('edit.php?post_type=dm_academic_detail');
+    add_submenu_page(
+        'dm_theme_management',  // Parent menu slug
+        'Academic Details',            // Page title
+        'Academic Details',            // Menu title
+        'edit_posts',           // Capability (or any appropriate capability)
+        'edit.php?post_type=dm_academic_detail' // Menu slug
+    );
 
 }
 
 add_action('admin_menu', 'dm_add_theme_management_menu');
 
 
-
-
-
-
-
-
-?>
