@@ -1,6 +1,9 @@
+// primary color
+$pColor: $pColor;
+
 body.wp-admin {
   a.current {
-    background: #08a88a !important;
+    background: $pColor !important;
   }
   ul#adminmenu {
     width: 100%;
@@ -8,7 +11,7 @@ body.wp-admin {
       color: #fff !important;
     }
     a:hover {
-      background: #08a88a;
+      background: $pColor;
       color: #fff;
       .wp-menu-image.dashicons-before::before {
         color: #fff !important;
@@ -23,7 +26,7 @@ body.wp-admin {
   #adminmenu .wp-menu-arrow div,
   #adminmenu li.current a.menu-top,
   #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
-    background: #08a88a;
+    background: $pColor;
     color: #fff;
   }
 
@@ -37,7 +40,7 @@ body.wp-admin {
       a {
         padding: 6px 20px;
         &:hover {
-          background: #08a88a !important;
+          background: $pColor !important;
           color: #fff !important;
           span {
             color: #fff !important;
@@ -45,7 +48,7 @@ body.wp-admin {
         }
       }
       a.current {
-        background: #08a88a !important;
+        background: $pColor !important;
         color: #fff !important;
         span {
           color: #fff !important;
@@ -63,7 +66,7 @@ body.wp-admin {
     display: none;
   }
   #wpadminbar {
-    background: #08a88a;
+    background: $pColor;
   }
   .wrap {
     box-shadow: 0 0 10px #0000001f;
@@ -76,12 +79,12 @@ body.wp-admin {
     input#search-submit,
     input[type="submit"],
     button.button.media-button.select-mode-toggle-button {
-      background: #08a88a !important;
+      background: $pColor !important;
       color: #fff !important;
-      border-color: #08a88a !important;
+      border-color: $pColor !important;
       &:hover {
         background: #fff !important;
-        color: #08a88a !important;
+        color: $pColor !important;
       }
     }
   }
@@ -102,5 +105,14 @@ body.wp-admin {
   }
   li#wp-admin-bar-wp-logo {
     display: none;
+  }
+}
+.wp-core-ui .button-primary {
+  background-color: $pColor;
+  color: #fff !important;
+  transition: all 0.5s;
+  &:hover {
+    background-color: #fff !important;
+    color: $pColor !important;
   }
 }
